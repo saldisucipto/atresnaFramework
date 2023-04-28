@@ -1,0 +1,80 @@
+<template>
+    <div>
+        <layouts>
+            <div
+                class="max-w-screen-lg mx-auto flex flex-col justify-center h-full text-gray-800"
+            >
+                <div
+                    class="bg-bg-primary h-3/4 rounded-3xl flex flex-col justify-center"
+                >
+                    <div class="flex">
+                        <div class="flex-1">
+                            <div
+                                class="flex flex-col justify-center h-full w-full"
+                            >
+                                <div class="flex justify-center w-full">
+                                    <div
+                                        class="flex flex-col justify-center h-full gap-5 w-full"
+                                    >
+                                        <div class="w-full">
+                                            <h1
+                                                class="text-lg text-gray-700 font-bold text-center w-full leading-5"
+                                            >
+                                                Login Akun Anda
+                                                <br />
+                                                <span
+                                                    class="text-center text-xs mx-auto font-thin"
+                                                    >Untuk Mengakses Halaman
+                                                    Dashboard</span
+                                                >
+                                            </h1>
+                                        </div>
+                                        <div class="">
+                                            <form
+                                                class="flex flex-col gap-5 w-2/3 mx-auto"
+                                                action=""
+                                            >
+                                                <input
+                                                    class="focus:outline-none py-2 px-3 rounded-xl border border-primary-color"
+                                                    type="text"
+                                                    name="email"
+                                                    placeholder="email"
+                                                />
+                                                <input
+                                                    class="focus:outline-none py-2 px-3 rounded-xl border border-primary-color"
+                                                    type="password"
+                                                    name="passwor"
+                                                    placeholder="password"
+                                                />
+                                                <button
+                                                    class="bg-primary-color rounded-xl mx-5 py-1 px-2 text-white font-bold"
+                                                    type="submit"
+                                                >
+                                                    Login
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <img
+                                class="object-cover max-h-72 mx-auto"
+                                src="/assets/img/human-login.png"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </layouts>
+    </div>
+</template>
+
+<script setup>
+import Layouts from "./Layout/Layouts.vue";
+defineProps({});
+</script>
+
+<style></style>
