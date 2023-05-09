@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -12,8 +13,7 @@ Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name(
 
 // dashboard
 Route::prefix('/dashboard')->middleware('auth')->group(function () {
-    Route::get('/', );
-
+    Route::get('/', [DashboardController::class, 'index']);
 });
 
 Route::get('/', function () {

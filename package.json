@@ -15,7 +15,9 @@
     "dependencies": {
         "@inertiajs/vue3": "^1.0.6",
         "@vitejs/plugin-vue": "^4.2.1",
+        "apexcharts": "^3.40.0",
         "vue": "^3.2.36",
-        "vue-loader": "^17.0.1"
+        "vue-loader": "^17.0.1",
+        "vue3-apexcharts": "^1.4.1"
     }
 }

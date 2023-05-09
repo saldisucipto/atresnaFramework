@@ -31,21 +31,47 @@
                                         </div>
                                         <div class="">
                                             <form
+                                                @submit.prevent="submitForm"
                                                 class="flex flex-col gap-5 w-2/3 mx-auto"
                                                 action=""
                                             >
-                                                <input
-                                                    class="focus:outline-none py-2 px-3 rounded-xl border border-primary-color"
-                                                    type="text"
-                                                    name="email"
-                                                    placeholder="email"
-                                                />
-                                                <input
-                                                    class="focus:outline-none py-2 px-3 rounded-xl border border-primary-color"
-                                                    type="password"
-                                                    name="passwor"
-                                                    placeholder="password"
-                                                />
+                                                <div
+                                                    class="flex flex-col gap-1"
+                                                >
+                                                    <input
+                                                        class="focus:outline-none py-2 px-3 rounded-xl border border-primary-color"
+                                                        type="email"
+                                                        name="email"
+                                                        placeholder="Email"
+                                                        v-model="form.email"
+                                                        autofocus
+                                                        required
+                                                    />
+                                                    <div
+                                                        class="text-xs px-1 text-red-600"
+                                                        v-if="errors.email"
+                                                    >
+                                                        {{ errors.email }}
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="flex flex-col gap-1"
+                                                >
+                                                    <input
+                                                        class="focus:outline-none py-2 px-3 rounded-xl border border-primary-color"
+                                                        type="password"
+                                                        name="passwor"
+                                                        placeholder="Password"
+                                                        v-model="form.password"
+                                                        required
+                                                    />
+                                                    <div
+                                                        class="text-xs px-1 text-red-600"
+                                                        v-if="errors.password"
+                                                    >
+                                                        {{ errors.password }}
+                                                    </div>
+                                                </div>
                                                 <button
                                                     class="bg-primary-color rounded-xl mx-5 py-1 px-2 text-white font-bold"
                                                     type="submit"
@@ -74,7 +100,20 @@
 
 <script setup>
 import Layouts from "./Layout/Layouts.vue";
-defineProps({});
+import { reactive } from "vue";
+import { router } from "@inertiajs/vue3";
+defineProps({
+    errors: Object,
+});
+
+const form = reactive({
+    email: null,
+    password: null,
+});
+
+function submitForm() {
+    router.post("/login", form);
+}
 </script>
 
 <style></style>
