@@ -1,0 +1,55 @@
+<template>
+    <div class="p-5 flex flex-col gap-6">
+        <div class="flex flex-col gap-4">
+            <div class="text-xs text-gray-600">
+                <h1>HOMES</h1>
+            </div>
+            <Link
+                href="/dashboard"
+                class="text-bold rounded-md text-gray-700 hover:text-primary-color"
+            >
+                <div
+                    class="flex gap-2 px-3 py-2"
+                    :class="{
+                        'hover: text-white hover: text-bold bg-blue-400 rounded-md':
+                            $page.url === '/dashboard',
+                    }"
+                >
+                    <i class="fas fa-columns my-auto"></i>
+                    <span>Analytics Dashboard</span>
+                </div>
+            </Link>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <div class="text-xs text-gray-600">
+                <h1>MAIN MENU</h1>
+            </div>
+            <Link
+                href="/master"
+                class="text-bold rounded-md text-gray-700 hover:text-primary-color"
+            >
+                <div
+                    class="flex gap-2 px-3 py-2"
+                    :class="{
+                        'hover: text-white hover: text-bold bg-blue-400 rounded-md':
+                            $page.url === '/master',
+                    }"
+                >
+                    <i class="fas fa-server my-auto"></i>
+                    <span>Master Data</span>
+                </div>
+            </Link>
+        </div>
+    </div>
+</template>
+
+<script>
+import { Link } from "@inertiajs/vue3";
+export default {
+    components: {
+        Link,
+    },
+};
+</script>
+<style></style>

@@ -15,4 +15,10 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/Index', ['chart' => $chart->build()]);
     }
 
+    // master function dashboard
+    public function master()
+    {
+
+    }
+
 }
