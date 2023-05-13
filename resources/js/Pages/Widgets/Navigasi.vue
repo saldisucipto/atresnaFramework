@@ -26,14 +26,14 @@
                 <h1>MAIN MENU</h1>
             </div>
             <Link
-                href="/master"
+                href="/dashboard/master"
                 class="text-bold rounded-md text-gray-700 hover:text-primary-color"
             >
                 <div
                     class="flex gap-2 px-3 py-2"
                     :class="{
                         'hover: text-white hover: text-bold bg-blue-400 rounded-md':
-                            $page.url === '/master',
+                            $page.url === '/dashboard/master',
                     }"
                 >
                     <i class="fas fa-server my-auto"></i>

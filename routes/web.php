@@ -14,6 +14,8 @@ Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name(
 // dashboard
 Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
+
+    Route::get('/master', [DashboardController::class, 'masterPages']);
 });
 
 Route::get('/', function () {

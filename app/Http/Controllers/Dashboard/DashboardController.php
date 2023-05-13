@@ -16,9 +16,9 @@ class DashboardController extends Controller
     }
 
     // master function dashboard
-    public function master()
+    public function masterPages()
     {
-
+        return Inertia::render('Dashboard/Master/Index', []);
     }
 
 }
