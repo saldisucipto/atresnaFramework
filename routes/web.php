@@ -15,7 +15,11 @@ Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name(
 Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
-    Route::get('/master', [DashboardController::class, 'masterPages']);
+    Route::prefix('/master')->group(function () {
+        Route::get('/', [DashboardController::class, 'masterPages']);
+        Route::get('/produk', [DashboardController::class, 'masterProduk']);
+    });
+
 });
 
 Route::get('/', function () {

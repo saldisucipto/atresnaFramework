@@ -33,7 +33,8 @@
                     class="flex gap-2 px-3 py-2"
                     :class="{
                         'hover: text-white hover: text-bold bg-blue-400 rounded-md':
-                            $page.url === '/dashboard/master',
+                            $page.url === '/dashboard/master' ||
+                            $page.url.startsWith('/dashboard/master'),
                     }"
                 >
                     <i class="fas fa-server my-auto"></i>

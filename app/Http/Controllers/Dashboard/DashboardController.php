@@ -21,4 +21,10 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/Master/Index', []);
     }
 
+    // master produk
+    public function masterProduk()
+    {
+        return Inertia::render('Dashboard/Master/Produk/Index');
+    }
+
 }
