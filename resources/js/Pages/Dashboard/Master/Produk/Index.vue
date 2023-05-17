@@ -9,7 +9,7 @@
             <div
                 class="h-12 bg-slate-100 rounded-lg flex flex-col justify-center"
             >
-                <div class="mx-2 flex justify-between">
+                <div class="mx-2 flex justify-between py-2">
                     <div>
                         <input
                             type="search"
@@ -37,7 +37,7 @@
                 <table
                     class="w-full divide-y-2 divide-gray-200 bg-white text-sm"
                 >
-                    <thead class="ltr:text-left rtl:text-right">
+                    <thead class="ltr:text-left rtl:text-right text-left">
                         <tr>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
@@ -59,12 +59,16 @@
                             >
                                 Salary
                             </th>
-                            <th class="px-4 py-2"></th>
+                            <th
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center"
+                            >
+                                Action
+                            </th>
                         </tr>
                     </thead>
 
                     <tbody class="divide-y divide-gray-200">
-                        <tr>
+                        <tr class="hover:bg-gray-200">
                             <td
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
@@ -85,74 +89,26 @@
                             >
                                 $120,000
                             </td>
-                            <td class="whitespace-nowrap px-4 py-2">
+                            <td
+                                class="whitespace-nowrap py-2 flex gap-1 justify-center"
+                            >
                                 <a
                                     href="#"
                                     class="inline-block rounded bg-blue-400 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700"
                                 >
                                     View
                                 </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
-                            >
-                                Jane Doe
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                04/11/1980
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                Web Designer
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                $100,000
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2">
                                 <a
                                     href="#"
-                                    class="inline-block rounded bg-blue-400 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700"
+                                    class="inline-block rounded bg-yellow-400 px-4 py-2 text-xs font-medium text-white hover:bg-yellow-700"
                                 >
-                                    View
+                                    Edit
                                 </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
-                            >
-                                Gary Barlow
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                24/05/1995
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                Singer
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                $20,000
-                            </td>
-                            <td class="whitespace-nowrap px-4 py-2">
                                 <a
                                     href="#"
-                                    class="inline-block rounded bg-blue-400 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700"
+                                    class="inline-block rounded bg-red-400 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
                                 >
-                                    View
+                                    Delete
                                 </a>
                             </td>
                         </tr>

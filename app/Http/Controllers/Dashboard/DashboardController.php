@@ -24,7 +24,7 @@ class DashboardController extends Controller
     // master produk
     public function masterProduk()
     {
-        return Inertia::render('Dashboard/Master/Produk/Index');
+        return Inertia::render('Dashboard/Master/Produk/Index', ['produk' => null]);
     }
 
 }
