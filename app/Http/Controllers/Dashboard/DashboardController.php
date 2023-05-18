@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Charts\VisitorCharts;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Data\MasterDataController;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Produk;
 
 class DashboardController extends Controller
 {
@@ -18,13 +20,14 @@ class DashboardController extends Controller
     // master function dashboard
     public function masterPages()
     {
-        return Inertia::render('Dashboard/Master/Index', []);
+        return Inertia::render('Dashboard/Master/Index');
     }
 
     // master produk
     public function masterProduk()
     {
-        return Inertia::render('Dashboard/Master/Produk/Index', ['produk' => null]);
+        $data = new MasterDataController(new Produk());
+        return Inertia::render('Dashboard/Master/Produk/Index', ['produk' => $data->ambilSemuaData(['kategoriProduk', 'brandProduk'])]);
     }
 
 }

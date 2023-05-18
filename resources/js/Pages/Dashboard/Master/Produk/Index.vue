@@ -3,6 +3,31 @@
         <!-- Title Pages -->
         <title-pages :backto="'/dashboard/master'"> Master Produk </title-pages>
         <!-- Endt Title Pages -->
+        <!-- Menu Maste -->
+
+        <div class="mx-3 flex flex-col">
+            <div class="h-12 rounded-lg flex flex-col justify-center">
+                <div class="mx-2 flex justify-between py-2">
+                    <div class="flex gap-3">
+                        <Link
+                            href="#"
+                            class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-lg drop-shadow-lg"
+                        >
+                            <i class="fas fa-plus"></i>
+                            Kategori Produk
+                        </Link>
+                        <Link
+                            href="#"
+                            class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-lg drop-shadow-lg"
+                        >
+                            <i class="fas fa-plus"></i>
+                            Brand Produk
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Menu -->
 
         <!-- Main menu  -->
         <div class="mx-3 flex flex-col">
@@ -21,13 +46,10 @@
                     </div>
                     <div class="flex gap-3">
                         <Link
+                            href="#"
                             class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-sm"
                         >
-                            Buat Kategori Produk
-                        </Link>
-                        <Link
-                            class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-sm"
-                        >
+                            <i class="fas fa-plus"></i>
                             Buat Produk
                         </Link>
                     </div>
@@ -42,22 +64,27 @@
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                Name
+                                Nama Produk
                             </th>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                Date of Birth
+                                Kategori Produk
                             </th>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                Role
+                                Brand Produk
                             </th>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                Salary
+                                Satuan
+                            </th>
+                            <th
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                Harga Produk
                             </th>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center"
@@ -68,26 +95,36 @@
                     </thead>
 
                     <tbody class="divide-y divide-gray-200">
-                        <tr class="hover:bg-gray-200">
+                        <tr v-if="this.produk.data == []"></tr>
+                        <tr
+                            v-else
+                            v-for="itemProduk in produk.data"
+                            class="hover:bg-gray-200"
+                        >
                             <td
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                John Doe
+                                {{ itemProduk.nama_produk }}
                             </td>
                             <td
                                 class="whitespace-nowrap px-4 py-2 text-gray-700"
                             >
-                                24/05/1995
+                                {{ itemProduk.kategori_produk.nama_kategori }}
                             </td>
                             <td
                                 class="whitespace-nowrap px-4 py-2 text-gray-700"
                             >
-                                Web Developer
+                                {{ itemProduk.brand_produk.nama_brand }}
                             </td>
                             <td
                                 class="whitespace-nowrap px-4 py-2 text-gray-700"
                             >
-                                $120,000
+                                {{ itemProduk.satuan_produk }}
+                            </td>
+                            <td
+                                class="whitespace-nowrap px-4 py-2 text-gray-700"
+                            >
+                                {{ formRupiahSaya(itemProduk.harga_produk) }}
                             </td>
                             <td
                                 class="whitespace-nowrap py-2 flex gap-1 justify-center"
@@ -127,6 +164,7 @@ import DashboardLayout from "../../../Layouts/DashboardLayout.vue";
 import TitlePages from "../../../Widgets/TitlePages.vue";
 import CardMasterData from "../../../Widgets/CardMasterData.vue";
 import { Link } from "@inertiajs/vue3";
+// import formatRupiah from "../../../../Utils/format-rupiah";
 
 export default {
     components: {
@@ -138,8 +176,24 @@ export default {
     },
     props: {
         chart: Object,
+        produk: Object,
     },
     layout: DashboardLayout,
+    methods: {
+        formRupiahSaya(value) {
+            var numberToString = value.toString(),
+                sisa = numberToString.length % 3,
+                rupiah = numberToString.substr(0, sisa),
+                ribuan = numberToString.substr(sisa).match(/\d{3}/gi);
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                var separator = sisa ? "." : " ";
+                rupiah += separator + ribuan.join(".");
+            }
+            let finalFormat = "Rp. " + rupiah;
+            return finalFormat;
+        },
+    },
 };
 </script>
 
