@@ -30,4 +30,12 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/Master/Produk/Index', ['produk' => $data->ambilSemuaData(['kategoriProduk', 'brandProduk'])]);
     }
 
+    // master kategori produk
+    public function kategoriProduk()
+    {
+        $data = new MasterDataController(new Produk());
+        return Inertia::render('Dashboard/Master/Produk/Kategori/Index', ['produk' => $data->ambilSemuaData(['kategoriProduk', 'brandProduk'])]);
+
+    }
+
 }

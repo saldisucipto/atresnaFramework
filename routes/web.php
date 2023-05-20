@@ -17,7 +17,12 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
     Route::prefix('/master')->group(function () {
         Route::get('/', [DashboardController::class, 'masterPages']);
-        Route::get('/produk', [DashboardController::class, 'masterProduk']);
+        Route::prefix('/produk')->group(function () {
+            Route::get('/', [DashboardController::class, 'masterProduk']);
+            Route::prefix('/kategori')->group(function () {
+                Route::get('/', [DashboardController::class, 'kategoriProduk']);
+            });
+        });
     });
 
 });

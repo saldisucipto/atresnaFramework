@@ -1,34 +1,10 @@
 <template>
     <div class="p-3 rounded-xl bg-white flex flex-col gap-4">
         <!-- Title Pages -->
-        <title-pages :backto="'/dashboard/master'"> Master Produk </title-pages>
+        <title-pages :backto="'/dashboard/master/produk'">
+            Master Kategori Produk
+        </title-pages>
         <!-- Endt Title Pages -->
-        <!-- Menu Maste -->
-
-        <div class="mx-3 flex flex-col">
-            <div class="h-12 rounded-lg flex flex-col justify-center">
-                <div class="mx-2 flex justify-between py-2">
-                    <div class="flex gap-3">
-                        <Link
-                            href="/dashboard/master/produk/kategori"
-                            class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-lg drop-shadow-lg"
-                        >
-                            <i class="fas fa-plus"></i>
-                            Kategori Produk
-                        </Link>
-                        <Link
-                            href="#"
-                            class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-lg drop-shadow-lg"
-                        >
-                            <i class="fas fa-plus"></i>
-                            Brand Produk
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Menu -->
-
         <!-- Main menu  -->
         <div class="mx-3 flex flex-col">
             <div
@@ -39,19 +15,19 @@
                         <input
                             type="search"
                             name=""
-                            placeholder="Search Produk"
+                            placeholder="Search Kategori Produk"
                             id=""
                             class="rounded-lg px-2 py-2 focus:outline-none text-sm"
                         />
                     </div>
                     <div class="flex gap-3">
-                        <Link
-                            href="#"
+                        <button
                             class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-sm"
+                            @click="openCreateModal()"
                         >
                             <i class="fas fa-plus"></i>
-                            Buat Produk
-                        </Link>
+                            Buat Data Baru
+                        </button>
                     </div>
                 </div>
             </div>
@@ -151,6 +127,88 @@
                         </tr>
                     </tbody>
                 </table>
+                <div
+                    v-if="modalCreate"
+                    class="absolute backdrop-blur-sm top-0 h-screen w-full overflow-hidden left-0 flex flex-col justify-center"
+                >
+                    <div
+                        class="mx-auto w-2/4 bg-white drop-shadow-lg rounded-lg"
+                    >
+                        <div class="p-5">
+                            <div class="flex justify-between h-6">
+                                <div
+                                    class="text-gray-600 font-semibold text-lg"
+                                >
+                                    Buat Kategori Baru
+                                </div>
+                                <button
+                                    class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
+                                    @click="
+                                        this.modalCreate = !this.modalCreate
+                                    "
+                                >
+                                    <span class="">Tutup</span>
+                                </button>
+                            </div>
+                        </div>
+                        <hr />
+                        <form
+                            @submit.prevent="submitForm"
+                            class="p-5 flex flex-col w-full gap-5"
+                        >
+                            <div class="flex flex-col gap-2">
+                                <label class="text-gray-700" for=""
+                                    >Nama Kategori Produk</label
+                                >
+                                <input
+                                    class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                    type="text"
+                                    name="Nama Kategori Produk"
+                                    placeholder="Nama Kategori Produk"
+                                    v-model="form.nama_kategori"
+                                    required
+                                />
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-gray-700" for=""
+                                    >Deskripsi Kategori Produk</label
+                                >
+                                <textarea
+                                    class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                    name=""
+                                    id=""
+                                    cols="10"
+                                    rows="3"
+                                    placeholder="Dekskripsi Kategori"
+                                    v-model="form.deskripsi_kategori"
+                                ></textarea>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-gray-700" for=""
+                                    >Gambar Kategori</label
+                                >
+
+                                <input
+                                    class="text-sm"
+                                    type="file"
+                                    src=""
+                                    alt=""
+                                    @input="
+                                        form.gambar_produk =
+                                            $event.target.files[0]
+                                    "
+                                />
+                            </div>
+
+                            <button
+                                class="bg-blue-400 hover:bg-blue-700 text-white py-1 rounded-md drop-shadow-sm"
+                                type="submit"
+                            >
+                                Buat Data Baru
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
             #
         </div>
@@ -159,14 +217,19 @@
 </template>
 
 <script>
-import Navigasi from "../../../Widgets/Navigasi.vue";
-import DashboardLayout from "../../../Layouts/DashboardLayout.vue";
-import TitlePages from "../../../Widgets/TitlePages.vue";
-import CardMasterData from "../../../Widgets/CardMasterData.vue";
+import Navigasi from "../../../../Widgets/Navigasi.vue";
+import DashboardLayout from "../../../../Layouts/DashboardLayout.vue";
+import TitlePages from "../../../../Widgets/TitlePages.vue";
+import CardMasterData from "../../../../Widgets/CardMasterData.vue";
 import { Link } from "@inertiajs/vue3";
 // import formatRupiah from "../../../../Utils/format-rupiah";
 
 export default {
+    data() {
+        return {
+            modalCreate: false,
+        };
+    },
     components: {
         Navigasi,
         DashboardLayout,
@@ -193,8 +256,26 @@ export default {
             let finalFormat = "Rp. " + rupiah;
             return finalFormat;
         },
+        openCreateModal() {
+            this.modalCreate = true;
+        },
     },
 };
+</script>
+
+<script setup>
+import { reactive } from "vue";
+import { router } from "@inertiajs/vue3";
+
+const form = reactive({
+    nama_kategori: null,
+    deskripsi_kategori: null,
+    gambar_produk: null,
+});
+
+function submitForm() {
+    router.post("/test", form);
+}
 </script>
 
 <style></style>
