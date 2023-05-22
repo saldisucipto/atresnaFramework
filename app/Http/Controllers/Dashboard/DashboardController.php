@@ -37,7 +37,7 @@ class DashboardController extends Controller
     public function kategoriProduk()
     {
         $data = new MasterDataController(new KategoriProduk());
-        return Inertia::render('Dashboard/Master/Produk/Kategori/Index', ['produk' => $data->ambilSemuaData(), 'message' => null ]);
+        return Inertia::render('Dashboard/Master/Produk/Kategori/Index', ['produk' => $data->ambilSemuaData(), 'message' => null]);
     }
 
     // create kategori produk

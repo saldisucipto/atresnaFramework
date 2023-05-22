@@ -5,6 +5,26 @@
             Master Kategori Produk
         </title-pages>
         <!-- Endt Title Pages -->
+        <!-- Mesasge -->
+        <div
+            v-if="$page.props.flash.message"
+            class="mx-3 h-12 bg-green-400 rounded-lg flex flex-col justify-center"
+        >
+            <div class="mx-4 flex justify-between py-2">
+                <div class="my-auto font-semibold text-white">
+                    {{ $page.props.flash.message }}
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="bg-white my-auto text-xs rounded-lg font-semibold py-2 px-3 text-green-400 hover:drop-shadow-sm"
+                        @click="$page.props.flash.message = null"
+                    >
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End Message -->
         <!-- Main menu  -->
         <div class="mx-3 flex flex-col">
             <div
@@ -128,7 +148,7 @@
                             class="p-5 flex flex-col w-full gap-5"
                         >
                             <div class="flex flex-col gap-2">
-                                <label class="text-gray-700" for=""
+                                <label class="text-gray-700"
                                     >Nama Kategori Produk</label
                                 >
                                 <input
@@ -146,7 +166,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label class="text-gray-700" for=""
+                                <label class="text-gray-700"
                                     >Deskripsi Kategori Produk</label
                                 >
                                 <textarea
@@ -160,7 +180,7 @@
                                 ></textarea>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label class="text-gray-700" for=""
+                                <label class="text-gray-700"
                                     >Gambar Kategori</label
                                 >
 
@@ -204,9 +224,24 @@ import DashboardLayout from "../../../../Layouts/DashboardLayout.vue";
 import TitlePages from "../../../../Widgets/TitlePages.vue";
 import CardMasterData from "../../../../Widgets/CardMasterData.vue";
 import { Link } from "@inertiajs/vue3";
-// import formatRupiah from "../../../../Utils/format-rupiah";
+import { router, useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
 
 export default {
+    data() {
+        return {
+            modalCreate: false,
+        };
+    },
+    setup() {
+        const form = useForm({
+            nama_kategori: null,
+            deskripsi_kategori: null,
+            gambar_produk: null,
+        });
+
+        return { form };
+    },
     components: {
         Navigasi,
         DashboardLayout,
@@ -221,47 +256,24 @@ export default {
     },
     layout: DashboardLayout,
     methods: {
-        formRupiahSaya(value) {
-            var numberToString = value.toString(),
-                sisa = numberToString.length % 3,
-                rupiah = numberToString.substr(0, sisa),
-                ribuan = numberToString.substr(sisa).match(/\d{3}/gi);
-            // tambahkan titik jika yang di input sudah menjadi angka ribuan
-            if (ribuan) {
-                var separator = sisa ? "." : " ";
-                rupiah += separator + ribuan.join(".");
-            }
-            let finalFormat = "Rp. " + rupiah;
-            return finalFormat;
-        },
         openCreateModal() {
             this.modalCreate = true;
         },
+        submitForm() {
+            router.post(
+                "/dashboard/master/produk/create-kategori-produk",
+                this.form,
+                {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.form.reset();
+                        this.modalCreate = false;
+                    },
+                }
+            );
+        },
     },
 };
-</script>
-
-<script setup>
-import { router, useForm } from "@inertiajs/vue3";
-import { ref } from "vue";
-
-let modalCreate = ref(false);
-
-const form = useForm({
-    nama_kategori: null,
-    deskripsi_kategori: null,
-    gambar_produk: null,
-});
-
-function submitForm() {
-    router.post("/dashboard/master/produk/create-kategori-produk", form, {
-        preserveScroll: true,
-        onSuccess: () => {
-            form.reset();
-            location.reload();
-        },
-    });
-}
 </script>
 
 <style></style>
