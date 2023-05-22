@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Data;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriProduk;
 use Illuminate\Http\Request;
 
 class MasterDataController extends Controller
@@ -25,4 +26,7 @@ class MasterDataController extends Controller
         }
         return $data;
     }
+
+
+
 }

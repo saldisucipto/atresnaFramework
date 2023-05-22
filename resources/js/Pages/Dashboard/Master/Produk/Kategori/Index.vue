@@ -40,27 +40,12 @@
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                Nama Produk
+                                Nama Kategori
                             </th>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                Kategori Produk
-                            </th>
-                            <th
-                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
-                            >
-                                Brand Produk
-                            </th>
-                            <th
-                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
-                            >
-                                Satuan
-                            </th>
-                            <th
-                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
-                            >
-                                Harga Produk
+                                Tanggal Pembuatan
                             </th>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center"
@@ -80,28 +65,14 @@
                             <td
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                {{ itemProduk.nama_produk }}
+                                {{ itemProduk.nama_kategori }}
                             </td>
                             <td
                                 class="whitespace-nowrap px-4 py-2 text-gray-700"
                             >
-                                {{ itemProduk.kategori_produk.nama_kategori }}
+                                {{ itemProduk.created_at }}
                             </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                {{ itemProduk.brand_produk.nama_brand }}
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                {{ itemProduk.satuan_produk }}
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                {{ formRupiahSaya(itemProduk.harga_produk) }}
-                            </td>
+
                             <td
                                 class="whitespace-nowrap py-2 flex gap-1 justify-center"
                             >
@@ -139,7 +110,7 @@
                                 <div
                                     class="text-gray-600 font-semibold text-lg"
                                 >
-                                    Buat Kategori Baru
+                                    Buat Kategori Baru {{ modalCreate }}
                                 </div>
                                 <button
                                     class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
@@ -166,8 +137,13 @@
                                     name="Nama Kategori Produk"
                                     placeholder="Nama Kategori Produk"
                                     v-model="form.nama_kategori"
-                                    required
                                 />
+                                <div
+                                    class="text-xs px-1 text-red-600"
+                                    v-if="errors.nama_kategori"
+                                >
+                                    {{ errors.nama_kategori }}
+                                </div>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="text-gray-700" for=""
@@ -198,6 +174,12 @@
                                             $event.target.files[0]
                                     "
                                 />
+                                <div
+                                    class="text-xs px-1 text-red-600"
+                                    v-if="errors.gambar_produk"
+                                >
+                                    {{ errors.gambar_produk }}
+                                </div>
                             </div>
 
                             <button
@@ -225,11 +207,6 @@ import { Link } from "@inertiajs/vue3";
 // import formatRupiah from "../../../../Utils/format-rupiah";
 
 export default {
-    data() {
-        return {
-            modalCreate: false,
-        };
-    },
     components: {
         Navigasi,
         DashboardLayout,
@@ -240,6 +217,7 @@ export default {
     props: {
         chart: Object,
         produk: Object,
+        errors: Object,
     },
     layout: DashboardLayout,
     methods: {
@@ -264,17 +242,25 @@ export default {
 </script>
 
 <script setup>
-import { reactive } from "vue";
-import { router } from "@inertiajs/vue3";
+import { router, useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
 
-const form = reactive({
+let modalCreate = ref(false);
+
+const form = useForm({
     nama_kategori: null,
     deskripsi_kategori: null,
     gambar_produk: null,
 });
 
 function submitForm() {
-    router.post("/test", form);
+    router.post("/dashboard/master/produk/create-kategori-produk", form, {
+        preserveScroll: true,
+        onSuccess: () => {
+            form.reset();
+            location.reload();
+        },
+    });
 }
 </script>
 
