@@ -20,9 +20,9 @@ class MasterDataController extends Controller
     public function ambilSemuaData(array $relation = [])
     {
         if($relation != []) {
-            $data = $this->dataModel->with($relation)->paginate(15);
+            $data = $this->dataModel->with($relation)->paginate(10);
         } else {
-            $data = $this->dataModel->paginate(15);
+            $data = $this->dataModel->paginate(10);
         }
         return $data;
     }

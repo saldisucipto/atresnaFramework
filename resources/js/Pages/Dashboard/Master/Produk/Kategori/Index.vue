@@ -96,12 +96,12 @@
                             <td
                                 class="whitespace-nowrap py-2 flex gap-1 justify-center"
                             >
-                                <a
-                                    href="#"
+                                <button
+                                    @click="showData(itemProduk.id)"
                                     class="inline-block rounded bg-blue-400 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700"
                                 >
                                     View
-                                </a>
+                                </button>
                                 <a
                                     href="#"
                                     class="inline-block rounded bg-yellow-400 px-4 py-2 text-xs font-medium text-white hover:bg-yellow-700"
@@ -130,7 +130,7 @@
                                 <div
                                     class="text-gray-600 font-semibold text-lg"
                                 >
-                                    Buat Kategori Baru {{ modalCreate }}
+                                    Buat Kategori Baru
                                 </div>
                                 <button
                                     class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
@@ -211,8 +211,69 @@
                         </form>
                     </div>
                 </div>
+                <div
+                    v-if="modalShow"
+                    class="absolute backdrop-blur-sm top-0 h-screen w-full overflow-hidden left-0 flex flex-col justify-center"
+                >
+                    <div
+                        class="mx-auto w-2/4 bg-white drop-shadow-lg rounded-lg"
+                    >
+                        <div class="p-5">
+                            <div class="flex justify-between h-6">
+                                <div
+                                    class="text-gray-600 font-semibold text-lg"
+                                >
+                                    {{ singelData[0].nama_kategori }}
+                                </div>
+                                <button
+                                    class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
+                                    @click="this.modalShow = !this.modalShow"
+                                >
+                                    <span class="">Tutup</span>
+                                </button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="p-5 flex flex-col w-full gap-5">
+                            <div class="flex flex-col gap-2">
+                                <img
+                                    class="rounded-md"
+                                    :src="
+                                        '/storage/img/kategori-produk/' +
+                                        singelData[0].gambar_produk
+                                    "
+                                    alt=""
+                                />
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-gray-700"
+                                    >Deskripsi Kategori Produk</label
+                                >
+                                <div
+                                    class="drop-shadow-sm border bg-slate-100 text-gray-700 font-semibold py-2 px-3 rounded-md focus:outline-none text-sm"
+                                >
+                                    {{ singelData[0].deskripsi_kategori }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            #
+            <div class="flex justify-left gap-3 py-3">
+                <div v-for="link in produk.links">
+                    <a v-if="link.url !== null" :href="link.url">
+                        <div
+                            :class="
+                                link.active
+                                    ? 'bg-blue-700 hover:bg-blue-400 border-none'
+                                    : ''
+                            "
+                            class="px-4 py-1 rounded-md text-xs hover:bg-blue-700 bg-blue-400 text-white font-semibold"
+                            v-html="link.label"
+                        ></div>
+                    </a>
+                </div>
+            </div>
         </div>
         <!-- End Main Menu -->
     </div>
@@ -231,6 +292,9 @@ export default {
     data() {
         return {
             modalCreate: false,
+            singelData: [],
+            updateModal: false,
+            modalShow: false,
         };
     },
     setup() {
@@ -253,6 +317,7 @@ export default {
         chart: Object,
         produk: Object,
         errors: Object,
+        links: Array,
     },
     layout: DashboardLayout,
     methods: {
@@ -271,6 +336,10 @@ export default {
                     },
                 }
             );
+        },
+        showData(id) {
+            this.modalShow = true;
+            this.singelData = this.produk.data.filter((data) => data.id == id);
         },
     },
 };

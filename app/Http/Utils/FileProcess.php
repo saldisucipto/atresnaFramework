@@ -28,7 +28,7 @@ class FileProcess
         }
 
         $namaFoto = time(). '-'. $this->namaFile . '-'. $this->fileData->getClientOriginalName();
-        Storage::putFileAs('/img/' . $this->dirFile, $this->fileData, $namaFoto);
+        Storage::putFileAs('public/img/' . $this->dirFile, $this->fileData, $namaFoto);
         return $namaFoto;
     }
 
