@@ -48,6 +48,14 @@
                             <i class="fas fa-plus"></i>
                             Buat Data Baru
                         </button>
+                        <button
+                            v-if="multiDeleteButton"
+                            class="bg-red-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-red-400 hover:drop-shadow-sm"
+                            @click="deleteMultiple()"
+                        >
+                            <i class="fas fa-trash"></i>
+                            Delete Multiple Data
+                        </button>
                     </div>
                 </div>
             </div>
@@ -57,6 +65,9 @@
                 >
                     <thead class="ltr:text-left rtl:text-right text-left">
                         <tr>
+                            <th
+                                class="whitespace-nowrap py-2 font-medium text-gray-900"
+                            ></th>
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
@@ -82,6 +93,12 @@
                             v-for="itemProduk in produk.data"
                             class="hover:bg-gray-200"
                         >
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    @change="deleteCheck(itemProduk.id)"
+                                />
+                            </td>
                             <td
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
@@ -295,6 +312,7 @@ export default {
             singelData: [],
             updateModal: false,
             modalShow: false,
+            multiDeleteButton: false,
         };
     },
     setup() {
@@ -304,7 +322,11 @@ export default {
             gambar_produk: null,
         });
 
-        return { form };
+        const deleteForm = useForm({
+            idProduk: [],
+        });
+
+        return { form, deleteForm };
     },
     components: {
         Navigasi,
@@ -340,6 +362,24 @@ export default {
         showData(id) {
             this.modalShow = true;
             this.singelData = this.produk.data.filter((data) => data.id == id);
+        },
+        deleteCheck(id) {
+            this.multiDeleteButton = !this.multiDeleteButton;
+            this.deleteForm.idProduk.push(id);
+        },
+        deleteMultiple() {
+            router.post(
+                "/dashboard/master/produk/delete-kategori-produk",
+                this.deleteForm.idProduk,
+                {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.deleteForm.reset();
+                        this.multiDeleteButton = false;
+                        this.idForm = [];
+                    },
+                }
+            );
         },
     },
 };

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Produk;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -59,5 +60,14 @@ class DashboardController extends Controller
 
           return redirect()->back()->with('message', 'Berhasil Menambahkan File Data');
       }
+
+
+    //   delete
+    public function deleteKategoriData(Request $request)
+    {
+        // $katProduk = KategoriProduk::where('id', $request->all())->delete();
+        DB::table("kategori_produk")->whereIn('id', $request->all())->delete();
+        // dd($request->all());
+    }
 
 }

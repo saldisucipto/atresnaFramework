@@ -34,6 +34,7 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::prefix('/master')->group(function () {
         Route::prefix('/produk')->group(function () {
             Route::post('/create-kategori-produk', [DashboardController::class, 'createKategoriData']);
+            Route::post('/delete-kategori-produk', [DashboardController::class, 'deleteKategoriData']);
         });
     });
 
