@@ -119,12 +119,12 @@
                                 >
                                     View
                                 </button>
-                                <a
-                                    href="#"
+                                <button
+                                    @click="showModal(itemProduk.id)"
                                     class="inline-block rounded bg-yellow-400 px-4 py-2 text-xs font-medium text-white hover:bg-yellow-700"
                                 >
                                     Edit
-                                </a>
+                                </button>
                                 <a
                                     href="#"
                                     class="inline-block rounded bg-red-400 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
@@ -145,15 +145,20 @@
                         <div class="p-5">
                             <div class="flex justify-between h-6">
                                 <div
+                                    v-if="updateMode"
+                                    class="text-gray-600 font-semibold text-lg"
+                                >
+                                    Update Kategori
+                                </div>
+                                <div
+                                    v-else
                                     class="text-gray-600 font-semibold text-lg"
                                 >
                                     Buat Kategori Baru
                                 </div>
                                 <button
                                     class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
-                                    @click="
-                                        this.modalCreate = !this.modalCreate
-                                    "
+                                    @click="closedModal()"
                                 >
                                     <span class="">Tutup</span>
                                 </button>
@@ -196,6 +201,28 @@
                                     v-model="form.deskripsi_kategori"
                                 ></textarea>
                             </div>
+                            <img
+                                v-if="this.imageBaru != null"
+                                class="rounded-md max-w-sm mx-auto"
+                                :src="this.imageBaru"
+                                alt=""
+                            />
+                            <!-- <div v-if="this.imageBaru != null">
+                                <img
+                                    :src="URL.createObjectURL(this.imageBaru)"
+                                    alt=""
+                                />
+                            </div> -->
+                            <div v-if="updateMode" class="flex flex-col gap-2">
+                                <img
+                                    class="rounded-md max-w-sm mx-auto"
+                                    :src="
+                                        '/storage/img/kategori-produk/' +
+                                        singelData[0].gambar_produk
+                                    "
+                                    alt=""
+                                />
+                            </div>
                             <div class="flex flex-col gap-2">
                                 <label class="text-gray-700"
                                     >Gambar Kategori</label
@@ -204,11 +231,10 @@
                                 <input
                                     class="text-sm"
                                     type="file"
-                                    src=""
-                                    alt=""
                                     @input="
                                         form.gambar_produk =
-                                            $event.target.files[0]
+                                            $event.target.files[0];
+                                        uploadFoto();
                                     "
                                 />
                                 <div
@@ -218,8 +244,15 @@
                                     {{ errors.gambar_produk }}
                                 </div>
                             </div>
-
                             <button
+                                v-if="updateMode"
+                                class="bg-yellow-400 hover:bg-yellow-700 text-white py-1 rounded-md drop-shadow-sm"
+                                type="submit"
+                            >
+                                Update
+                            </button>
+                            <button
+                                v-else
                                 class="bg-blue-400 hover:bg-blue-700 text-white py-1 rounded-md drop-shadow-sm"
                                 type="submit"
                             >
@@ -233,7 +266,7 @@
                     class="absolute backdrop-blur-sm top-0 h-screen w-full overflow-hidden left-0 flex flex-col justify-center"
                 >
                     <div
-                        class="mx-auto w-2/4 bg-white drop-shadow-lg rounded-lg"
+                        class="mx-auto w-2/6 bg-white drop-shadow-lg rounded-lg"
                     >
                         <div class="p-5">
                             <div class="flex justify-between h-6">
@@ -254,7 +287,7 @@
                         <div class="p-5 flex flex-col w-full gap-5">
                             <div class="flex flex-col gap-2">
                                 <img
-                                    class="rounded-md"
+                                    class="rounded-md max-w-sm mx-auto"
                                     :src="
                                         '/storage/img/kategori-produk/' +
                                         singelData[0].gambar_produk
@@ -313,6 +346,8 @@ export default {
             updateModal: false,
             modalShow: false,
             multiDeleteButton: false,
+            updateMode: false,
+            imageBaru: null,
         };
     },
     setup() {
@@ -346,6 +381,10 @@ export default {
         openCreateModal() {
             this.modalCreate = true;
         },
+        uploadFoto() {
+            this.imageBaru = URL.createObjectURL(this.form.gambar_produk);
+            // alert("tes");
+        },
         submitForm() {
             router.post(
                 "/dashboard/master/produk/create-kategori-produk",
@@ -362,6 +401,15 @@ export default {
         showData(id) {
             this.modalShow = true;
             this.singelData = this.produk.data.filter((data) => data.id == id);
+        },
+        showModal(id) {
+            this.modalCreate = true;
+            this.updateMode = true;
+            this.singelData = this.produk.data.filter((data) => data.id == id);
+            this.form.nama_kategori = this.singelData[0].nama_kategori;
+            this.form.deskripsi_kategori =
+                this.singelData[0].deskripsi_kategori;
+            // this.form.nama_kategori = this.singelData.nama_kategori;
         },
         deleteCheck(id) {
             this.multiDeleteButton = !this.multiDeleteButton;
@@ -380,6 +428,13 @@ export default {
                     },
                 }
             );
+        },
+        closedModal() {
+            this.modalCreate = false;
+            this.updateModal = false;
+            this.singelData = [];
+            this.updateMode = false;
+            this.form.reset();
         },
     },
 };
