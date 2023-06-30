@@ -77,7 +77,7 @@
                 <div class="flex justify-center gap-2 mx-3">
                     <img
                         class="drop-shadow-xl max-h-36 shadow-white"
-                        src="/assets/img/welcome.png"
+                        :src="'./assets/img/welcome.png'"
                         alt=""
                     />
                     <div class="flex flex-col my-auto">

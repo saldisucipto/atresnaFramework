@@ -87,7 +87,7 @@
                         <div class="flex-1">
                             <img
                                 class="object-cover max-h-72 mx-auto"
-                                src="/assets/img/human-login.png"
+                                :src="'./assets/img/human-login.png'"
                                 alt=""
                             />
                         </div>

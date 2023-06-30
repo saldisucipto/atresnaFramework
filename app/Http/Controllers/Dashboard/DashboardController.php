@@ -42,24 +42,24 @@ class DashboardController extends Controller
     }
 
     // create kategori produk
-      // CREATE KATEGORI PRODUK
-      public function createKategoriData(Request $createDataKategori)
-      {
-          //   dd($createDataKategori);
-          $createDataKategori->validate([
-                'nama_kategori' => 'required|string',
-                'gambar_produk' => 'file|max:4000|mimes:png,jpg'
-          ]);
-          $kategoriProduk = new KategoriProduk();
-          $photoKategoriProduk = new FileProcess($createDataKategori->file('gambar_produk'), $createDataKategori['nama_kategori'], 'kategori-produk');
-          $kategoriProduk->nama_kategori = $createDataKategori['nama_kategori'];
-          $kategoriProduk->slugs = Str::slug($createDataKategori['nama_kategori']);
-          $kategoriProduk->deskripsi_kategori = $createDataKategori['deskripsi_kategori'];
-          $kategoriProduk->gambar_produk = $photoKategoriProduk->uploadFoto();
-          $kategoriProduk->save();
+    // CREATE KATEGORI PRODUK
+    public function createKategoriData(Request $createDataKategori)
+    {
+        //   dd($createDataKategori);
+        $createDataKategori->validate([
+              'nama_kategori' => 'required|string',
+              'gambar_produk' => 'file|max:4000|mimes:png,jpg'
+        ]);
+        $kategoriProduk = new KategoriProduk();
+        $photoKategoriProduk = new FileProcess($createDataKategori->file('gambar_produk'), $createDataKategori['nama_kategori'], 'kategori-produk');
+        $kategoriProduk->nama_kategori = $createDataKategori['nama_kategori'];
+        $kategoriProduk->slugs = Str::slug($createDataKategori['nama_kategori']);
+        $kategoriProduk->deskripsi_kategori = $createDataKategori['deskripsi_kategori'];
+        $kategoriProduk->gambar_produk = $photoKategoriProduk->uploadFoto();
+        $kategoriProduk->save();
 
-          return redirect()->back()->with('message', 'Berhasil Menambahkan File Data');
-      }
+        return redirect()->back()->with('message', 'Berhasil Menambahkan File Data');
+    }
 
 
     //   delete
@@ -68,6 +68,29 @@ class DashboardController extends Controller
         // $katProduk = KategoriProduk::where('id', $request->all())->delete();
         DB::table("kategori_produk")->whereIn('id', $request->all())->delete();
         // dd($request->all());
+    }
+
+    public function updateData(Request $request, $id = null)
+    {
+        $request->validate([
+            'nama_kategori' => 'string',
+            'gambar_produk' => 'file|max:4000|mimes:png,jpg'
+      ]);
+
+        dd($request->all());
+
+
+        $data = KategoriProduk::find($id);
+        $data->nama_kategori = $request['nama_kategori'];
+        $data->slugs = Str::slug($request['nama_kategori']);
+        $data->deskripsi_kategori = $request['deskripsi_kategori'];
+
+        $photoKategoriProduk = new FileProcess($request->file('gambar_produk'), $request['nama_kategori'], 'kategori-produk');
+        $data->gambar_produk = $photoKategoriProduk->uploadFoto();
+        $photoKategoriProduk->updateFoto($data->gambar_produk);
+
+        $data->update();
+        return redirect()->back()->with('message', 'Berhasil Perbaharui Katgeori Produk Data');
     }
 
 }

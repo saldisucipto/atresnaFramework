@@ -8,7 +8,7 @@
                     class="h-10 py-8 overflow-hidden flex flex-col justify-center"
                 >
                     <div class="mx-auto flex justify-center h-max gap-1">
-                        <img class="max-h-8" src="/assets/img/logo.png" />
+                        <img class="max-h-8" :src="'/assets/img/logo.png'" />
                         <span
                             class="font-base text-gray-800 text-2xl font-semibold"
                             >Atresna.</span
