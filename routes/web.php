@@ -33,10 +33,10 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     // Ruote Action
     Route::prefix('/master')->group(function () {
         Route::prefix('/produk')->group(function () {
-            Route::post('/create-kategori-produk', [DashboardController::class, 'createKategoriData']);
-            Route::post('/delete-kategori-produk', [DashboardController::class, 'deleteKategoriData']);
-            Route::post('/update-kategori-data/{id}', [DashboardController::class, 'updateDataKategoriData']);
-            Route::delete('/delete-kategori/{id}', [DashboardController::class, 'deleteSingleKategoriData']);
+            Route::post('/create-kategori-produk', [MasterDataController::class, 'createKategoriData']);
+            Route::post('/delete-kategori-produk', [MasterDataController::class, 'deleteKategoriData']);
+            Route::post('/update-kategori-data/{id}', [MasterDataController::class, 'updateDataKategoriData']);
+            Route::delete('/delete-kategori/{id}', [MasterDataController::class, 'deleteSingleKategoriData']);
         });
     });
 
