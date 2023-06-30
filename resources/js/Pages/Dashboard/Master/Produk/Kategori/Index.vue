@@ -201,25 +201,34 @@
                                     v-model="form.deskripsi_kategori"
                                 ></textarea>
                             </div>
-                            <img
-                                v-if="this.imageBaru != null"
-                                class="rounded-md max-w-sm mx-auto"
-                                :src="this.imageBaru"
-                                alt=""
-                            />
-                            <!-- <div v-if="this.imageBaru != null">
+
+                            <div v-if="updateMode" class="flex justify-center">
+                                <div
+                                    v-if="this.imageBaru != null"
+                                    class="flex justify-between gap-2"
+                                >
+                                    <img
+                                        class="rounded-md max-w-sm mx-auto"
+                                        :src="this.imageBaru"
+                                        alt=""
+                                    />
+                                </div>
+                                <div v-else>
+                                    <img
+                                        class="rounded-md max-w-sm mx-auto"
+                                        :src="
+                                            '/storage/img/kategori-produk/' +
+                                            singelData[0].gambar_produk
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div v-else>
                                 <img
-                                    :src="URL.createObjectURL(this.imageBaru)"
-                                    alt=""
-                                />
-                            </div> -->
-                            <div v-if="updateMode" class="flex flex-col gap-2">
-                                <img
+                                    v-if="this.imageBaru != null"
                                     class="rounded-md max-w-sm mx-auto"
-                                    :src="
-                                        '/storage/img/kategori-produk/' +
-                                        singelData[0].gambar_produk
-                                    "
+                                    :src="this.imageBaru"
                                     alt=""
                                 />
                             </div>
@@ -383,7 +392,6 @@ export default {
         },
         uploadFoto() {
             this.imageBaru = URL.createObjectURL(this.form.gambar_produk);
-            // alert("tes");
         },
         submitForm() {
             router.post(
@@ -394,6 +402,8 @@ export default {
                     onSuccess: () => {
                         this.form.reset();
                         this.modalCreate = false;
+                        this.form.gambar_produk = false;
+                        this.imageBaru = null;
                     },
                 }
             );
@@ -435,6 +445,7 @@ export default {
             this.singelData = [];
             this.updateMode = false;
             this.form.reset();
+            this.imageBaru = null;
         },
     },
 };
