@@ -357,7 +357,7 @@
                         <div
                             :class="
                                 link.active
-                                    ? 'bg-blue-700 hover:bg-blue-400 border-none'
+                                    ? 'bg-blue-500 hover:bg-blue-700 border-none'
                                     : ''
                             "
                             class="px-4 py-1 rounded-md text-xs hover:bg-blue-700 bg-blue-400 text-white font-semibold"
@@ -471,8 +471,19 @@ export default {
                 this.singelData[0].deskripsi_kategori;
         },
         deleteCheck(id) {
-            this.multiDeleteButton = !this.multiDeleteButton;
-            this.deleteForm.idProduk.push(id);
+            this.multiDeleteButton = true;
+            if (this.deleteForm.idProduk.length < 1) {
+                this.multiDeleteButton = false;
+                this.deleteForm.idProduk = [];
+            }
+            if (this.deleteForm.idProduk.includes(id)) {
+                let data = this.deleteForm.idProduk.indexOf(id);
+                this.deleteForm.idProduk.splice(data, 1);
+            } else {
+                this.deleteForm.idProduk.push(id);
+            }
+            // console.log(this.multiDeleteButton);
+            // console.log(this.deleteForm.idProduk.length);
         },
         deleteMultiple() {
             router.post(
@@ -515,6 +526,7 @@ export default {
             this.updateMode = false;
             this.form.reset();
             this.imageBaru = null;
+            this.deleteForm.reset();
         },
     },
 };
