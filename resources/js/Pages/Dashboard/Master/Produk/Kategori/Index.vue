@@ -73,11 +73,7 @@
                             >
                                 Nama Kategori
                             </th>
-                            <th
-                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
-                            >
-                                Tanggal Pembuatan
-                            </th>
+
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center"
                             >
@@ -103,11 +99,6 @@
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
                                 {{ itemProduk.nama_kategori }}
-                            </td>
-                            <td
-                                class="whitespace-nowrap px-4 py-2 text-gray-700"
-                            >
-                                {{ itemProduk.created_at }}
                             </td>
 
                             <td
@@ -200,28 +191,6 @@
                                     placeholder="Dekskripsi Kategori"
                                     v-model="form.deskripsi_kategori"
                                 ></textarea>
-                            </div>
-                            <img
-                                v-if="this.imageBaru != null"
-                                class="rounded-md max-w-sm mx-auto"
-                                :src="this.imageBaru"
-                                alt=""
-                            />
-                            <!-- <div v-if="this.imageBaru != null">
-                                <img
-                                    :src="URL.createObjectURL(this.imageBaru)"
-                                    alt=""
-                                />
-                            </div> -->
-                            <div v-if="updateMode" class="flex flex-col gap-2">
-                                <img
-                                    class="rounded-md max-w-sm mx-auto"
-                                    :src="
-                                        '/storage/img/kategori-produk/' +
-                                        singelData[0].gambar_produk
-                                    "
-                                    alt=""
-                                />
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="text-gray-700"
@@ -386,17 +355,35 @@ export default {
             // alert("tes");
         },
         submitForm() {
-            router.post(
-                "/dashboard/master/produk/create-kategori-produk",
-                this.form,
-                {
-                    preserveScroll: true,
-                    onSuccess: () => {
-                        this.form.reset();
-                        this.modalCreate = false;
-                    },
-                }
-            );
+            if (!this.updateMode) {
+                router.post(
+                    "/dashboard/master/produk/create-kategori-produk",
+                    this.form,
+                    {
+                        preserveScroll: true,
+                        onSuccess: () => {
+                            this.form.reset();
+                            this.modalCreate = false;
+                            this.imageBaru = null;
+                        },
+                    }
+                );
+            } else {
+                router.put(
+                    "/dashboard/master/produk/update-data/" +
+                        this.singelData[0].id,
+                    this.form,
+                    {
+                        preserveScroll: true,
+                        onSuccess: () => {
+                            this.form.reset();
+                            this.updateMode = false;
+                            this.imageBaru = null;
+                            this.modalCreate = null;
+                        },
+                    }
+                );
+            }
         },
         showData(id) {
             this.modalShow = true;
@@ -409,7 +396,6 @@ export default {
             this.form.nama_kategori = this.singelData[0].nama_kategori;
             this.form.deskripsi_kategori =
                 this.singelData[0].deskripsi_kategori;
-            // this.form.nama_kategori = this.singelData.nama_kategori;
         },
         deleteCheck(id) {
             this.multiDeleteButton = !this.multiDeleteButton;
@@ -425,6 +411,7 @@ export default {
                         this.deleteForm.reset();
                         this.multiDeleteButton = false;
                         this.idForm = [];
+                        this.deleteForm.idProduk = [];
                     },
                 }
             );
@@ -435,6 +422,7 @@ export default {
             this.singelData = [];
             this.updateMode = false;
             this.form.reset();
+            this.imageBaru = null;
         },
     },
 };

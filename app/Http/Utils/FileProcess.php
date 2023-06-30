@@ -32,4 +32,18 @@ class FileProcess
         return $namaFoto;
     }
 
+    // update foto
+    public function updateFoto(string $fileSebelumnya)
+    {
+        if (file_exists(storage_path('\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya))) {
+            file_exists(unlink(storage_path('\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya)));
+        } else {
+            self::uploadFoto();
+        }
+        if ($this->fileData != null) {
+            return self::uploadFoto();
+        } else {
+            return;
+        }
+    }
 }
