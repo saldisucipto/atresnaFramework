@@ -3,6 +3,7 @@
 namespace App\Http\Utils;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FileProcess
 {
@@ -27,7 +28,7 @@ class FileProcess
             return;
         }
 
-        $namaFoto = time(). '-'. $this->namaFile . '-'. $this->fileData->getClientOriginalName();
+        $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $this->fileData->getClientOriginalExtension();
         Storage::putFileAs('public/img/' . $this->dirFile, $this->fileData, $namaFoto);
         return $namaFoto;
     }
@@ -35,13 +36,24 @@ class FileProcess
     // update foto
     public function updateFoto(string $fileSebelumnya)
     {
-        if (file_exists(storage_path('\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya))) {
-            file_exists(unlink(storage_path('\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya)));
+        // dd(file_exists(storage_path('app\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya)));
+        if(file_exists(storage_path('app\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya))) {
+            unlink(storage_path('app\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya));
         } else {
             self::uploadFoto();
         }
         if ($this->fileData != null) {
             return self::uploadFoto();
+        } else {
+            return;
+        }
+    }
+
+    // delete foto
+    public static function deleteFoto(string $fileSebelumnya, string $dirFile)
+    {
+        if(file_exists(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya))) {
+            unlink(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya));
         } else {
             return;
         }

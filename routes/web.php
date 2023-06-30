@@ -35,7 +35,8 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::prefix('/produk')->group(function () {
             Route::post('/create-kategori-produk', [DashboardController::class, 'createKategoriData']);
             Route::post('/delete-kategori-produk', [DashboardController::class, 'deleteKategoriData']);
-            Route::put("/update-data/{id}", [DashboardController::class, 'updateData']);
+            Route::post('/update-kategori-data/{id}', [DashboardController::class, 'updateDataKategoriData']);
+            Route::delete('/delete-kategori/{id}', [DashboardController::class, 'deleteSingleKategoriData']);
         });
     });
 

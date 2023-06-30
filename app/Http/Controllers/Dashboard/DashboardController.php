@@ -70,27 +70,31 @@ class DashboardController extends Controller
         // dd($request->all());
     }
 
-    public function updateData(Request $request, $id = null)
+    public function updateDataKategoriData(Request $request, $id = null)
     {
         $request->validate([
             'nama_kategori' => 'string',
-            'gambar_produk' => 'file|max:4000|mimes:png,jpg'
       ]);
-
-        dd($request->all());
-
 
         $data = KategoriProduk::find($id);
         $data->nama_kategori = $request['nama_kategori'];
         $data->slugs = Str::slug($request['nama_kategori']);
         $data->deskripsi_kategori = $request['deskripsi_kategori'];
-
-        $photoKategoriProduk = new FileProcess($request->file('gambar_produk'), $request['nama_kategori'], 'kategori-produk');
-        $data->gambar_produk = $photoKategoriProduk->uploadFoto();
-        $photoKategoriProduk->updateFoto($data->gambar_produk);
-
+        FileProcess::deleteFoto($data->gambar_produk, 'kategori-produk');
+        if($request->file('gambar_produk')) {
+            $photoKategoriProduk = new FileProcess($request->file('gambar_produk'), $request['nama_kategori'], 'kategori-produk');
+            $data->gambar_produk = $photoKategoriProduk->uploadFoto();
+        }
         $data->update();
-        return redirect()->back()->with('message', 'Berhasil Perbaharui Katgeori Produk Data');
+        return redirect()->back()->with('message', 'Berhasil Memperbaharui Katgeori Produk Data');
+    }
+
+    public function deleteSingleKategoriData($id = null)
+    {
+        $data = KategoriProduk::find($id);
+        FileProcess::deleteFoto($data->gambar_produk, 'kategori-produk');
+        $data->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Kategori Produk Data');
     }
 
 }

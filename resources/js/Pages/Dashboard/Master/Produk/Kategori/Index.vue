@@ -116,19 +116,19 @@
                                 >
                                     Edit
                                 </button>
-                                <a
-                                    href="#"
+                                <button
+                                    @click="showModalDelete(itemProduk.id)"
                                     class="inline-block rounded bg-red-400 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
                                 >
                                     Delete
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div
                     v-if="modalCreate"
-                    class="absolute backdrop-blur-sm top-0 h-screen w-full overflow-hidden left-0 flex flex-col justify-center"
+                    class="absolute backdrop-blur-sm top-0 h-screen w-full left-0 flex flex-col justify-center"
                 >
                     <div
                         class="mx-auto w-2/4 bg-white drop-shadow-lg rounded-lg"
@@ -308,6 +308,48 @@
                         </div>
                     </div>
                 </div>
+                <div
+                    v-if="modalSingleDelete"
+                    class="absolute backdrop-blur-sm top-0 h-screen w-full overflow-hidden left-0 flex flex-col justify-center"
+                >
+                    <div
+                        class="mx-auto w-2/6 bg-white drop-shadow-lg rounded-lg"
+                    >
+                        <div class="p-5">
+                            <div class="flex justify-between h-6">
+                                <div
+                                    class="text-gray-600 font-semibold text-lg"
+                                >
+                                    Konfirmasi Hapus Data !
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="p-5 flex flex-col w-full gap-5">
+                            <div class="flex flex-col gap-2">
+                                <h1>Yakin ingin menghapus Data ini ?</h1>
+                                <span
+                                    class="font-semibold text-gray-900 text-center"
+                                    >{{ singelData[0].nama_kategori }}</span
+                                >
+                            </div>
+                            <div class="flex justify-between gap-2">
+                                <button
+                                    class="bg-blue-400 flex-1 py-1 text-white rounded-md hover:bg-blue-700"
+                                    @click="actionDeleteSingleData()"
+                                >
+                                    <span class="mx-auto py-4">Iya !</span>
+                                </button>
+                                <button
+                                    class="bg-red-400 text-white rounded-md hover:bg-red-700 flex-1 py-1"
+                                    @click="closedModal()"
+                                >
+                                    <span class="mx-auto py-4">Batal</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="flex justify-left gap-3 py-3">
                 <div v-for="link in produk.links">
@@ -348,6 +390,7 @@ export default {
             multiDeleteButton: false,
             updateMode: false,
             imageBaru: null,
+            modalSingleDelete: false,
         };
     },
     setup() {
@@ -399,8 +442,8 @@ export default {
                     }
                 );
             } else {
-                router.put(
-                    "/dashboard/master/produk/update-data/" +
+                router.post(
+                    "/dashboard/master/produk/update-kategori-data/" +
                         this.singelData[0].id,
                     this.form,
                     {
@@ -446,12 +489,32 @@ export default {
                 }
             );
         },
+        showModalDelete(id) {
+            this.modalSingleDelete = true;
+            this.singelData = this.produk.data.filter((data) => data.id == id);
+            this.form.nama_kategori = this.singelData[0].nama_kategori;
+        },
+        actionDeleteSingleData() {
+            // alert(this.singelData[0].id);
+            router.delete(
+                "/dashboard/master/produk/delete-kategori/" +
+                    this.singelData[0].id,
+                {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.closedModal();
+                    },
+                }
+            );
+        },
         closedModal() {
             this.modalCreate = false;
+            this.modalSingleDelete = false;
             this.updateModal = false;
             this.singelData = [];
             this.updateMode = false;
             this.form.reset();
+            this.imageBaru = null;
         },
     },
 };
