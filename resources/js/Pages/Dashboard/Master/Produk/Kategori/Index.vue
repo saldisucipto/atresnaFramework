@@ -199,14 +199,14 @@
                                     class="flex justify-between gap-2"
                                 >
                                     <img
-                                        class="rounded-md max-w-sm mx-auto"
+                                        class="rounded-md max-w-sm mx-auto max-h-60"
                                         :src="this.imageBaru"
                                         alt=""
                                     />
                                 </div>
                                 <div v-else>
                                     <img
-                                        class="rounded-md max-w-sm mx-auto"
+                                        class="rounded-md max-w-sm mx-auto max-h-60"
                                         :src="
                                             '/storage/img/kategori-produk/' +
                                             singelData[0].gambar_produk
@@ -218,7 +218,7 @@
                             <div v-else>
                                 <img
                                     v-if="this.imageBaru != null"
-                                    class="rounded-md max-w-sm mx-auto"
+                                    class="rounded-md max-w-sm mx-auto max-h-60"
                                     :src="this.imageBaru"
                                     alt=""
                                 />
