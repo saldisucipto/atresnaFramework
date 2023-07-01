@@ -61,8 +61,8 @@ class MasterDataController extends Controller
         $data->nama_kategori = $request['nama_kategori'];
         $data->slugs = Str::slug($request['nama_kategori']);
         $data->deskripsi_kategori = $request['deskripsi_kategori'];
-        FileProcess::deleteFoto($data->gambar_produk, 'kategori-produk');
         if($request->file('gambar_produk')) {
+            FileProcess::deleteFoto($data->gambar_produk, 'kategori-produk');
             $photoKategoriProduk = new FileProcess($request->file('gambar_produk'), $request['nama_kategori'], 'kategori-produk');
             $data->gambar_produk = $photoKategoriProduk->uploadFoto();
         }
