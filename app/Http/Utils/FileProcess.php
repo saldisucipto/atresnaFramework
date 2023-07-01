@@ -2,8 +2,12 @@
 
 namespace App\Http\Utils;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
+use App\Models\ImagesProduk;
 
 class FileProcess
 {
@@ -21,16 +25,23 @@ class FileProcess
     }
 
     // uploadFilePhoto
-    public function uploadFoto()
+    public function uploadFoto(UploadedFile $mutlipleImages = null)
     {
         // aapbila tidak ada yang di upload tidak melakukan apa apa
         if(is_null($this->fileData)) {
             return;
         }
+        if($mutlipleImages !== null) {
+            $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $mutlipleImages->getClientOriginalExtension();
+            Storage::putFileAs('public/img/' . $this->dirFile, $mutlipleImages, $namaFoto);
+            return $namaFoto;
+        } else {
+            $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $this->fileData->getClientOriginalExtension();
+            Storage::putFileAs('public/img/' . $this->dirFile, $this->fileData, $namaFoto);
+            return $namaFoto;
+        }
 
-        $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $this->fileData->getClientOriginalExtension();
-        Storage::putFileAs('public/img/' . $this->dirFile, $this->fileData, $namaFoto);
-        return $namaFoto;
+
     }
 
     // update foto
@@ -61,6 +72,19 @@ class FileProcess
         } else {
             return;
         }
+    }
 
+    // upload multiple produk
+    public function multipleUploadFoto(Request $request, string $fileUploadName, string $idrelation = null, string $modelTable)
+    {
+
+        $filesFoto = [];
+        foreach($request->file($fileUploadName) as $foto) {
+            $filesFoto[] = [
+                'id_produk' => $idrelation,
+                'gambar_produk' => self::uploadFoto($foto),
+            ];
+        }
+        ImagesProduk::insert($filesFoto);
     }
 }

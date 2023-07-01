@@ -50,6 +50,10 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             Route::post('/update-brand-data/{id}', [MasterDataController::class, 'updateDataBrandData']);
             Route::delete('/delete-brand/{id}', [MasterDataController::class, 'deleteSingleBrandData']);
 
+            // Produk
+            Route::post('/create-produk', [MasterDataController::class, 'createProdukData']);
+
+
 
 
 

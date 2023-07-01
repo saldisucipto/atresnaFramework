@@ -7,6 +7,8 @@ use App\Models\KategoriProduk;
 use Illuminate\Http\Request;
 use App\Http\Utils\FileProcess;
 use App\Models\BrandProduk;
+use App\Models\ImagesProduk;
+use App\Models\Produk;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -111,6 +113,7 @@ class MasterDataController extends Controller
         $request->validate([
             'nama_brand' => 'string',
             'gambar_brand' => 'mimes:png,jpg|nullable'
+
        ]);
 
         $data = BrandProduk::find($id);
@@ -132,6 +135,37 @@ class MasterDataController extends Controller
         FileProcess::deleteFoto($data->gambar_brand, 'brand-produk');
         $data->delete();
         return redirect()->back()->with('message', 'Berhasil Menghapus Brand Data');
+    }
+
+    // Produk
+    public function createProdukData(Request $createProduk)
+    {
+        $createProduk->validate([
+            'nama_produk' => 'required|string|min:4',
+            'id_kategori' => 'required',
+            'id_brand' => 'required',
+            'satuan_produk' => 'required',
+            'kondisi_produk' => 'required',
+            'harga_produk' => 'required|numeric',
+            'stok_produk' => 'required|numeric',
+            'deskripsi_produk' => 'required',
+        ]);
+
+        $produk = new Produk();
+        $produk->nama_produk = $createProduk['nama_produk'];
+        $produk->slugs = Str::slug($createProduk['nama_produk']);
+        $produk->id_kategori = $createProduk['id_kategori'];
+        $produk->id_brand = $createProduk['id_brand'];
+        $produk->satuan_produk = $createProduk['satuan_produk'];
+        $produk->kondisi_produk = $createProduk['kondisi_produk'];
+        $produk->harga_produk = $createProduk['harga_produk'];
+        $produk->stok_produk = $createProduk['stok_produk'];
+        $produk->deskripsi_produk = $createProduk['deskripsi_produk'];
+        $produk->save();
+        $uploadFotoProduk = new FileProcess($createProduk->file('gambar_produk'), Str::slug($createProduk['nama_produk']), 'produk');
+        $uploadFotoProduk->multipleUploadFoto($createProduk, 'gambar_produk', $produk->id, 'ImagesProduk');
+        return redirect()->back()->with('message', 'Berhasil Menyimpan Data Produk');
+
     }
 
 

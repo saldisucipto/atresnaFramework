@@ -86,7 +86,9 @@
                 <table
                     class="w-full divide-y-2 divide-gray-200 bg-white text-sm"
                 >
-                    <thead class="ltr:text-left rtl:text-right text-left">
+                    <thead
+                        class="ltr:text-left rtl:text-right text-left overflow-hidden"
+                    >
                         <tr>
                             <th
                                 class="whitespace-nowrap py-2 font-medium text-gray-900"
@@ -121,7 +123,7 @@
                             <td
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                {{ itemProduk.nama_brand }}
+                                {{ itemProduk.nama_produk }}
                             </td>
 
                             <td
@@ -151,7 +153,7 @@
                 </table>
                 <div
                     v-if="modalCreate"
-                    class="absolute backdrop-blur-sm top-0 h-screen w-full left-0 flex flex-col justify-center"
+                    class="absolute backdrop-blur-sm top-12 h-screen w-full left-0 flex flex-col justify-center"
                 >
                     <div
                         class="mx-auto w-2/4 bg-white drop-shadow-lg rounded-lg"
@@ -162,13 +164,13 @@
                                     v-if="updateMode"
                                     class="text-gray-600 font-semibold text-lg"
                                 >
-                                    Update Brand
+                                    Update Produk
                                 </div>
                                 <div
                                     v-else
                                     class="text-gray-600 font-semibold text-lg"
                                 >
-                                    Buat Brand Baru
+                                    Buat Produk Baru
                                 </div>
                                 <button
                                     class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
@@ -184,26 +186,169 @@
                             class="p-5 flex flex-col w-full gap-5"
                         >
                             <div class="flex flex-col gap-2">
-                                <label class="text-gray-700"
-                                    >Nama Brand Produk</label
-                                >
+                                <label class="text-gray-700">Nama Produk</label>
                                 <input
                                     class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
                                     type="text"
                                     name=""
-                                    placeholder="Nama Brand Produk"
-                                    v-model="form.nama_brand"
+                                    placeholder="Nama Produk"
+                                    v-model="form.nama_produk"
                                 />
                                 <div
                                     class="text-xs px-1 text-red-600"
-                                    v-if="errors.nama_brand"
+                                    v-if="errors.nama_produk"
                                 >
-                                    {{ errors.nama_brand }}
+                                    {{ errors.nama_produk }}
                                 </div>
                             </div>
+                            <div class="flex justify-between gap-2">
+                                <div class="flex flex-col gap-2 flex-1">
+                                    <label class="text-gray-700"
+                                        >Kategori Produk</label
+                                    >
+                                    <select
+                                        class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                        v-model="form.id_kategori"
+                                    >
+                                        <option selected disabled value="">
+                                            Pilih Kategori Produk
+                                        </option>
+                                        <option
+                                            v-for="katProduk in kategoriProduk.data"
+                                            :value="katProduk.id"
+                                        >
+                                            {{ katProduk.nama_kategori }}
+                                        </option>
+                                    </select>
+                                    <div
+                                        class="text-xs px-1 text-red-600"
+                                        v-if="errors.id_kategori"
+                                    >
+                                        {{ errors.id_kategori }}
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2 flex-1">
+                                    <label class="text-gray-700"
+                                        >Brand Produk</label
+                                    >
+                                    <select
+                                        class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                        v-model="form.id_brand"
+                                    >
+                                        <option selected disabled value="">
+                                            Pilih Brand Produk
+                                        </option>
+                                        <option
+                                            v-for="brdProduk in brandProduk.data"
+                                            :value="brdProduk.id"
+                                        >
+                                            {{ brdProduk.nama_brand }}
+                                        </option>
+                                    </select>
+                                    <div
+                                        class="text-xs px-1 text-red-600"
+                                        v-if="errors.id_brand"
+                                    >
+                                        {{ errors.id_brand }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between gap-2">
+                                <div class="flex flex-col gap-2 flex-1">
+                                    <label class="text-gray-700"
+                                        >Satuan Produk</label
+                                    >
+                                    <select
+                                        class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                        v-model="form.satuan_produk"
+                                    >
+                                        <option selected disabled value="">
+                                            Pilih Satuan Produk
+                                        </option>
+                                        <option value="PCS">Pcs</option>
+                                        <option value="BOX">Box</option>
+                                        <option value="LOT">Lot</option>
+                                        <option value="PACK">Pack</option>
+                                        <option value="KG">KG</option>
+                                        <option value="LTR">LTR</option>
+                                        <option value="PAIL">Pail</option>
+                                    </select>
+                                    <div
+                                        class="text-xs px-1 text-red-600"
+                                        v-if="errors.satuan_produk"
+                                    >
+                                        {{ errors.satuan_produk }}
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2 flex-1">
+                                    <label class="text-gray-700"
+                                        >Kondisi Produk</label
+                                    >
+                                    <select
+                                        class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                        v-model="form.kondisi_produk"
+                                    >
+                                        <option selected disabled value="">
+                                            Pilih Kondisi Produk
+                                        </option>
+                                        <option value="NEW">New / Baru</option>
+                                        <option value="SECOND">
+                                            Second / Bekas
+                                        </option>
+                                    </select>
+                                    <div
+                                        class="text-xs px-1 text-red-600"
+                                        v-if="errors.kondisi_produk"
+                                    >
+                                        {{ errors.kondisi_produk }}
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2 flex-1">
+                                    <label class="text-gray-700"
+                                        >Stok Produk</label
+                                    >
+                                    <input
+                                        class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                        type="number"
+                                        min="0"
+                                        name=""
+                                        placeholder="Stok Produk"
+                                        v-model="form.stok_produk"
+                                    />
+                                    <div
+                                        class="text-xs px-1 text-red-600"
+                                        v-if="errors.stok_produk"
+                                    >
+                                        {{ errors.stok_produk }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between gap-2">
+                                <div class="flex flex-col gap-2 flex-1">
+                                    <label class="text-gray-700"
+                                        >Harga Produk</label
+                                    >
+                                    <input
+                                        class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                        type="text"
+                                        name=""
+                                        placeholder="Harga Produk"
+                                        v-model="harga_produk"
+                                        @keyup="inputHarga()"
+                                    />
+                                    <div
+                                        class="text-xs px-1 text-red-600"
+                                        v-if="errors.harga_produk"
+                                    >
+                                        {{ errors.harga_produk }}
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2 flex-1"></div>
+                            </div>
+
                             <div class="flex flex-col gap-2">
                                 <label class="text-gray-700"
-                                    >Deskripsi Brand Produk</label
+                                    >Deskripsi Produk</label
                                 >
                                 <textarea
                                     class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
@@ -211,9 +356,44 @@
                                     id=""
                                     cols="10"
                                     rows="3"
-                                    placeholder="Dekskripsi Brand"
-                                    v-model="form.deskripsi_brand"
+                                    placeholder="Dekskripsi Produk"
+                                    v-model="form.deskripsi_produk"
                                 ></textarea>
+                                <div
+                                    class="text-xs px-1 text-red-600"
+                                    v-if="errors.deskripsi_produk"
+                                >
+                                    {{ errors.deskripsi_produk }}
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex h-40 bg-slate-50 rounded-md border justify-start gap-2 overflow-x-auto overflow-y-hidden"
+                            >
+                                <div
+                                    class="relative"
+                                    v-if="this.images_produk.length > 0"
+                                    v-for="(img, index) in this.images_produk"
+                                >
+                                    <img
+                                        class="max-h-40 rounded-md p-2"
+                                        :src="imagesShow(img)"
+                                    />
+                                    <button
+                                        @click.prevent="deleteImages(index)"
+                                        class="bg-red-600 top-0 absolute -right-2 rounded-full text-sm py-1 px-2 text-white"
+                                    >
+                                        X
+                                    </button>
+                                </div>
+                                <div
+                                    class="flex mx-auto flex-col justify-center"
+                                    v-else
+                                >
+                                    <div class="mx-auto text-xl text-gray-500">
+                                        Gambar Belum Di Upload
+                                    </div>
+                                </div>
                             </div>
 
                             <div v-if="updateMode" class="flex justify-center">
@@ -248,14 +428,15 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="text-gray-700"
-                                    >Gambar Brand</label
+                                    >Gambar Produk</label
                                 >
 
                                 <input
                                     class="text-sm"
                                     type="file"
+                                    multiple
                                     @input="
-                                        form.gambar_brand =
+                                        this.images_upload =
                                             $event.target.files[0];
                                         uploadFoto();
                                     "
@@ -296,7 +477,7 @@
                                 <div
                                     class="text-gray-600 font-semibold text-lg"
                                 >
-                                    {{ singelData[0].nama_brand }}
+                                    {{ singelData[0].nama_produk }}
                                 </div>
                                 <button
                                     class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
@@ -353,7 +534,7 @@
                                 <h1>Yakin ingin menghapus Data ini ?</h1>
                                 <span
                                     class="font-semibold text-gray-900 text-center"
-                                    >{{ singelData[0].nama_brand }}</span
+                                    >{{ singelData[0].nama_produk }}</span
                                 >
                             </div>
                             <div class="flex justify-between gap-2">
@@ -414,13 +595,21 @@ export default {
             updateMode: false,
             imageBaru: null,
             modalSingleDelete: false,
+            harga_produk: "",
+            images_produk: [],
+            images_upload: null,
         };
     },
     setup() {
         const form = useForm({
-            nama_brand: null,
-            deskripsi_brand: null,
-            gambar_brand: null,
+            nama_produk: null,
+            id_kategori: "",
+            id_brand: "",
+            satuan_produk: "",
+            kondisi_produk: "",
+            harga_produk: "",
+            deskripsi_produk: null,
+            gambar_produk: [],
         });
 
         const deleteForm = useForm({
@@ -441,6 +630,8 @@ export default {
         produk: Object,
         errors: Object,
         links: Array,
+        brandProduk: Object,
+        kategoriProduk: Object,
     },
     layout: DashboardLayout,
     methods: {
@@ -448,12 +639,43 @@ export default {
             this.modalCreate = true;
         },
         uploadFoto() {
-            this.imageBaru = URL.createObjectURL(this.form.gambar_brand);
+            this.images_produk.push(this.images_upload);
+            this.form.gambar_produk = this.images_produk;
+        },
+        deleteImages(index) {
+            this.images_produk.splice(index, 1);
+        },
+        imagesShow(img) {
+            return URL.createObjectURL(img);
+        },
+        formatRupiah(angka, prefix) {
+            let number_string = angka.replace(/[^,\d]/g, "").toString(),
+                split = number_string.split(","),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                let separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");
+            }
+
+            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+        },
+        inputHarga() {
+            this.harga_produk = this.formatRupiah(this.harga_produk, "Rp. ");
+            let numberSebenernya = this.harga_produk
+                .replace(/[^,\d]/g, "")
+                .toString();
+            // console.log(numberSebenernya);
+            this.form.harga_produk = numberSebenernya;
         },
         submitForm() {
             if (!this.updateMode) {
                 router.post(
-                    "/dashboard/master/produk/create-brand-produk",
+                    "/dashboard/master/produk/create-produk",
                     this.form,
                     {
                         preserveScroll: true,
@@ -489,7 +711,7 @@ export default {
             this.modalCreate = true;
             this.updateMode = true;
             this.singelData = this.produk.data.filter((data) => data.id == id);
-            this.form.nama_brand = this.singelData[0].nama_brand;
+            this.form.nama_produk = this.singelData[0].nama_produk;
             this.form.deskripsi_brand = this.singelData[0].deskripsi_brand;
         },
         deleteCheck(id) {
@@ -523,7 +745,7 @@ export default {
         showModalDelete(id) {
             this.modalSingleDelete = true;
             this.singelData = this.produk.data.filter((data) => data.id == id);
-            this.form.nama_brand = this.singelData[0].nama_brand;
+            this.form.nama_produk = this.singelData[0].nama_produk;
         },
         actionDeleteSingleData() {
             // alert(this.singelData[0].id);

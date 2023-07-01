@@ -27,7 +27,7 @@ class DashboardController extends Controller
     // master produk
     public function masterProduk()
     {
-        return Inertia::render('Dashboard/Master/Produk/Index', ['produk' => MasterDataController::ambilSemuaData(new Produk(), ['kategoriProduk', 'brandProduk'])]);
+        return Inertia::render('Dashboard/Master/Produk/Index', ['produk' => MasterDataController::ambilSemuaData(new Produk(), ['kategoriProduk', 'brandProduk']), 'kategoriProduk' => MasterDataController::ambilSemuaData(new KategoriProduk()), 'brandProduk' => MasterDataController::ambilSemuaData(new BrandProduk()),]);
     }
 
     // master kategori produk
