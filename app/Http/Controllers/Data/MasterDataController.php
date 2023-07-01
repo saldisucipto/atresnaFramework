@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
 use Illuminate\Http\Request;
 use App\Http\Utils\FileProcess;
+use App\Models\BrandProduk;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -78,6 +79,60 @@ class MasterDataController extends Controller
         return redirect()->back()->with('message', 'Berhasil Menghapus Kategori Produk Data');
     }
 
+
+    // Brand Produk
+    public function createBrandData(Request $createDataBrand)
+    {
+        $createDataBrand->validate([
+            'nama_brand' => 'required|string',
+            'gambar_brand' => 'file|max:4000|mimes:png,jpg'
+      ]);
+        $brandProduk = new BrandProduk();
+        $photoBrandProduk = new FileProcess($createDataBrand->file('gambar_brand'), $createDataBrand['nama_brand'], 'brand-produk');
+        $brandProduk->nama_brand = $createDataBrand['nama_brand'];
+        $brandProduk->slugs = Str::slug($createDataBrand['nama_brand']);
+        $brandProduk->deskripsi_brand = $createDataBrand['deskripsi_brand'];
+        $brandProduk->gambar_brand = $photoBrandProduk->uploadFoto();
+        $brandProduk->save();
+
+        return redirect()->back()->with('message', 'Berhasil Menambahkan Brand Produk');
+    }
+
+
+    public function deleteBrandData(Request $request)
+    {
+        DB::table("brand_produk")->whereIn('id', $request->all())->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Brand Produk');
+    }
+
+
+    public function updateDataBrandData(Request $request, $id = null)
+    {
+        $request->validate([
+            'nama_brand' => 'string',
+            'gambar_brand' => 'mimes:png,jpg|nullable'
+       ]);
+
+        $data = BrandProduk::find($id);
+        $data->nama_brand = $request['nama_brand'];
+        $data->slugs = Str::slug($request['nama_brand']);
+        $data->deskripsi_brand = $request['deskripsi_brand'];
+        if($request->file('gambar_brand')) {
+            FileProcess::deleteFoto($data->gambar_brand, 'brand-produk');
+            $photoBrandProduk = new FileProcess($request->file('gambar_brand'), $request['nama_brand'], 'brand-produk');
+            $data->gambar_brand = $photoBrandProduk->uploadFoto();
+        }
+        $data->update();
+        return redirect()->back()->with('message', 'Berhasil Memperbaharui Brand Produk');
+    }
+
+    public function deleteSingleBrandData($id)
+    {
+        $data = BrandProduk::find($id);
+        FileProcess::deleteFoto($data->gambar_brand, 'brand-produk');
+        $data->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Brand Data');
+    }
 
 
 }

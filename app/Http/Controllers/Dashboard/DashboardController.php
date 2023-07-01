@@ -8,6 +8,7 @@ use App\Http\Controllers\Data\MasterDataController;
 use Inertia\Inertia;
 use App\Models\Produk;
 use App\Models\KategoriProduk;
+use App\Models\BrandProduk;
 
 class DashboardController extends Controller
 {
@@ -33,6 +34,12 @@ class DashboardController extends Controller
     public function kategoriProduk()
     {
         return Inertia::render('Dashboard/Master/Produk/Kategori/Index', ['produk' => MasterDataController::ambilSemuaData(new KategoriProduk()), 'message' => null]);
+    }
+
+    // master brand produk
+    public function brandProduk()
+    {
+        return Inertia::render('Dashboard/Master/Produk/Brand/Index', ['produk' => MasterDataController::ambilSemuaData(new BrandProduk()), 'message' => null]);
     }
 
 

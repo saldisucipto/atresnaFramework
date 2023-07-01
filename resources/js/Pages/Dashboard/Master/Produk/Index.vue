@@ -17,7 +17,7 @@
                             Kategori Produk
                         </Link>
                         <Link
-                            href="#"
+                            href="/dashboard/master/produk/brand"
                             class="bg-blue-400 my-auto text-xs rounded-lg text-white py-2 px-3 hover:bg-white hover:text-blue-400 hover:drop-shadow-lg drop-shadow-lg"
                         >
                             <i class="fas fa-plus"></i>

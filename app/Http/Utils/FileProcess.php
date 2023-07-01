@@ -50,12 +50,17 @@ class FileProcess
     }
 
     // delete foto
-    public static function deleteFoto(string $fileSebelumnya, string $dirFile)
+    public static function deleteFoto($fileSebelumnya, string $dirFile)
     {
-        if(file_exists(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya))) {
-            unlink(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya));
+        if($fileSebelumnya !== null) {
+            if(file_exists(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya))) {
+                unlink(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya));
+            } else {
+                return;
+            }
         } else {
             return;
         }
+
     }
 }
