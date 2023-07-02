@@ -32,7 +32,7 @@ class FileProcess
             return;
         }
         if($mutlipleImages !== null) {
-            $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $mutlipleImages->getClientOriginalExtension();
+            $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $mutlipleImages->getClientOriginalName();
             Storage::putFileAs('public/img/' . $this->dirFile, $mutlipleImages, $namaFoto);
             return $namaFoto;
         } else {

@@ -58,9 +58,9 @@
                         <input
                             type="search"
                             name=""
-                            placeholder="Search Brand Produk"
+                            placeholder="Search Produk"
                             id=""
-                            class="rounded-lg px-2 py-2 focus:outline-none text-sm"
+                            class="rounded-lg px-2 py-2 focus:outline-none text-sm w-96"
                         />
                     </div>
                     <div class="flex gap-3">
@@ -96,7 +96,32 @@
                             <th
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                Nama Kategori
+                                Produk
+                            </th>
+                            <th
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                Harga Produk
+                            </th>
+                            <th
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                Kategori
+                            </th>
+                            <th
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                Brand
+                            </th>
+                            <th
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                Stok
+                            </th>
+                            <th
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                Kondisi
                             </th>
 
                             <th
@@ -124,6 +149,48 @@
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
                                 {{ itemProduk.nama_produk }}
+                            </td>
+                            <td
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                {{ rpCurency(itemProduk.harga_produk, "Rp.") }}
+                            </td>
+                            <td
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                {{ itemProduk.kategori_produk.nama_kategori }}
+                            </td>
+                            <td
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                {{ itemProduk.brand_produk.nama_brand }}
+                            </td>
+                            <td
+                                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                            >
+                                {{
+                                    itemProduk.stok_produk +
+                                    " " +
+                                    itemProduk.satuan_produk
+                                }}
+                            </td>
+                            <td
+                                v-if="itemProduk.kondisi_produk === 'NEW'"
+                                class="whitespace-nowrap px-4 py-2 font-medium text-white"
+                            >
+                                <span
+                                    class="bg-green-600 p-2 rounded-lg text-sm"
+                                    >New</span
+                                >
+                            </td>
+                            <td
+                                v-else
+                                class="whitespace-nowrap px-4 py-2 font-medium text-white"
+                            >
+                                <span
+                                    class="bg-yellow-600 p-2 rounded-lg text-sm"
+                                    >Second</span
+                                >
                             </td>
 
                             <td
@@ -368,10 +435,64 @@
                             </div>
 
                             <div
+                                v-if="updateMode"
+                                class="flex justify-start w-full"
+                            >
+                                <div
+                                    v-if="this.imageBaru != null"
+                                    class="flex justify-between gap-2"
+                                >
+                                    <img
+                                        class="rounded-md max-w-sm mx-auto max-h-60"
+                                        :src="this.imageBaru"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="w-full flex gap-3" v-else>
+                                    <div
+                                        class="relative flex"
+                                        v-if="
+                                            this.singelData[0].images_produk
+                                                .length > 0
+                                        "
+                                        v-for="(img, index) in this
+                                            .singelData[0].images_produk"
+                                    >
+                                        <img
+                                            class="max-h-40 rounded-md p-2"
+                                            :src="
+                                                '/storage/img/produk/' +
+                                                img.gambar_produk
+                                            "
+                                        />
+                                        <button
+                                            @click.prevent="
+                                                deleteImagesServer(img.id)
+                                            "
+                                            class="bg-red-600 top-0 absolute -right-2 rounded-full text-sm py-1 px-2 text-white"
+                                        >
+                                            X
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="flex mx-auto flex-col justify-center"
+                                        v-else
+                                    >
+                                        <div
+                                            class="mx-auto text-xl text-gray-500"
+                                        >
+                                            Gambar Belum Di Upload
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                v-else
                                 class="flex h-40 bg-slate-50 rounded-md border justify-start gap-2 overflow-x-auto overflow-y-hidden"
                             >
                                 <div
-                                    class="relative"
+                                    class="relative flex"
                                     v-if="this.images_produk.length > 0"
                                     v-for="(img, index) in this.images_produk"
                                 >
@@ -396,36 +517,14 @@
                                 </div>
                             </div>
 
-                            <div v-if="updateMode" class="flex justify-center">
-                                <div
-                                    v-if="this.imageBaru != null"
-                                    class="flex justify-between gap-2"
-                                >
-                                    <img
-                                        class="rounded-md max-w-sm mx-auto max-h-60"
-                                        :src="this.imageBaru"
-                                        alt=""
-                                    />
-                                </div>
-                                <div v-else>
-                                    <img
-                                        class="rounded-md max-w-sm mx-auto max-h-60"
-                                        :src="
-                                            '/storage/img/brand-produk/' +
-                                            singelData[0].gambar_brand
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div v-else>
+                            <!-- <div v-else>
                                 <img
                                     v-if="this.imageBaru != null"
                                     class="rounded-md max-w-sm mx-auto max-h-60"
                                     :src="this.imageBaru"
                                     alt=""
                                 />
-                            </div>
+                            </div> -->
                             <div class="flex flex-col gap-2">
                                 <label class="text-gray-700"
                                     >Gambar Produk</label
@@ -470,14 +569,14 @@
                     class="absolute backdrop-blur-sm top-0 h-screen w-full overflow-hidden left-0 flex flex-col justify-center"
                 >
                     <div
-                        class="mx-auto w-2/6 bg-white drop-shadow-lg rounded-lg"
+                        class="mx-auto w-3/6 bg-white drop-shadow-lg rounded-lg"
                     >
                         <div class="p-5">
                             <div class="flex justify-between h-6">
                                 <div
                                     class="text-gray-600 font-semibold text-lg"
                                 >
-                                    {{ singelData[0].nama_produk }}
+                                    Show Produk
                                 </div>
                                 <button
                                     class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
@@ -489,26 +588,162 @@
                         </div>
                         <hr />
                         <div class="p-5 flex flex-col w-full gap-5">
-                            <div class="flex flex-col gap-2">
+                            <div
+                                class="flex justify-center gap-2 overflow-x-auto"
+                            >
                                 <img
-                                    class="rounded-md max-w-sm mx-auto"
+                                    class="max-h-32"
+                                    v-for="gambar in singelData[0]
+                                        .images_produk"
                                     :src="
-                                        '/storage/img/brand-produk/' +
-                                        singelData[0].gambar_brand
+                                        '/storage/img/produk/' +
+                                        gambar.gambar_produk
                                     "
                                     alt=""
                                 />
                             </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="text-gray-700"
-                                    >Deskripsi Brand Produk</label
-                                >
-                                <div
-                                    class="drop-shadow-sm border bg-slate-100 text-gray-700 font-semibold py-2 px-3 rounded-md focus:outline-none text-sm"
-                                >
-                                    {{ singelData[0].deskripsi_brand }}
-                                </div>
-                            </div>
+                            <table>
+                                <tbody class="text-gray-700">
+                                    <tr
+                                        class="border hover:border border-gray-400 hover:bg-gray-200 h-8"
+                                    >
+                                        <td
+                                            class="border hover:border border-gray-400 w-1/3"
+                                        >
+                                            <span
+                                                class="px-2 py-1 text-sm font-semibold"
+                                                >Produk Title</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="border hover:border border-gray-400 w-2/3"
+                                        >
+                                            <span class="px-2 py-1">{{
+                                                singelData[0].nama_produk
+                                            }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="border hover:border border-gray-400 hover:bg-gray-200 h-8"
+                                    >
+                                        <td
+                                            class="border hover:border border-gray-400 w-1/3"
+                                        >
+                                            <span
+                                                class="px-2 py-1 text-sm font-semibold"
+                                                >Harga</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="border hover:border border-gray-400 w-2/3"
+                                        >
+                                            <span class="px-2 py-1">{{
+                                                rpCurency(
+                                                    singelData[0].harga_produk,
+                                                    "Rp. "
+                                                )
+                                            }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="border hover:border border-gray-400 hover:bg-gray-200 h-8"
+                                    >
+                                        <td
+                                            class="border hover:border border-gray-400 w-1/3"
+                                        >
+                                            <span
+                                                class="px-2 py-1 text-sm font-semibold"
+                                                >Satuan</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="border hover:border border-gray-400 w-2/3"
+                                        >
+                                            <span class="px-2 py-1">{{
+                                                singelData[0].satuan_produk
+                                            }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="border hover:border border-gray-400 hover:bg-gray-200 h-8"
+                                    >
+                                        <td
+                                            class="border hover:border border-gray-400 w-1/3"
+                                        >
+                                            <span
+                                                class="px-2 py-1 text-sm font-semibold"
+                                                >Stok</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="border hover:border border-gray-400 w-2/3"
+                                        >
+                                            <span class="px-2 py-1">{{
+                                                singelData[0].stok_produk
+                                            }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="border hover:border border-gray-400 hover:bg-gray-200 h-8"
+                                    >
+                                        <td
+                                            class="border hover:border border-gray-400 w-1/3"
+                                        >
+                                            <span
+                                                class="px-2 py-1 text-sm font-semibold"
+                                                >Produk Kategori</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="border hover:border border-gray-400 w-2/3"
+                                        >
+                                            <span class="px-2 py-1">{{
+                                                singelData[0].kategori_produk
+                                                    .nama_kategori
+                                            }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="border hover:border border-gray-400 hover:bg-gray-200 h-8"
+                                    >
+                                        <td
+                                            class="border hover:border border-gray-400 w-1/3"
+                                        >
+                                            <span
+                                                class="px-2 py-1 text-sm font-semibold"
+                                                >Produk Brand</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="border hover:border border-gray-400 w-2/3"
+                                        >
+                                            <span class="px-2 py-1">{{
+                                                singelData[0].brand_produk
+                                                    .nama_brand
+                                            }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="border hover:border border-gray-400 hover:bg-gray-200 h-8"
+                                    >
+                                        <td
+                                            class="border hover:border border-gray-400 w-1/3"
+                                        >
+                                            <span
+                                                class="px-2 py-1 text-sm font-semibold"
+                                                >Deskripsi Produk</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="border hover:border border-gray-400 w-2/3"
+                                        >
+                                            <span class="px-2 py-1">{{
+                                                singelData[0].deskripsi_produk
+                                            }}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -664,6 +899,26 @@ export default {
             rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
             return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
         },
+        rpCurency(value, prefix) {
+            let data = 0;
+            data = value.toString();
+            let desimal = data.split(",");
+            let sisa = desimal[0].length % 3;
+            let rupiah = desimal[0].substr(0, sisa);
+            let ribuan = desimal[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                let separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");
+            }
+
+            rupiah =
+                desimal[1] != undefined ? rupiah + "," + desimal[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+        },
+        deleteImagesServer(id) {
+            console.log(id);
+        },
         inputHarga() {
             this.harga_produk = this.formatRupiah(this.harga_produk, "Rp. ");
             let numberSebenernya = this.harga_produk
@@ -712,7 +967,16 @@ export default {
             this.updateMode = true;
             this.singelData = this.produk.data.filter((data) => data.id == id);
             this.form.nama_produk = this.singelData[0].nama_produk;
-            this.form.deskripsi_brand = this.singelData[0].deskripsi_brand;
+            this.form.deskripsi_produk = this.singelData[0].deskripsi_produk;
+            this.form.id_kategori = this.singelData[0].id_kategori;
+            this.form.id_brand = this.singelData[0].id_brand;
+            this.form.satuan_produk = this.singelData[0].satuan_produk;
+            this.form.stok_produk = this.singelData[0].stok_produk;
+            this.form.kondisi_produk = this.singelData[0].kondisi_produk;
+            this.harga_produk = this.rpCurency(
+                this.singelData[0].harga_produk,
+                "Rp. "
+            );
         },
         deleteCheck(id) {
             this.multiDeleteButton = true;

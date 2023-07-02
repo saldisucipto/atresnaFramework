@@ -19,4 +19,9 @@ class Produk extends Model
     {
         return $this->hasOne(BrandProduk::class, 'id', 'id_brand');
     }
+
+    public function imagesProduk()
+    {
+        return $this->hasMany(ImagesProduk::class, 'id_produk');
+    }
 }

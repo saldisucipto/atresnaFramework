@@ -10,7 +10,7 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('produk', function (Blueprint $table) {
+        Schema::create('produks', function (Blueprint $table) {
             $table->id();
             $table->string('nama_produk');
             $table->string('slugs')->unique();
@@ -37,6 +37,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('produk');
+        Schema::dropIfExists('produks');
     }
 };

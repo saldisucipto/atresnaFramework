@@ -9,4 +9,6 @@ class ImagesProduk extends Model
 {
     use HasFactory;
     protected $table = 'images_produk';
+
+    // public function
 }
