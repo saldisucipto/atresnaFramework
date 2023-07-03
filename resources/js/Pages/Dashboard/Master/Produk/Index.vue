@@ -517,14 +517,6 @@
                                 </div>
                             </div>
 
-                            <!-- <div v-else>
-                                <img
-                                    v-if="this.imageBaru != null"
-                                    class="rounded-md max-w-sm mx-auto max-h-60"
-                                    :src="this.imageBaru"
-                                    alt=""
-                                />
-                            </div> -->
                             <div class="flex flex-col gap-2">
                                 <label class="text-gray-700"
                                     >Gambar Produk</label
@@ -817,7 +809,6 @@ import TitlePages from "../../../Widgets/TitlePages.vue";
 import CardMasterData from "../../../Widgets/CardMasterData.vue";
 import { Link } from "@inertiajs/vue3";
 import { router, useForm } from "@inertiajs/vue3";
-import { ref } from "vue";
 
 export default {
     data() {
@@ -880,6 +871,17 @@ export default {
         deleteImages(index) {
             this.images_produk.splice(index, 1);
         },
+        deleteImagesServer(id) {
+            router.delete(
+                "/dashboard/master/produk/delete-images-produk/" + id,
+                {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.closedModal();
+                    },
+                }
+            );
+        },
         imagesShow(img) {
             return URL.createObjectURL(img);
         },
@@ -915,9 +917,6 @@ export default {
             rupiah =
                 desimal[1] != undefined ? rupiah + "," + desimal[1] : rupiah;
             return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-        },
-        deleteImagesServer(id) {
-            console.log(id);
         },
         inputHarga() {
             this.harga_produk = this.formatRupiah(this.harga_produk, "Rp. ");
@@ -1033,9 +1032,9 @@ export default {
             this.form.reset();
             this.imageBaru = null;
             this.deleteForm.reset();
+            this.harga_produk = "";
+            this.gambar_produk = [];
         },
     },
 };
 </script>
-
-<style></style>

@@ -53,9 +53,8 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             // Produk
             Route::post('/create-produk', [MasterDataController::class, 'createProdukData']);
 
-
-
-
+            // Delete Images Produk
+            Route::delete('/delete-images-produk/{id}', [MasterDataController::class, 'deleteImagesProduk']);
 
         });
     });

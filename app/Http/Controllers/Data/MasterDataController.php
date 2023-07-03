@@ -168,5 +168,13 @@ class MasterDataController extends Controller
 
     }
 
+    // delete images produk
+    public function deleteImagesProduk($id){
+        $images = ImagesProduk::find($id);
+        FileProcess::deleteFoto($images->gambar_produk, 'produk');
+        $images->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Images Produk');
+    }
+
 
 }
