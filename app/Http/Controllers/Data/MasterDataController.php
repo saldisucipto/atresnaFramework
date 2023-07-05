@@ -169,11 +169,47 @@ class MasterDataController extends Controller
     }
 
     // delete images produk
-    public function deleteImagesProduk($id){
+    public function deleteImagesProduk($id)
+    {
         $images = ImagesProduk::find($id);
         FileProcess::deleteFoto($images->gambar_produk, 'produk');
         $images->delete();
         return redirect()->back()->with('message', 'Berhasil Menghapus Images Produk');
+    }
+
+    public function updateProdukData(Request $request, $id = null)
+    {
+        $produk = Produk::find($id);
+        $produk->nama_produk = $request['nama_produk'];
+        $produk->slugs = Str::slug($request['nama_produk']);
+        $produk->id_kategori = $request['id_kategori'];
+        $produk->id_brand = $request['id_brand'];
+        $produk->satuan_produk = $request['satuan_produk'];
+        $produk->kondisi_produk = $request['kondisi_produk'];
+        $produk->harga_produk = $request['harga_produk'];
+        $produk->stok_produk = $request['stok_produk'];
+        $produk->deskripsi_produk = $request['deskripsi_produk'];
+        $produk->update();
+        $uploadFotoProduk = new FileProcess($request->file('gambar_produk'), Str::slug($request['nama_produk']), 'produk');
+        $uploadFotoProduk->multipleUploadFoto($request, 'gambar_produk', $produk->id, 'ImagesProduk');
+        return redirect()->back()->with('message', 'Berhasil Update Data Produk');
+
+    }
+
+    public function deleteMultipleProdukData(Request $request)
+    {
+        DB::table("produks")->whereIn('id', $request->all())->delete();
+        DB::table("images_produk")->whereIn('id_produk', $request->all())->delete();
+
+        return redirect()->back()->with('message', 'Berhasil Menghapus Produk Data');
+    }
+
+    public function deleteProduk($id=null)
+    {
+        $produk = Produk::find($id);
+        FileProcess::deleteFoto($produk->gambar_produk, 'produk');
+        $produk->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Produk Data');
     }
 
 

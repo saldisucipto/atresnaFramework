@@ -79,12 +79,17 @@ class FileProcess
     {
 
         $filesFoto = [];
-        foreach($request->file($fileUploadName) as $foto) {
-            $filesFoto[] = [
-                'id_produk' => $idrelation,
-                'gambar_produk' => self::uploadFoto($foto),
-            ];
+        if($request->file($fileUploadName)) {
+            foreach($request->file($fileUploadName) as $foto) {
+                $filesFoto[] = [
+                    'id_produk' => $idrelation,
+                    'gambar_produk' => self::uploadFoto($foto),
+                ];
+            }
+            ImagesProduk::insert($filesFoto);
+        } else {
+            return;
         }
-        ImagesProduk::insert($filesFoto);
+
     }
 }

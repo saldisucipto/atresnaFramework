@@ -52,6 +52,9 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
             // Produk
             Route::post('/create-produk', [MasterDataController::class, 'createProdukData']);
+            Route::post('/update-produk/{id}', [MasterDataController::class, 'updateProdukData']);
+            Route::post('/delete-multi-produk', [MasterDataController::class, 'deleteMultipleProdukData']);
+            Route::delete('/delete-produk/{id}', [MasterDataController::class, 'deleteProduk']);
 
             // Delete Images Produk
             Route::delete('/delete-images-produk/{id}', [MasterDataController::class, 'deleteImagesProduk']);

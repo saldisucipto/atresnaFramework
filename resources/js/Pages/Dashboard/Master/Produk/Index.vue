@@ -248,6 +248,7 @@
                             </div>
                         </div>
                         <hr />
+
                         <form
                             @submit.prevent="submitForm"
                             class="p-5 flex flex-col w-full gap-5"
@@ -469,6 +470,25 @@
                                             @click.prevent="
                                                 deleteImagesServer(img.id)
                                             "
+                                            class="bg-red-600 top-0 absolute -right-2 rounded-full text-sm py-1 px-2 text-white"
+                                        >
+                                            X
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="relative flex"
+                                        v-else-if="
+                                            this.images_produk.length > 0
+                                        "
+                                        v-for="(img, index) in this
+                                            .images_produk"
+                                    >
+                                        <img
+                                            class="max-h-40 rounded-md p-2"
+                                            :src="imagesShow(img)"
+                                        />
+                                        <button
+                                            @click.prevent="deleteImages(index)"
                                             class="bg-red-600 top-0 absolute -right-2 rounded-full text-sm py-1 px-2 text-white"
                                         >
                                             X
@@ -821,7 +841,7 @@ export default {
             updateMode: false,
             imageBaru: null,
             modalSingleDelete: false,
-            harga_produk: "",
+            harga_produk: 0,
             images_produk: [],
             images_upload: null,
         };
@@ -839,7 +859,7 @@ export default {
         });
 
         const deleteForm = useForm({
-            idBrand: [],
+            idProduk: [],
         });
 
         return { form, deleteForm };
@@ -937,12 +957,13 @@ export default {
                             this.form.reset();
                             this.modalCreate = false;
                             this.imageBaru = null;
+                            this.closedModal();
                         },
                     }
                 );
             } else {
                 router.post(
-                    "/dashboard/master/produk/update-brand-data/" +
+                    "/dashboard/master/produk/update-produk/" +
                         this.singelData[0].id,
                     this.form,
                     {
@@ -952,6 +973,7 @@ export default {
                             this.updateMode = false;
                             this.imageBaru = null;
                             this.modalCreate = null;
+                            this.closedModal();
                         },
                     }
                 );
@@ -972,6 +994,7 @@ export default {
             this.form.satuan_produk = this.singelData[0].satuan_produk;
             this.form.stok_produk = this.singelData[0].stok_produk;
             this.form.kondisi_produk = this.singelData[0].kondisi_produk;
+            this.form.harga_produk = this.singelData[0].harga_produk;
             this.harga_produk = this.rpCurency(
                 this.singelData[0].harga_produk,
                 "Rp. "
@@ -979,28 +1002,28 @@ export default {
         },
         deleteCheck(id) {
             this.multiDeleteButton = true;
-            if (this.deleteForm.idBrand.length < 1) {
+            if (this.deleteForm.idProduk.length < 1) {
                 this.multiDeleteButton = false;
-                this.deleteForm.idBrand = [];
+                this.deleteForm.idProduk = [];
             }
-            if (this.deleteForm.idBrand.includes(id)) {
-                let data = this.deleteForm.idBrand.indexOf(id);
-                this.deleteForm.idBrand.splice(data, 1);
+            if (this.deleteForm.idProduk.includes(id)) {
+                let data = this.deleteForm.idProduk.indexOf(id);
+                this.deleteForm.idProduk.splice(data, 1);
             } else {
-                this.deleteForm.idBrand.push(id);
+                this.deleteForm.idProduk.push(id);
             }
         },
         deleteMultiple() {
             router.post(
-                "/dashboard/master/produk/delete-brand-produk",
-                this.deleteForm.idBrand,
+                "/dashboard/master/produk/delete-multi-produk",
+                this.deleteForm.idProduk,
                 {
                     preserveScroll: true,
                     onSuccess: () => {
                         this.deleteForm.reset();
                         this.multiDeleteButton = false;
                         this.idForm = [];
-                        this.deleteForm.idBrand = [];
+                        this.deleteForm.idProduk = [];
                     },
                 }
             );
@@ -1013,7 +1036,7 @@ export default {
         actionDeleteSingleData() {
             // alert(this.singelData[0].id);
             router.delete(
-                "/dashboard/master/produk/delete-brand/" +
+                "/dashboard/master/produk/delete-produk/" +
                     this.singelData[0].id,
                 {
                     preserveScroll: true,
@@ -1034,6 +1057,7 @@ export default {
             this.deleteForm.reset();
             this.harga_produk = "";
             this.gambar_produk = [];
+            this.images_produk = [];
         },
     },
 };
