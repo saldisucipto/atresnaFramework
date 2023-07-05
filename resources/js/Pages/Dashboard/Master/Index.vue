@@ -10,8 +10,8 @@
             <card-master-data :linkTujuan="'produk'" :iconData="'fa-boxes'"
                 >Master Produk</card-master-data
             >
-            <card-master-data :linkTujuan="'produk'" :iconData="'fa-boxes'"
-                >Master Produk</card-master-data
+            <card-master-data :linkTujuan="'servis'" :iconData="'fa-users-cog'"
+                >Master Jasa & Sevices</card-master-data
             >
             <card-master-data :linkTujuan="'produk'" :iconData="'fa-boxes'"
                 >Master Produk</card-master-data

@@ -31,6 +31,10 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
                 Route::get('/', [DashboardController::class, 'brandProduk']);
             });
         });
+        Route::prefix('/servis')->group(function () {
+            Route::get('/', [DashboardController::class, 'masterServis']);
+
+        });
     });
 
 
@@ -55,9 +59,13 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             Route::post('/update-produk/{id}', [MasterDataController::class, 'updateProdukData']);
             Route::post('/delete-multi-produk', [MasterDataController::class, 'deleteMultipleProdukData']);
             Route::delete('/delete-produk/{id}', [MasterDataController::class, 'deleteProduk']);
-
             // Delete Images Produk
             Route::delete('/delete-images-produk/{id}', [MasterDataController::class, 'deleteImagesProduk']);
+        });
+
+        Route::prefix('/servis')->group(function () {
+            // Create Servis Data
+            Route::post('/create-servis-data', [MasterDataController::class, 'createServisData']);
 
         });
     });

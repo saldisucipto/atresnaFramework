@@ -9,6 +9,7 @@ use App\Http\Utils\FileProcess;
 use App\Models\BrandProduk;
 use App\Models\ImagesProduk;
 use App\Models\Produk;
+use App\Models\Servis;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -210,6 +211,28 @@ class MasterDataController extends Controller
         FileProcess::deleteFoto($produk->gambar_produk, 'produk');
         $produk->delete();
         return redirect()->back()->with('message', 'Berhasil Menghapus Produk Data');
+    }
+
+
+    // create servis data
+    public function createServisData(Request $request)
+    {
+        $request->validate([
+            'judul_servis' => 'required|string',
+            'gambar_servis' => 'required|mimes:png,jpg',
+            // 'deskripsi_servis' => 'required'
+        ]);
+
+        $data = $request->all();
+
+        $servis = new Servis();
+        $servis->judul_servis = $data['judul_servis'];
+        $servis->slug = Str::slug($data['gambar_servis']);
+        $images = new FileProcess($request->file('gambar_servis'), Str::slug($data['gambar_servis']), 'servis');
+        $servis->gambar_servis = $images->uploadFoto();
+        $servis->deskripsi_servis = $data['deskripsi_servis'];
+        $servis->save();
+        return redirect()->back()->with('message', 'Berhasil Membuat Data Servis');
     }
 
 
