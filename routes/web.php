@@ -65,7 +65,7 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
         Route::prefix('/servis')->group(function () {
             // Create Servis Data
-            Route::post('/create-servis-data', [MasterDataController::class, 'createServisData']);
+            Route::post('/create-servis', [MasterDataController::class, 'createServisData']);
 
         });
     });

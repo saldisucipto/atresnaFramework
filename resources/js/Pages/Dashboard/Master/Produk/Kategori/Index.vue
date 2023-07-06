@@ -378,7 +378,6 @@ import TitlePages from "../../../../Widgets/TitlePages.vue";
 import CardMasterData from "../../../../Widgets/CardMasterData.vue";
 import { Link } from "@inertiajs/vue3";
 import { router, useForm } from "@inertiajs/vue3";
-import { ref } from "vue";
 
 export default {
     data() {

@@ -220,7 +220,7 @@ class MasterDataController extends Controller
         $request->validate([
             'judul_servis' => 'required|string',
             'gambar_servis' => 'required|mimes:png,jpg',
-            // 'deskripsi_servis' => 'required'
+            'deskripsi_servis' => 'required'
         ]);
 
         $data = $request->all();
