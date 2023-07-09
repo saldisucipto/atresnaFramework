@@ -41,6 +41,22 @@
                     <span>Master Data</span>
                 </div>
             </Link>
+            <Link
+                href="/dashboard/konfigurasi"
+                class="text-bold rounded-md text-gray-700 hover:text-primary-color"
+            >
+                <div
+                    class="flex gap-2 px-3 py-2"
+                    :class="{
+                        'hover: text-white hover: text-bold bg-blue-400 rounded-md':
+                            $page.url === '/dashboard/konfigurasi' ||
+                            $page.url.startsWith('/dashboard/konfigurasi'),
+                    }"
+                >
+                    <i class="fas fa-cogs my-auto"></i>
+                    <span>Konfigurasi</span>
+                </div>
+            </Link>
         </div>
     </div>
 </template>

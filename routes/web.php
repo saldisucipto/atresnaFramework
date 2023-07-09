@@ -34,12 +34,15 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::prefix('/servis')->group(function () {
             Route::get('/', [DashboardController::class, 'masterServis']);
         });
-        Route::prefix('/company')->group(function () {
-            Route::get('/', [DashboardController::class, 'masterCompany']);
-        });
         Route::prefix('/customer')->group(function () {
             Route::get('/', [DashboardController::class, 'masterCustomer']);
         });
+    });
+
+    Route::prefix('/konfigurasi')->group(function () {
+        Route::get('/', [DashboardController::class, 'konfigurasiPages']);
+
+        Route::get('/company', [DashboardController::class, 'konfigurasiCompany']);
     });
 
 
@@ -92,7 +95,14 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             Route::delete('/delete-customer/{id}', [MasterDataController::class, 'deleteCustomerData']);
         });
     });
+
+    Route::prefix('/konfigurasi')->group(function () {
+        Route::prefix('/company-info')->group(function () {
+            // company action
+        });
+    });
 });
+
 
 Route::get('/', function () {
     return Inertia::render('Index');
