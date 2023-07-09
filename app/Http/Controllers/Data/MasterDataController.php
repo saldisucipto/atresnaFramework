@@ -224,15 +224,48 @@ class MasterDataController extends Controller
         ]);
 
         $data = $request->all();
-
         $servis = new Servis();
         $servis->judul_servis = $data['judul_servis'];
-        $servis->slug = Str::slug($data['gambar_servis']);
+        $servis->slug = Str::slug($data['judul_servis']);
         $images = new FileProcess($request->file('gambar_servis'), Str::slug($data['gambar_servis']), 'servis');
         $servis->gambar_servis = $images->uploadFoto();
         $servis->deskripsi_servis = $data['deskripsi_servis'];
         $servis->save();
         return redirect()->back()->with('message', 'Berhasil Membuat Data Servis');
+    }
+
+
+    public function updateServisData(Request $request, $id = null)
+    {
+
+        $data = $request->all();
+        $servis = Servis::find($id);
+        $servis->judul_servis = $data['judul_servis'];
+        $servis->slug = Str::slug($data['judul_servis']);
+        if($request->file('gambar_servis')) {
+            FileProcess::deleteFoto($servis->gambar_servis, 'servis');
+            $images = new FileProcess($request->file('gambar_servis'), Str::slug($data['gambar_servis']), 'servis');
+            $servis->gambar_servis = $images->uploadFoto();
+        }
+        $servis->deskripsi_servis = $data['deskripsi_servis'];
+        $servis->update();
+        return redirect()->back()->with('message', 'Berhasil Update Data Servis');
+    }
+
+
+    public function deleteMultipleServisData(Request $request)
+    {
+        DB::table("servis")->whereIn('id', $request->all())->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Servis Data');
+
+    }
+
+    public function deleteServisData($id=null)
+    {
+        $servis = Servis::find($id);
+        FileProcess::deleteFoto($servis->gambar_servis, 'servis');
+        $servis->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Servis Data');
     }
 
 

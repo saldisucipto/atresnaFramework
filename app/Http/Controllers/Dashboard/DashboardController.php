@@ -49,5 +49,9 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/Master/Servis/Index', ['servis' => MasterDataController::ambilSemuaData(new Servis()),'message' => null]);
     }
 
-
+    // company
+    public function masterCompany()
+    {
+        return Inertia::render('Dashboard/Master/Company/Index', ['servis' => MasterDataController::ambilSemuaData(new Servis()),'message' => null]);
+    }
 }

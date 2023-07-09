@@ -33,7 +33,9 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         });
         Route::prefix('/servis')->group(function () {
             Route::get('/', [DashboardController::class, 'masterServis']);
-
+        });
+        Route::prefix('/company')->group(function () {
+            Route::get('/', [DashboardController::class, 'masterCompany']);
         });
     });
 
@@ -66,7 +68,17 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::prefix('/servis')->group(function () {
             // Create Servis Data
             Route::post('/create-servis', [MasterDataController::class, 'createServisData']);
+            Route::post('/update-servis/{id}', [MasterDataController::class, 'updateServisData']);
+            Route::post('/delete-multi-servis', [MasterDataController::class, 'deleteMultipleServisData']);
+            Route::delete('/delete-servis/{id}', [MasterDataController::class, 'deleteServisData']);
+        });
 
+        Route::prefix('/company')->group(function () {
+            // Create Servis Data
+            Route::post('/create-servis', [MasterDataController::class, 'createServisData']);
+            Route::post('/update-servis/{id}', [MasterDataController::class, 'updateServisData']);
+            Route::post('/delete-multi-servis', [MasterDataController::class, 'deleteMultipleServisData']);
+            Route::delete('/delete-servis/{id}', [MasterDataController::class, 'deleteServisData']);
         });
     });
 
