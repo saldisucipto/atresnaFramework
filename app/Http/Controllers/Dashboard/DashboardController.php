@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use App\Models\Produk;
 use App\Models\KategoriProduk;
 use App\Models\BrandProduk;
+use App\Models\Customer;
 use App\Models\Servis;
 
 class DashboardController extends Controller
@@ -53,5 +54,11 @@ class DashboardController extends Controller
     public function masterCompany()
     {
         return Inertia::render('Dashboard/Master/Company/Index', ['servis' => MasterDataController::ambilSemuaData(new Servis()),'message' => null]);
+    }
+
+    // customer
+    public function masterCustomer()
+    {
+        return Inertia::render('Dashboard/Master/Customer/Index', ['customer' => MasterDataController::ambilSemuaData(new Customer()),'message' => null]);
     }
 }

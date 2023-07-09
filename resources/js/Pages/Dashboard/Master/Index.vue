@@ -13,14 +13,8 @@
             <card-master-data :linkTujuan="'servis'" :iconData="'fa-users-cog'"
                 >Master Jasa & Sevices</card-master-data
             >
-            <card-master-data
-                :linkTujuan="'company'"
-                :iconData="'fa-solid fa-building'"
-                >Company Info</card-master-data
-            >
-
-            <card-master-data :linkTujuan="'produk'" :iconData="'fa-boxes'"
-                >Master Produk</card-master-data
+            <card-master-data :linkTujuan="'customer'" :iconData="'fa-users'"
+                >Master Customer</card-master-data
             >
             <!-- End Card Master Data -->
         </div>

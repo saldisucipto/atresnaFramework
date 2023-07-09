@@ -7,6 +7,7 @@ use App\Models\KategoriProduk;
 use Illuminate\Http\Request;
 use App\Http\Utils\FileProcess;
 use App\Models\BrandProduk;
+use App\Models\Customer;
 use App\Models\ImagesProduk;
 use App\Models\Produk;
 use App\Models\Servis;
@@ -19,7 +20,7 @@ class MasterDataController extends Controller
     // METHOD GET DATA
     public static function ambilSemuaData(Model $dataModel, array $relation = [])
     {
-        if($relation != []) {
+        if ($relation != []) {
             $data = $dataModel->with($relation)->paginate(10);
         } else {
             $data = $dataModel->paginate(10);
@@ -32,8 +33,8 @@ class MasterDataController extends Controller
     {
         //   dd($createDataKategori);
         $createDataKategori->validate([
-              'nama_kategori' => 'required|string',
-              'gambar_produk' => 'file|max:4000|mimes:png,jpg'
+            'nama_kategori' => 'required|string',
+            'gambar_produk' => 'file|max:4000|mimes:png,jpg'
         ]);
         $kategoriProduk = new KategoriProduk();
         $photoKategoriProduk = new FileProcess($createDataKategori->file('gambar_produk'), $createDataKategori['nama_kategori'], 'kategori-produk');
@@ -59,13 +60,13 @@ class MasterDataController extends Controller
     {
         $request->validate([
             'nama_kategori' => 'string',
-       ]);
+        ]);
 
         $data = KategoriProduk::find($id);
         $data->nama_kategori = $request['nama_kategori'];
         $data->slugs = Str::slug($request['nama_kategori']);
         $data->deskripsi_kategori = $request['deskripsi_kategori'];
-        if($request->file('gambar_produk')) {
+        if ($request->file('gambar_produk')) {
             FileProcess::deleteFoto($data->gambar_produk, 'kategori-produk');
             $photoKategoriProduk = new FileProcess($request->file('gambar_produk'), $request['nama_kategori'], 'kategori-produk');
             $data->gambar_produk = $photoKategoriProduk->uploadFoto();
@@ -89,7 +90,7 @@ class MasterDataController extends Controller
         $createDataBrand->validate([
             'nama_brand' => 'required|string',
             'gambar_brand' => 'file|max:4000|mimes:png,jpg'
-      ]);
+        ]);
         $brandProduk = new BrandProduk();
         $photoBrandProduk = new FileProcess($createDataBrand->file('gambar_brand'), $createDataBrand['nama_brand'], 'brand-produk');
         $brandProduk->nama_brand = $createDataBrand['nama_brand'];
@@ -115,13 +116,13 @@ class MasterDataController extends Controller
             'nama_brand' => 'string',
             'gambar_brand' => 'mimes:png,jpg|nullable'
 
-       ]);
+        ]);
 
         $data = BrandProduk::find($id);
         $data->nama_brand = $request['nama_brand'];
         $data->slugs = Str::slug($request['nama_brand']);
         $data->deskripsi_brand = $request['deskripsi_brand'];
-        if($request->file('gambar_brand')) {
+        if ($request->file('gambar_brand')) {
             FileProcess::deleteFoto($data->gambar_brand, 'brand-produk');
             $photoBrandProduk = new FileProcess($request->file('gambar_brand'), $request['nama_brand'], 'brand-produk');
             $data->gambar_brand = $photoBrandProduk->uploadFoto();
@@ -166,7 +167,6 @@ class MasterDataController extends Controller
         $uploadFotoProduk = new FileProcess($createProduk->file('gambar_produk'), Str::slug($createProduk['nama_produk']), 'produk');
         $uploadFotoProduk->multipleUploadFoto($createProduk, 'gambar_produk', $produk->id, 'ImagesProduk');
         return redirect()->back()->with('message', 'Berhasil Menyimpan Data Produk');
-
     }
 
     // delete images produk
@@ -194,7 +194,6 @@ class MasterDataController extends Controller
         $uploadFotoProduk = new FileProcess($request->file('gambar_produk'), Str::slug($request['nama_produk']), 'produk');
         $uploadFotoProduk->multipleUploadFoto($request, 'gambar_produk', $produk->id, 'ImagesProduk');
         return redirect()->back()->with('message', 'Berhasil Update Data Produk');
-
     }
 
     public function deleteMultipleProdukData(Request $request)
@@ -205,7 +204,7 @@ class MasterDataController extends Controller
         return redirect()->back()->with('message', 'Berhasil Menghapus Produk Data');
     }
 
-    public function deleteProduk($id=null)
+    public function deleteProduk($id = null)
     {
         $produk = Produk::find($id);
         FileProcess::deleteFoto($produk->gambar_produk, 'produk');
@@ -242,7 +241,7 @@ class MasterDataController extends Controller
         $servis = Servis::find($id);
         $servis->judul_servis = $data['judul_servis'];
         $servis->slug = Str::slug($data['judul_servis']);
-        if($request->file('gambar_servis')) {
+        if ($request->file('gambar_servis')) {
             FileProcess::deleteFoto($servis->gambar_servis, 'servis');
             $images = new FileProcess($request->file('gambar_servis'), Str::slug($data['gambar_servis']), 'servis');
             $servis->gambar_servis = $images->uploadFoto();
@@ -257,10 +256,9 @@ class MasterDataController extends Controller
     {
         DB::table("servis")->whereIn('id', $request->all())->delete();
         return redirect()->back()->with('message', 'Berhasil Menghapus Servis Data');
-
     }
 
-    public function deleteServisData($id=null)
+    public function deleteServisData($id = null)
     {
         $servis = Servis::find($id);
         FileProcess::deleteFoto($servis->gambar_servis, 'servis');
@@ -273,5 +271,68 @@ class MasterDataController extends Controller
         $data = $request->all();
     }
 
+    public function createCustomerData(Request $request)
+    {
+        $request->validate([
+            'customer_name' => 'required',
+            'customer_address' => 'nullable|string',
+            'customer_link' => 'nullable|url',
+            'customer_job_desc' => 'nullable|string',
+            'customer_logo' => 'nullable|mimes:png,jpg',
+        ]);
+        $data = $request->all();
 
+        $customer = new Customer();
+        $customer->customer_name = $data['customer_name'];
+        $customer->customer_slug = Str::slug($data['customer_name']);
+        if ($request->file('customer_logo')) {
+            $images = new FileProcess($request->file('customer_logo'), Str::slug($data['customer_name']), 'customer');
+            $customer->customer_logo = $images->uploadFoto();
+        }
+        $customer->customer_link = $data['customer_link'];
+        $customer->customer_address = $data['customer_address'];
+        $customer->customer_job_desc = $data['customer_job_desc'];
+        $customer->save();
+        return redirect()->back()->with('message', 'Berhasil Membuat Data Customer');
+    }
+
+    public function updateCustomerData(Request $request, $id = null)
+    {
+        $request->validate([
+            'customer_name' => 'nullable|string',
+            'customer_address' => 'nullable|string',
+            'customer_link' => 'nullable|url',
+            'customer_job_desc' => 'nullable|string',
+            'customer_logo' => 'nullable|mimes:png,jpg',
+        ]);
+        $data = $request->all();
+
+        $customer = Customer::find($id);
+        $customer->customer_name = $data['customer_name'];
+        $customer->customer_slug = Str::slug($data['customer_name']);
+        if ($request->file('customer_logo')) {
+            FileProcess::deleteFoto($customer->customer_logo, 'customer');
+            $images = new FileProcess($request->file('customer_logo'), Str::slug($data['customer_name']), 'customer');
+            $customer->customer_logo = $images->uploadFoto();
+        }
+        $customer->customer_link = $data['customer_link'];
+        $customer->customer_address = $data['customer_address'];
+        $customer->customer_job_desc = $data['customer_job_desc'];
+        $customer->update();
+        return redirect()->back()->with('message', 'Berhasil Update Data Customer');
+    }
+
+    public function deleteCustomerData($id = null)
+    {
+        $customer = Customer::find($id);
+        FileProcess::deleteFoto($customer->customer_logo, 'customer');
+        $customer->delete();
+        return redirect()->back()->with('message', 'Data Customer Berhasil Dihapus');
+    }
+
+    public function deleteMultipleCustomerData(Request $request)
+    {
+        DB::table("customers")->whereIn('id', $request->all())->delete();
+        return redirect()->back()->with('message', 'Berhasil Menghapus Customer Data');
+    }
 }
