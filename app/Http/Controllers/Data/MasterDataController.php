@@ -268,5 +268,10 @@ class MasterDataController extends Controller
         return redirect()->back()->with('message', 'Berhasil Menghapus Servis Data');
     }
 
+    public function createDataServis(Request $request)
+    {
+        $data = $request->all();
+    }
+
 
 }

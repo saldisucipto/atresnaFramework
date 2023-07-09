@@ -12,6 +12,13 @@ return new class () extends Migration {
     {
         Schema::create('company_info', function (Blueprint $table) {
             $table->id();
+            $table->string('company_name');
+            $table->text('company_address');
+            $table->text('company_logo');
+            $table->text('company_phone', 13);
+            $table->text('company_phone1', 13)->nullable();
+            $table->text('company_email');
+            $table->text('company_npwp')->nullable();
             $table->timestamps();
         });
     }
