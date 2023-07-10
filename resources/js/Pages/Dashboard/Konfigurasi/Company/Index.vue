@@ -28,14 +28,14 @@
         <!-- End Message -->
         <!-- Main menu  -->
         <div class="mx-3 grid grid-flow-col grid-cols-7">
-            <div class="col-span-2 p-5">
+            <div class="col-span-2 p-5 overflow-hidden">
                 <div class="flex flex-col justify-start gap-2">
                     <div
                         v-if="this.imageBaru != null"
                         class="flex justify-between gap-2"
                     >
                         <img
-                            class="rounded-md max-w-sm mx-auto max-h-60"
+                            class="rounded-md mx-auto max-h-52"
                             :src="imagesShow(this.imageBaru)"
                             alt=""
                         />
@@ -271,21 +271,12 @@ export default {
         },
         submitForm() {
             {
-                router.post(
-                    "/dashboard/master/servis/update-servis/" +
-                        this.singelData[0].id,
-                    this.form,
-                    {
-                        preserveScroll: true,
-                        onSuccess: () => {
-                            this.form.reset();
-                            this.updateMode = false;
-                            this.imageBaru = null;
-                            this.modalCreate = null;
-                            this.closedModal();
-                        },
-                    }
-                );
+                router.post("/dashboard/konfigurasi/company-info/", this.form, {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.imageBaru = null;
+                    },
+                });
             }
         },
     },
