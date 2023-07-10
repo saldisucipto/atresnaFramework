@@ -28,18 +28,8 @@
         <!-- End Message -->
         <!-- Main menu  -->
         <div class="mx-3 grid grid-flow-col grid-cols-7">
-            <div class="col-span-2 p-5 bg-slate-600">
-                <div class="flex flex-col justify-start">
-                    <div v-if="this.data.company_logo" class="mx-auto">
-                        <img
-                            :src="
-                                '/storage/img/company/' + this.data.company_logo
-                            "
-                            alt=""
-                        />
-                    </div>
-                </div>
-                <div class="flex justify-center">
+            <div class="col-span-2 p-5">
+                <div class="flex flex-col justify-start gap-2">
                     <div
                         v-if="this.imageBaru != null"
                         class="flex justify-between gap-2"
@@ -50,22 +40,35 @@
                             alt=""
                         />
                     </div>
+                    <div
+                        v-if="this.data.company_logo == 'logo.png'"
+                        class="mx-auto"
+                    >
+                        <img
+                            class="rounded-md max-w-sm mx-auto max-h-52"
+                            src="/assets/img/logo.png"
+                        />
+                    </div>
                     <div v-else>
                         <img
-                            class="rounded-md max-w-sm mx-auto max-h-60"
-                            src=""
+                            class="rounded-md max-w-sm mx-auto max-h-52"
+                            :src="
+                                '/storage/img/company/' + this.data.company_logo
+                            "
                             alt=""
                         />
                     </div>
                 </div>
             </div>
-            <div class="overflow-x-auto col-span-5 bg-slate-500">
+            <div class="overflow-x-auto col-span-5">
                 <form
                     @submit.prevent="submitForm"
                     class="p-5 flex flex-col w-full gap-5"
                 >
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-700">Company Name</label>
+                        <label class="text-gray-700 font-semibold"
+                            >Company Name</label
+                        >
                         <input
                             class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
                             type="text"
@@ -81,7 +84,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-700">Company Email</label>
+                        <label class="text-gray-700 font-semibold"
+                            >Company Email</label
+                        >
 
                         <input
                             class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
@@ -98,7 +103,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-700">Company Phone</label>
+                        <label class="text-gray-700 font-semibold"
+                            >Company Phone</label
+                        >
                         <input
                             class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
                             type="text"
@@ -116,7 +123,9 @@
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-700">Company Phone 1</label>
+                        <label class="text-gray-700 font-semibold"
+                            >Company Phone 1</label
+                        >
                         <input
                             class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
                             type="text"
@@ -133,7 +142,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-700">Company N.P.W.P</label>
+                        <label class="text-gray-700 font-semibold"
+                            >Company N.P.W.P</label
+                        >
                         <input
                             class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
                             type="text"
@@ -151,13 +162,15 @@
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-700">Alamat Company</label>
+                        <label class="text-gray-700 font-semibold"
+                            >Alamat Company</label
+                        >
                         <textarea
                             class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
                             name=""
                             id=""
                             cols="30"
-                            rows="5"
+                            rows="3"
                             v-model="form.company_address"
                         ></textarea>
                         <div
@@ -168,7 +181,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-gray-700">Company Logo</label>
+                        <label class="text-gray-700 font-semibold"
+                            >Company Logo</label
+                        >
                         <input
                             class="text-sm"
                             type="file"
@@ -189,7 +204,7 @@
                         class="bg-blue-400 hover:bg-blue-700 text-white py-1 rounded-md drop-shadow-sm"
                         type="submit"
                     >
-                        Buat Data Baru
+                        Save
                     </button>
                 </form>
             </div>
@@ -246,7 +261,14 @@ export default {
         imagesShow(img) {
             return URL.createObjectURL(img);
         },
-        loadData() {},
+        loadData() {
+            this.form.company_name = this.data.company_name;
+            this.form.company_phone = this.data.company_phone;
+            this.form.company_phone1 = this.data.company_phone1;
+            this.form.company_email = this.data.company_email;
+            this.form.company_address = this.data.company_address;
+            this.form.company_npwp = this.data.company_npwp;
+        },
         submitForm() {
             {
                 router.post(
@@ -268,7 +290,7 @@ export default {
         },
     },
     mounted() {
-        console.log("tes");
+        this.loadData();
     },
 };
 </script>
