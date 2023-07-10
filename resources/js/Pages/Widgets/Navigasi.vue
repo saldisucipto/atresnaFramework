@@ -42,6 +42,22 @@
                 </div>
             </Link>
             <Link
+                href="/dashboard/pages"
+                class="text-bold rounded-md text-gray-700 hover:text-primary-color"
+            >
+                <div
+                    class="flex gap-2 px-3 py-2"
+                    :class="{
+                        'hover: text-white hover: text-bold bg-blue-400 rounded-md':
+                            $page.url === '/dashboard/pages' ||
+                            $page.url.startsWith('/dashboard/pages'),
+                    }"
+                >
+                    <i class="fas fa-newspaper my-auto"></i>
+                    <span>Static Pages</span>
+                </div>
+            </Link>
+            <Link
                 href="/dashboard/konfigurasi"
                 class="text-bold rounded-md text-gray-700 hover:text-primary-color"
             >

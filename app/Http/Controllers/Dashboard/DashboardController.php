@@ -75,4 +75,10 @@ class DashboardController extends Controller
     {
         return Inertia::render('Dashboard/Konfigurasi/Company/Index', ['data' => KonfigurasiDataController::ambilDataTunggal(new CompanyInfo()), 'message' => null]);
     }
+
+    // static pages
+    public function staticPages()
+    {
+        return Inertia::render('Dashboard/Pages/Index');
+    }
 }

@@ -42,8 +42,11 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
     Route::prefix('/konfigurasi')->group(function () {
         Route::get('/', [DashboardController::class, 'konfigurasiPages']);
-
         Route::get('/company', [DashboardController::class, 'konfigurasiCompany']);
+    });
+
+    Route::prefix('/pages')->group(function () {
+        Route::get('/', [DashboardController::class, 'staticPages']);
     });
 
 
