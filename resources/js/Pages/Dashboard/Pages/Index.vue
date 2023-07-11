@@ -38,9 +38,9 @@
                 v-for="staticKonten in this.data.data"
                 class="h-58 bg-slate-200 rounded-md flex flex-col drop-shadow-md overflow-hidden"
             >
-                <div>
+                <div class="h-32 overflow-hidden">
                     <img
-                        class="object-cover rounded-tr-md rounded-tl-md max-h-32 mx-auto"
+                        class="object-cover rounded-tr-md rounded-tl-md mx-auto h-32"
                         :src="'/storage/img/static-pages/' + staticKonten.image"
                         alt=""
                     />
@@ -62,6 +62,7 @@
                         <span class="">Static</span>
                     </div>
                     <button
+                        @click="showData(staticKonten.id)"
                         class="text-xs text-white bg-primary-color px-2 rounded-md h-5 text-center hover:bg-secondary-color"
                     >
                         <span class="my-auto">Show</span>
@@ -170,7 +171,10 @@
                             <div v-else>
                                 <img
                                     class="rounded-md max-w-sm mx-auto max-h-60"
-                                    :src="'/storage/img/static/' + this.image"
+                                    :src="
+                                        '/storage/img/static-pages/' +
+                                        this.image
+                                    "
                                     alt=""
                                 />
                             </div>
@@ -200,13 +204,25 @@
                                 {{ errors.image }}
                             </div>
                         </div>
-                        <button
+                        <div
+                            class="flex w-full justify-around gap-3"
                             v-if="updateMode"
-                            class="bg-yellow-400 hover:bg-yellow-700 text-white py-1 rounded-md drop-shadow-sm"
-                            type="submit"
                         >
-                            Update
-                        </button>
+                            <button
+                                class="flex-1 bg-yellow-400 hover:bg-yellow-700 text-white py-1 rounded-md drop-shadow-sm"
+                                type="submit"
+                            >
+                                Update
+                            </button>
+                            <button
+                                class="flex-1 bg-red-400 hover:bg-red-700 text-white py-1 rounded-md drop-shadow-sm"
+                                type="button"
+                                @click="deleteButton(this.singelData[0].id)"
+                            >
+                                Delete
+                            </button>
+                        </div>
+
                         <button
                             v-else
                             class="bg-blue-400 hover:bg-blue-700 text-white py-1 rounded-md drop-shadow-sm"
@@ -243,6 +259,8 @@ export default {
             modal: false,
             updateMode: false,
             imageBaru: null,
+            singelData: [],
+            image: "",
         };
     },
     setup() {
@@ -269,6 +287,15 @@ export default {
         uploadFoto() {
             this.imageBaru = this.form.image;
         },
+        showData(id) {
+            this.modal = true;
+            this.updateMode = true;
+            this.singelData = this.data.data.filter((data) => data.id == id);
+            this.form.content = this.singelData[0].content;
+            this.form.title = this.singelData[0].title;
+            this.form.type = this.singelData[0].type;
+            this.image = this.singelData[0].image;
+        },
         imagesShow(img) {
             return URL.createObjectURL(img);
         },
@@ -286,7 +313,7 @@ export default {
                 );
             } else {
                 router.post(
-                    "/dashboard/master/servis/update-servis/" +
+                    "/dashboard/static-content/update-data/" +
                         this.singelData[0].id,
                     this.form,
                     {
@@ -307,6 +334,14 @@ export default {
             this.form.reset();
             this.updateMode = false;
             this.imageBaru = null;
+        },
+        deleteButton(id) {
+            router.delete("/dashboard/static-content/delete-data/" + id, {
+                preserveScroll: true,
+                onSuccess: () => {
+                    this.closedModal();
+                },
+            });
         },
     },
 };

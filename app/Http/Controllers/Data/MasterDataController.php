@@ -355,4 +355,35 @@ class MasterDataController extends Controller
         $staticContent->save();
         return redirect()->back()->with('message', 'Berhasil Membuat Static Data');
     }
+    public function updateStaticPages(Request $request, $id = null)
+    {
+        $request->validate([
+            'title' => 'string|nullable',
+            'image' => 'nullable|mimes:png,jpg',
+            'content' => 'string|nullable',
+            'type' => 'nullable|string',
+        ]);
+
+        $data = $request->all();
+        $staticContent = StaticPages::find($id);
+        $staticContent->title = $data['title'];
+        $staticContent->slug = Str::slug($data['title']);
+        $staticContent->type = $data['type'];
+        $staticContent->content = $data['content'];
+        if ($request->file('image')) {
+            FileProcess::deleteFoto($staticContent->image, 'static-pages');
+            $imageStatic = new FileProcess($request->file('image'), Str::slug($data['title']), 'static-pages');
+            $staticContent->image = $imageStatic->uploadFoto();
+        }
+        $staticContent->update();
+        return redirect()->back()->with('message', 'Berhasil Update Static Data');
+    }
+
+    public function deleteStaticData($id = null)
+    {
+        $staticContent = StaticPages::find($id);
+        FileProcess::deleteFoto($staticContent->image, 'static-pages');
+        $staticContent->delete();
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
+    }
 }

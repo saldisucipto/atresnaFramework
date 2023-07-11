@@ -107,6 +107,8 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     });
     Route::prefix('/static-content')->group(function () {
         Route::post('/create-data', [MasterDataController::class, 'createStaticPages']);
+        Route::post('/update-data/{id}', [MasterDataController::class, 'updateStaticPages']);
+        Route::delete('/delete-data/{id}', [MasterDataController::class, 'deleteStaticData']);
     });
 });
 
