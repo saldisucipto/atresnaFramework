@@ -73,7 +73,7 @@
                                                     </div>
                                                 </div>
                                                 <button
-                                                    class="bg-primary-color rounded-xl mx-5 py-1 px-2 text-white font-bold"
+                                                    class="bg-primary-color hover:bg-secondary-color rounded-xl mx-5 py-1 px-2 h-10 text-white font-bold"
                                                     type="submit"
                                                 >
                                                     Login
