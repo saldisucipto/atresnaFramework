@@ -3,12 +3,39 @@
         <!-- Title Pages -->
         <title-pages> Konfigurasi Static Konten </title-pages>
         <!-- Endt Title Pages -->
-
+        <!-- Mesasge -->
+        <div
+            v-if="$page.props.flash.message"
+            class="mx-3 h-12 bg-green-400 rounded-lg flex flex-col justify-center"
+        >
+            <div class="mx-4 flex justify-between py-2">
+                <div class="my-auto font-semibold text-white">
+                    {{ $page.props.flash.message }}
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="bg-white my-auto text-xs rounded-lg font-semibold py-2 px-3 text-green-400 hover:drop-shadow-sm"
+                        @click="$page.props.flash.message = null"
+                    >
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End Message -->
+        <div class="flex justify-end">
+            <button
+                @click="showModalCreate"
+                class="bg-blue-500 px-2 py-2 rounded-md text-sm text-gray-50"
+            >
+                <i class="fas fa-plus"></i> Buat Data Baru
+            </button>
+        </div>
         <!-- Main menu  -->
         <div class="grid grid-flow-row grid-cols-5 gap-5 mb-10">
             <!-- Card Staic Pages -->
             <div
-                class="h-52 bg-slate-100 rounded-md flex flex-col drop-shadow-md"
+                class="h-58 bg-slate-200 rounded-md flex flex-col drop-shadow-md overflow-hidden"
             >
                 <div>
                     <img
@@ -34,6 +61,154 @@
                 </div>
             </div>
             <!-- End Card Staic Pages -->
+            <div
+                v-if="modal"
+                class="absolute backdrop-blur-sm top-12 h-screen w-full left-0 flex flex-col justify-center"
+            >
+                <div class="mx-auto w-2/4 bg-white drop-shadow-lg rounded-lg">
+                    <div class="p-5">
+                        <div class="flex justify-between h-6">
+                            <div
+                                v-if="updateMode"
+                                class="text-gray-600 font-semibold text-lg"
+                            >
+                                Update Data
+                            </div>
+                            <div
+                                v-else
+                                class="text-gray-600 font-semibold text-lg"
+                            >
+                                Buat Statik Konten
+                            </div>
+                            <button
+                                class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
+                                @click="closedModal()"
+                            >
+                                <span class="">Tutup</span>
+                            </button>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <form
+                        @submit.prevent="submitForm"
+                        class="p-5 flex flex-col w-full gap-5"
+                    >
+                        <div class="flex flex-col gap-2">
+                            <label class="text-gray-700">Title</label>
+                            <input
+                                class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                type="text"
+                                name=""
+                                placeholder="Title Konten"
+                                v-model="form.title"
+                            />
+                            <div
+                                class="text-xs px-1 text-red-600"
+                                v-if="errors.title"
+                            >
+                                {{ errors.title }}
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <select
+                                class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                                name=""
+                                v-model="form.type"
+                                id=""
+                            >
+                                <option disabled value="">
+                                    Pilih Type Konten
+                                </option>
+                                <option value="main-konten">Main Page</option>
+                                <option value="konten">Konten Atribut</option>
+                            </select>
+                            <div
+                                class="text-xs px-1 text-red-600"
+                                v-if="errors.type"
+                            >
+                                {{ errors.type }}
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-gray-700">Deskripsi</label>
+                            <Editor
+                                api-key="gjbf1w1gssuy4vmn0tdcsds2pl6diikuxv1fkqe24jmmt60x"
+                                :init="{
+                                    plugins:
+                                        'lists link image table code help wordcount',
+                                }"
+                                v-model="form.content"
+                            />
+                            <div
+                                class="text-xs px-1 text-red-600"
+                                v-if="errors.content"
+                            >
+                                {{ errors.content }}
+                            </div>
+                        </div>
+                        <div v-if="updateMode" class="flex justify-center">
+                            <div
+                                v-if="this.imageBaru != null"
+                                class="flex justify-between gap-2"
+                            >
+                                <img
+                                    class="rounded-md max-w-sm mx-auto max-h-60"
+                                    :src="imagesShow(this.imageBaru)"
+                                    alt=""
+                                />
+                            </div>
+                            <div v-else>
+                                <img
+                                    class="rounded-md max-w-sm mx-auto max-h-60"
+                                    :src="'/storage/img/static/' + this.image"
+                                    alt=""
+                                />
+                            </div>
+                        </div>
+                        <div v-else>
+                            <img
+                                v-if="this.imageBaru != null"
+                                class="rounded-md max-w-sm mx-auto max-h-60"
+                                :src="imagesShow(this.imageBaru)"
+                                alt=""
+                            />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-gray-700">Images Content</label>
+                            <input
+                                class="text-sm"
+                                type="file"
+                                @input="
+                                    form.image = $event.target.files[0];
+                                    uploadFoto();
+                                "
+                            />
+                            <div
+                                class="text-xs px-1 text-red-600"
+                                v-if="errors.image"
+                            >
+                                {{ errors.image }}
+                            </div>
+                        </div>
+                        <button
+                            v-if="updateMode"
+                            class="bg-yellow-400 hover:bg-yellow-700 text-white py-1 rounded-md drop-shadow-sm"
+                            type="submit"
+                        >
+                            Update
+                        </button>
+                        <button
+                            v-else
+                            class="bg-blue-400 hover:bg-blue-700 text-white py-1 rounded-md drop-shadow-sm"
+                            type="submit"
+                        >
+                            Buat Data
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
         <!-- End Main Menu -->
     </div>
@@ -44,6 +219,8 @@ import Navigasi from "../../Widgets/Navigasi.vue";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import TitlePages from "../../Widgets/TitlePages.vue";
 import CardKonfData from "../../Widgets/CardKonfData.vue";
+import { useForm } from "@inertiajs/vue3";
+import Editor from "@tinymce/tinymce-vue";
 
 export default {
     components: {
@@ -51,11 +228,48 @@ export default {
         DashboardLayout,
         TitlePages,
         CardKonfData,
+        Editor,
+    },
+    data() {
+        return {
+            modal: false,
+            updateMode: false,
+            imageBaru: null,
+        };
+    },
+    setup() {
+        const form = useForm({
+            title: "",
+            content: "Isi Content",
+            type: "",
+            image: "",
+        });
+
+        return { form };
     },
     props: {
         chart: Object,
+        errors: Object,
+        links: Array,
     },
     layout: DashboardLayout,
+    methods: {
+        showModalCreate() {
+            this.modal = true;
+        },
+        uploadFoto() {
+            this.imageBaru = this.form.image;
+        },
+        imagesShow(img) {
+            return URL.createObjectURL(img);
+        },
+        closedModal() {
+            this.modal = false;
+            this.form.reset();
+            this.updateMode = false;
+            this.imageBaru = null;
+        },
+    },
 };
 </script>
 
