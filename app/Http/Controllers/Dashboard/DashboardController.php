@@ -13,6 +13,7 @@ use App\Models\BrandProduk;
 use App\Models\CompanyInfo;
 use App\Models\Customer;
 use App\Models\Servis;
+use App\Models\StaticPages;
 
 class DashboardController extends Controller
 {
@@ -79,6 +80,6 @@ class DashboardController extends Controller
     // static pages
     public function staticPages()
     {
-        return Inertia::render('Dashboard/Pages/Index');
+        return Inertia::render('Dashboard/Pages/Index', ['data' => MasterDataController::ambilSemuaData(new StaticPages()), 'message' => null]);
     }
 }

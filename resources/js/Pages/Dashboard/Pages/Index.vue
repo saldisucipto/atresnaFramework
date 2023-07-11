@@ -219,7 +219,7 @@ import Navigasi from "../../Widgets/Navigasi.vue";
 import DashboardLayout from "../../Layouts/DashboardLayout.vue";
 import TitlePages from "../../Widgets/TitlePages.vue";
 import CardKonfData from "../../Widgets/CardKonfData.vue";
-import { useForm } from "@inertiajs/vue3";
+import { useForm, router } from "@inertiajs/vue3";
 import Editor from "@tinymce/tinymce-vue";
 
 export default {
@@ -262,6 +262,36 @@ export default {
         },
         imagesShow(img) {
             return URL.createObjectURL(img);
+        },
+        submitForm() {
+            if (!this.updateMode) {
+                router.post(
+                    "/dashboard/static-content/create-data",
+                    this.form,
+                    {
+                        preserveScroll: true,
+                        onSuccess: () => {
+                            this.closedModal();
+                        },
+                    }
+                );
+            } else {
+                router.post(
+                    "/dashboard/master/servis/update-servis/" +
+                        this.singelData[0].id,
+                    this.form,
+                    {
+                        preserveScroll: true,
+                        onSuccess: () => {
+                            this.form.reset();
+                            this.updateMode = false;
+                            this.imageBaru = null;
+                            this.modalCreate = null;
+                            this.closedModal();
+                        },
+                    }
+                );
+            }
         },
         closedModal() {
             this.modal = false;

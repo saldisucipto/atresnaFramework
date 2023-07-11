@@ -11,6 +11,7 @@ use App\Models\Customer;
 use App\Models\ImagesProduk;
 use App\Models\Produk;
 use App\Models\Servis;
+use App\Models\StaticPages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -334,5 +335,24 @@ class MasterDataController extends Controller
     {
         DB::table("customers")->whereIn('id', $request->all())->delete();
         return redirect()->back()->with('message', 'Berhasil Menghapus Customer Data');
+    }
+    public function createStaticPages(Request $request)
+    {
+        $request->validate([
+            'title' => 'string|required',
+            'image' => 'required|mimes:png,jpg',
+            'content' => 'string|required',
+            'type' => 'required|string',
+        ]);
+        $data = $request->all();
+        $staticContent = new StaticPages();
+        $staticContent->title = $data['title'];
+        $staticContent->slug = Str::slug($data['title']);
+        $staticContent->type = $data['type'];
+        $staticContent->content = $data['content'];
+        $imageStatic = new FileProcess($request->file('image'), Str::slug($data['title']), 'static-pages');
+        $staticContent->image = $imageStatic->uploadFoto();
+        $staticContent->save();
+        return redirect()->back()->with('message', 'Berhasil Membuat Static Data');
     }
 }
