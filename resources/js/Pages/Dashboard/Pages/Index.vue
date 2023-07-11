@@ -35,23 +35,31 @@
         <div class="grid grid-flow-row grid-cols-5 gap-5 mb-10">
             <!-- Card Staic Pages -->
             <div
+                v-for="staticKonten in this.data.data"
                 class="h-58 bg-slate-200 rounded-md flex flex-col drop-shadow-md overflow-hidden"
             >
                 <div>
                     <img
-                        class="object-cover rounded-tr-md rounded-tl-md"
-                        src="/assets/img/img-banner.jpg"
+                        class="object-cover rounded-tr-md rounded-tl-md max-h-32 mx-auto"
+                        :src="'/storage/img/static-pages/' + staticKonten.image"
                         alt=""
                     />
                 </div>
                 <div class="p-2 flex flex-col gap-2">
-                    <span class="text-sm font-semibold text-gray-800"
-                        >Judul Pages</span
-                    >
+                    <span class="text-sm font-semibold text-gray-800">{{
+                        staticKonten.title
+                    }}</span>
                     <div
-                        class="text-xs text-white bg-blue-600 px-2 rounded-md h-5 w-20 text-center"
+                        v-if="staticKonten.type == 'main-konten'"
+                        class="text-xs text-white bg-blue-600 px-2 rounded-md h-5 text-center"
                     >
-                        <span class="my-auto">pages</span>
+                        <span class="my-auto">Pages Content</span>
+                    </div>
+                    <div
+                        v-else
+                        class="text-xs text-white bg-yellow-600 px-2 rounded-md h-5 w-20 text-center"
+                    >
+                        <span class="">Static</span>
                     </div>
                     <button
                         class="text-xs text-white bg-primary-color px-2 rounded-md h-5 text-center hover:bg-secondary-color"
@@ -251,6 +259,7 @@ export default {
         chart: Object,
         errors: Object,
         links: Array,
+        data: Object,
     },
     layout: DashboardLayout,
     methods: {
