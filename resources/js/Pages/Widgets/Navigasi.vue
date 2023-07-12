@@ -53,8 +53,24 @@
                             $page.url.startsWith('/dashboard/pages'),
                     }"
                 >
-                    <i class="fas fa-newspaper my-auto"></i>
+                    <i class="fas fa-file-alt my-auto"></i>
                     <span>Static Pages</span>
+                </div>
+            </Link>
+            <Link
+                href="/dashboard/blog-news"
+                class="text-bold rounded-md text-gray-700 hover:text-primary-color"
+            >
+                <div
+                    class="flex gap-2 px-3 py-2"
+                    :class="{
+                        'hover: text-white hover: text-bold bg-blue-400 rounded-md':
+                            $page.url === '/dashboard/blog-news' ||
+                            $page.url.startsWith('/dashboard/blog-news'),
+                    }"
+                >
+                    <i class="fas fa-newspaper my-auto"></i>
+                    <span>Blog And News</span>
                 </div>
             </Link>
             <Link

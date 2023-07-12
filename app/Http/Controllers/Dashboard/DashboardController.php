@@ -6,6 +6,7 @@ use App\Http\Charts\VisitorCharts;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Data\KonfigurasiDataController;
 use App\Http\Controllers\Data\MasterDataController;
+use App\Models\BlogNews;
 use Inertia\Inertia;
 use App\Models\Produk;
 use App\Models\KategoriProduk;
@@ -81,5 +82,11 @@ class DashboardController extends Controller
     public function staticPages()
     {
         return Inertia::render('Dashboard/Pages/Index', ['data' => MasterDataController::ambilSemuaData(new StaticPages()), 'message' => null]);
+    }
+
+    // blog and news
+    public function blogPages()
+    {
+        return Inertia::render('Dashboard/BlogNews/Index', ['data' => MasterDataController::ambilSemuaData(new BlogNews()), 'message' => null]);
     }
 }

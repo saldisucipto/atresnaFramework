@@ -49,6 +49,8 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::get('/', [DashboardController::class, 'staticPages']);
     });
 
+    Route::get('blog-news', [DashboardController::class, 'blogPages']);
+
 
 
     // Ruote Action
