@@ -112,6 +112,11 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::post('/update-data/{id}', [MasterDataController::class, 'updateStaticPages']);
         Route::delete('/delete-data/{id}', [MasterDataController::class, 'deleteStaticData']);
     });
+    Route::prefix('/blog-news')->group(function () {
+        Route::post('/create-data', [MasterDataController::class, 'createBlogNews']);
+        Route::post('/update-data/{id}', [MasterDataController::class, 'updateBlogNews']);
+        Route::delete('/delete-data/{id}', [MasterDataController::class, 'deleteBlogNews']);
+    });
 });
 
 

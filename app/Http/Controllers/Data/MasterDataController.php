@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
 use Illuminate\Http\Request;
 use App\Http\Utils\FileProcess;
+use App\Models\BlogNews;
 use App\Models\BrandProduk;
 use App\Models\Customer;
 use App\Models\ImagesProduk;
@@ -267,11 +268,6 @@ class MasterDataController extends Controller
         return redirect()->back()->with('message', 'Berhasil Menghapus Servis Data');
     }
 
-    public function createDataServis(Request $request)
-    {
-        $data = $request->all();
-    }
-
     public function createCustomerData(Request $request)
     {
         $request->validate([
@@ -385,5 +381,56 @@ class MasterDataController extends Controller
         FileProcess::deleteFoto($staticContent->image, 'static-pages');
         $staticContent->delete();
         return redirect()->back()->with('message', 'Data Berhasil Dihapus');
+    }
+
+    public function createBlogNews(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:100',
+            'content' => 'required',
+            'image' => 'required|mimes:png,jpg|max:5000'
+        ]);
+
+        $data = $request->all();
+
+        $post = new BlogNews();
+        $post->title = $data['title'];
+        $post->slug = Str::slug($data['title']);
+        $post->content = $data['content'];
+        $images = new FileProcess($request->file('image'), 'blog-news', 'blog-news');
+        $post->image = $images->uploadFoto();
+        $post->save();
+        return redirect()->back()->with('message', 'Berhasil Membuat Data Baru');
+    }
+
+    public function updateBlogNews(Request $request, $id = null)
+    {
+        $request->validate([
+            'title' => 'nullable|string|max:100',
+            'content' => 'nullable',
+            'image' => 'nullable|mimes:png,jpg|max:5000'
+        ]);
+
+        $data = $request->all();
+
+        $post = BlogNews::find($id);
+        $post->title = $data['title'];
+        $post->slug = Str::slug($data['title']);
+        $post->content = $data['content'];
+        if ($request->file('image')) {
+            FileProcess::deleteFoto($post->image, 'blog-news');
+            $images = new FileProcess($request->file('image'), 'blog-news', 'blog-news');
+            $post->image = $images->uploadFoto();
+        }
+        $post->update();
+        return redirect()->back()->with('message', 'Berhasil Update Data ' . $post->title);
+    }
+
+    public function deleteBlogNews($id)
+    {
+        $post = BlogNews::find($id);
+        FileProcess::deleteFoto($post->image, 'blog-news');
+        $post->delete();
+        return redirect()->back()->with('message', 'Berhasil Hapus Data ' . $post->title);
     }
 }
