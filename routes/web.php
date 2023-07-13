@@ -32,9 +32,15 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
                 Route::get('/', [DashboardController::class, 'brandProduk']);
             });
         });
+        // Sosmed
+        Route::prefix('/sosmed')->group(function () {
+            Route::get('/', [DashboardController::class, 'sosmedPages']);
+        });
+        // Servis
         Route::prefix('/servis')->group(function () {
             Route::get('/', [DashboardController::class, 'masterServis']);
         });
+        // Customer
         Route::prefix('/customer')->group(function () {
             Route::get('/', [DashboardController::class, 'masterCustomer']);
         });
@@ -99,6 +105,12 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             Route::post('/update-customer/{id}', [MasterDataController::class, 'updateCustomerData']);
             Route::post('/delete-multi-customer', [MasterDataController::class, 'deleteMultipleCustomerData']);
             Route::delete('/delete-customer/{id}', [MasterDataController::class, 'deleteCustomerData']);
+        });
+        Route::prefix('/sosmed')->group(function () {
+            // Create Servis Data
+            Route::post('/create-sosmed', [MasterDataController::class, 'createSosmed']);
+            Route::post('/update-sosmed/{id}', [MasterDataController::class, 'updateSosmed']);
+            Route::delete('/delete-sosmed/{id}', [MasterDataController::class, 'deleteSosmed']);
         });
     });
 

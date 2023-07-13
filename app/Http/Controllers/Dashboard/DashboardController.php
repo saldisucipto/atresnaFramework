@@ -14,6 +14,7 @@ use App\Models\BrandProduk;
 use App\Models\CompanyInfo;
 use App\Models\Customer;
 use App\Models\Servis;
+use App\Models\Sosmed;
 use App\Models\StaticPages;
 
 class DashboardController extends Controller
@@ -88,5 +89,11 @@ class DashboardController extends Controller
     public function blogPages()
     {
         return Inertia::render('Dashboard/BlogNews/Index', ['data' => MasterDataController::ambilSemuaData(new BlogNews()), 'message' => null]);
+    }
+
+    // sosmed
+    public function sosmedPages()
+    {
+        return Inertia::render('Dashboard/Master/Sosmed/Index', ['data' => MasterDataController::ambilSemuaData(new Sosmed()), 'message' => null]);
     }
 }

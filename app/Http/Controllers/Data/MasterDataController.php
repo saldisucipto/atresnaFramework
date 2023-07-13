@@ -12,6 +12,7 @@ use App\Models\Customer;
 use App\Models\ImagesProduk;
 use App\Models\Produk;
 use App\Models\Servis;
+use App\Models\Sosmed;
 use App\Models\StaticPages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -432,5 +433,55 @@ class MasterDataController extends Controller
         FileProcess::deleteFoto($post->image, 'blog-news');
         $post->delete();
         return redirect()->back()->with('message', 'Berhasil Hapus Data ' . $post->title);
+    }
+
+    // sosmed
+    public function createSosmed(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'link' => 'required|url',
+            'image' => 'required|file|mimes:png,jpg',
+        ]);
+
+        $data = $request->all();
+
+        $sosmed = new Sosmed();
+        $sosmed->title = $data['title'];
+        $sosmed->link = $data['link'];
+        $logo = new FileProcess($request->file('image'), Str::slug($data['title']), 'sosmed');
+        $sosmed->image = $logo->uploadFoto();
+        $sosmed->save();
+        return redirect()->back()->with('message', 'Berhasil Menyimpan Data ' . $data['title']);
+    }
+
+    public function updateSosmed(Request $request, $id = null)
+    {
+        $request->validate([
+            'title' => 'nullable|string',
+            'link' => 'nullable|url',
+            'image' => 'nullable|file|mimes:png,jpg',
+        ]);
+
+        $data = $request->all();
+
+        $sosmed = Sosmed::find($id);
+        $sosmed->title = $data['title'];
+        $sosmed->link = $data['link'];
+        if ($request->file('image')) {
+            FileProcess::deleteFoto($sosmed->image, 'sosmed');
+            $logo = new FileProcess($request->file('image'), Str::slug($data['title']), 'sosmed');
+            $sosmed->image = $logo->uploadFoto();
+        }
+        $sosmed->update();
+        return redirect()->back()->with('message', 'Berhasil Rubah Data ' . $sosmed->title);
+    }
+
+    public function deleteSosmed($id)
+    {
+        $sosmed = Sosmed::find($id);
+        FileProcess::deleteFoto($sosmed->image, 'sosmed');
+        $sosmed->delete();
+        return redirect()->back()->with('message', 'Berhasil Hapus Data ' . $sosmed->title);
     }
 }

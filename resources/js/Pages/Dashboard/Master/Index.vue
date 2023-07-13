@@ -16,6 +16,9 @@
             <card-master-data :linkTujuan="'customer'" :iconData="'fa-users'"
                 >Master Customer</card-master-data
             >
+            <card-master-data :linkTujuan="'sosmed'" :iconData="'fa-thumbs-up'"
+                >Master Sosial Media</card-master-data
+            >
             <!-- End Card Master Data -->
         </div>
         <!-- End Main Menu -->
