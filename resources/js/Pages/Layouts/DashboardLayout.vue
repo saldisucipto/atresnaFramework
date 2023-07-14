@@ -80,7 +80,8 @@
                     Settings
                 </span>
                 <hr />
-                <button
+                <a
+                    href="/dashboard/profile"
                     class="h-9 rounded-md bg-white hover:bg-slate-100 drop-shadow-sm flex flex-col justify-center font-semibold text-gray-700"
                 >
                     <div class="mx-3">
@@ -89,7 +90,7 @@
                             <span>Profile</span>
                         </div>
                     </div>
-                </button>
+                </a>
                 <button
                     @click="logout()"
                     class="h-9 rounded-md bg-white hover:bg-slate-100 drop-shadow-sm flex flex-col justify-center font-semibold text-gray-700"

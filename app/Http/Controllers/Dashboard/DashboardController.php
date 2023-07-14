@@ -16,6 +16,9 @@ use App\Models\Customer;
 use App\Models\Servis;
 use App\Models\Sosmed;
 use App\Models\StaticPages;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Return_;
 
 class DashboardController extends Controller
 {
@@ -95,5 +98,11 @@ class DashboardController extends Controller
     public function sosmedPages()
     {
         return Inertia::render('Dashboard/Master/Sosmed/Index', ['data' => MasterDataController::ambilSemuaData(new Sosmed()), 'message' => null]);
+    }
+
+    // profile
+    public function profilePages()
+    {
+        return Inertia::render('Dashboard/Profile/Index', ['data' => KonfigurasiDataController::ambilDataTunggal(null, [], Auth::user()), 'message' => null]);
     }
 }

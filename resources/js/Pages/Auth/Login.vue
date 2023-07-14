@@ -29,6 +29,38 @@
                                                 >
                                             </h1>
                                         </div>
+                                        <!-- Mesasge -->
+                                        <div
+                                            v-if="$page.props.flash.message"
+                                            class="mx-auto h-10 w-2/3 bg-red-400 rounded-lg flex flex-col justify-center"
+                                        >
+                                            <div
+                                                class="mx-4 flex justify-between py-2"
+                                            >
+                                                <div
+                                                    class="my-auto font-semibold text-white"
+                                                >
+                                                    {{
+                                                        $page.props.flash
+                                                            .message
+                                                    }}
+                                                </div>
+                                                <div class="flex gap-3">
+                                                    <button
+                                                        class="bg-white my-auto text-xs rounded-lg font-semibold py-2 px-3 text-red-400 hover:drop-shadow-sm"
+                                                        @click="
+                                                            $page.props.flash.message =
+                                                                null
+                                                        "
+                                                    >
+                                                        <i
+                                                            class="fas fa-times"
+                                                        ></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Message -->
                                         <div class="">
                                             <form
                                                 @submit.prevent="submitForm"

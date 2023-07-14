@@ -5,20 +5,25 @@ namespace App\Http\Controllers\Data;
 use App\Http\Controllers\Controller;
 use App\Http\Utils\FileProcess;
 use App\Models\CompanyInfo;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
 class KonfigurasiDataController extends Controller
 {
     // METHOD GET DATA
-    public static function ambilDataTunggal(Model $dataModel, array $relation = [])
+    public static function ambilDataTunggal(Model $dataModel = null, array $relation = [], Authenticatable $auth = null)
     {
-        if ($relation != []) {
-            $data = $dataModel::find(1)->with($relation);
+        if ($dataModel != null) {
+            if ($relation != []) {
+                $data = $dataModel::find(1)->with($relation);
+            } else {
+                $data = $dataModel::find(1);
+            }
+            return $data;
         } else {
-            $data = $dataModel::find(1);
+            return $auth;
         }
-        return $data;
     }
 
     public function updateCompanyInfo(Request $request)

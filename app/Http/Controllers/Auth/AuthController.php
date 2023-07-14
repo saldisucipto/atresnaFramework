@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Utils\FileProcess;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -26,9 +30,7 @@ class AuthController extends Controller
 
                 return redirect()->intended('dashboard')->with('message', 'Hallo Selamat Datang Kembali !');
             } else {
-                return back()->withErrors([
-                    'email' => 'Ada kesalahan pada email, atau email tidak terdaftar pada data kami.',
-                ]);
+                return back()->with('message', 'Anda Harus Login !');
             }
         }
     }
@@ -43,5 +45,30 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login')->with('message', 'Kamu sekarang sudah logout !');
+    }
+
+    // edit profile
+    public function updateProfile(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|exists:users,email',
+            'profile' => 'nullable|file|mimes:png,jpg',
+            'sandi' => 'nullable|confirmed|max:100',
+            'sandi_confirmation' => 'nullable '
+        ]);
+        $user = User::find($id);
+        $data = $request->all();
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['sandi']);
+        if ($request->file('profile')) {
+            FileProcess::deleteFoto($user->profile, 'profile');
+            $avatar = new FileProcess($request->file('profile'), Str::slug($data['name']), 'profile');
+            $user->profile = $avatar->uploadFoto();
+        }
+        $user->update();
+        return redirect()->back()->with('message', 'Berhasil Perbaharui Profile');
     }
 }

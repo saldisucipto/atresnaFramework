@@ -18,6 +18,8 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
+    Route::post('/user/{id}', [AuthController::class, 'updateProfile']);
+
 
     // Route View and Get Data
     Route::prefix('/master')->group(function () {
@@ -57,6 +59,9 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     });
 
     Route::get('blog-news', [DashboardController::class, 'blogPages']);
+
+    // profile
+    Route::get('profile', [DashboardController::class, 'profilePages']);
 
 
 
