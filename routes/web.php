@@ -9,6 +9,7 @@ use Inertia\Inertia;
 
 // auth route
 Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout']);
 
 
 // end auth route

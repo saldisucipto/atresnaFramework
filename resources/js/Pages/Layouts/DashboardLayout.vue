@@ -29,12 +29,27 @@
                         </div>
                         <div class="flex gap-2 text-black font-semibold">
                             <div
-                                class="h-10 w-10 rounded-full bg-gray-700"
-                            ></div>
-                            <span class="my-auto"
-                                >Saldi Sucipto
-                                <i class="fas fa-arrow-down my-auto"></i
-                            ></span>
+                                class="h-10 w-10 rounded-full bg-gray-700 text-center flex flex-col justify-center"
+                            >
+                                <i
+                                    v-if="$page.props.users.profile == ''"
+                                    class="fas fa-user text-gray-50"
+                                ></i>
+                            </div>
+                            <button @click="modalShow()">
+                                <span class="my-auto"
+                                    >{{ $page.props.users.name }}
+
+                                    <i
+                                        v-if="showModal"
+                                        class="fas fa-arrow-down my-auto"
+                                    ></i>
+                                    <i
+                                        v-else
+                                        class="fas fa-arrow-up my-auto"
+                                    ></i>
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -56,17 +71,66 @@
                 </div>
             </div>
         </div>
+        <div
+            v-if="showModal"
+            class="absolute w-52 bg-white drop-shadow-md top-20 overflow-hidden right-0 mx-3 rounded-md"
+        >
+            <div class="p-2 flex flex-col gap-4">
+                <span class="text-gray-700 font-semibold text-sm">
+                    Settings
+                </span>
+                <hr />
+                <button
+                    class="h-9 rounded-md bg-white hover:bg-slate-100 drop-shadow-sm flex flex-col justify-center font-semibold text-gray-700"
+                >
+                    <div class="mx-3">
+                        <div class="flex gap-2">
+                            <i class="fas fa-cogs my-auto"></i>
+                            <span>Profile</span>
+                        </div>
+                    </div>
+                </button>
+                <button
+                    @click="logout()"
+                    class="h-9 rounded-md bg-white hover:bg-slate-100 drop-shadow-sm flex flex-col justify-center font-semibold text-gray-700"
+                >
+                    <div class="mx-3">
+                        <div class="flex gap-2">
+                            <i class="fas fa-power-off my-auto"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import Navigasi from "../Widgets/Navigasi.vue";
+import { router } from "@inertiajs/vue3";
+
 export default {
     components: {
         Navigasi,
     },
+    data() {
+        return {
+            showModal: false,
+        };
+    },
     props: {
         chart: Object,
+    },
+    methods: {
+        modalShow() {
+            this.showModal = !this.showModal;
+        },
+        logout() {
+            router.post("/logout", {
+                preserveScroll: true,
+            });
+        },
     },
 };
 </script>
