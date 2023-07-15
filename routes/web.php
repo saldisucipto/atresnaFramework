@@ -47,6 +47,8 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         Route::prefix('/customer')->group(function () {
             Route::get('/', [DashboardController::class, 'masterCustomer']);
         });
+        // Sliders
+        Route::get('/slider', [DashboardController::class, 'sliderPages']);
     });
 
     Route::prefix('/konfigurasi')->group(function () {
@@ -113,12 +115,20 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             Route::delete('/delete-customer/{id}', [MasterDataController::class, 'deleteCustomerData']);
         });
         Route::prefix('/sosmed')->group(function () {
-            // Create Servis Data
+            // Create Sosmed Data
             Route::post('/create-sosmed', [MasterDataController::class, 'createSosmed']);
             Route::post('/update-sosmed/{id}', [MasterDataController::class, 'updateSosmed']);
             Route::delete('/delete-sosmed/{id}', [MasterDataController::class, 'deleteSosmed']);
         });
+
+        Route::prefix('/slider')->group(function () {
+            // Create Slider Data
+            Route::post('/create-slider', [MasterDataController::class, 'createSlider']);
+            Route::post('/update-slider/{id}', [MasterDataController::class, 'updateSlider']);
+            Route::delete('/delete-slider/{id}', [MasterDataController::class, 'deleteSlider']);
+        });
     });
+
 
     Route::prefix('/konfigurasi')->group(function () {
         Route::prefix('/company-info')->group(function () {

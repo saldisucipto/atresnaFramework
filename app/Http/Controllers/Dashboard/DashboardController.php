@@ -14,6 +14,7 @@ use App\Models\BrandProduk;
 use App\Models\CompanyInfo;
 use App\Models\Customer;
 use App\Models\Servis;
+use App\Models\Slider;
 use App\Models\Sosmed;
 use App\Models\StaticPages;
 use App\Models\User;
@@ -104,5 +105,11 @@ class DashboardController extends Controller
     public function profilePages()
     {
         return Inertia::render('Dashboard/Profile/Index', ['data' => KonfigurasiDataController::ambilDataTunggal(null, [], Auth::user()), 'message' => null]);
+    }
+
+    // slider
+    public function sliderPages()
+    {
+        return Inertia::render('Dashboard/Master/Slider/Index', ['data' => MasterDataController::ambilSemuaData(new Slider()), 'message' => null]);
     }
 }
