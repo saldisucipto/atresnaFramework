@@ -17,6 +17,7 @@ class CompanyInfoSeeder extends Seeder
         // make company info
         DB::table('company_info')->insert([
             'company_name' => 'Admin Atresna Creative Indonesia',
+            'company_slogan' => 'Total Solution For Your Digital Company',
             'company_address' => 'Jl. Maju No.1 Tidak Mundur, Kec. Sukses, Kab. Berhasil, 12201',
             'company_logo' => 'logo.png',
             'company_phone' => '08557456858',

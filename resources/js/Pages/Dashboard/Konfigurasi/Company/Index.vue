@@ -85,6 +85,24 @@
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-gray-700 font-semibold"
+                            >Company Slogn</label
+                        >
+                        <input
+                            class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
+                            type="text"
+                            name=""
+                            placeholder="Company Slogan"
+                            v-model="form.company_slogan"
+                        />
+                        <div
+                            class="text-xs px-1 text-red-600"
+                            v-if="errors.company_slogan"
+                        >
+                            {{ errors.company_slogan }}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-700 font-semibold"
                             >Company Email</label
                         >
 
@@ -235,6 +253,7 @@ export default {
             company_npwp: "",
             company_address: "",
             company_logo: "",
+            company_slogan: "",
         });
 
         const deleteForm = useForm({
@@ -263,6 +282,7 @@ export default {
         },
         loadData() {
             this.form.company_name = this.data.company_name;
+            this.form.company_slogan = this.data.company_slogan;
             this.form.company_phone = this.data.company_phone;
             this.form.company_phone1 = this.data.company_phone1;
             this.form.company_email = this.data.company_email;

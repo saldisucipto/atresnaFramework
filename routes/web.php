@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Data\KonfigurasiDataController;
 use App\Http\Controllers\Data\MasterDataController;
+use App\Http\Controllers\FrontPages\FrontPagesControlller;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -148,6 +150,5 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 });
 
 
-Route::get('/', function () {
-    return Inertia::render('Index');
-});
+// Front Pages Routes
+Route::get('/', [FrontPagesControlller::class, 'index']);
