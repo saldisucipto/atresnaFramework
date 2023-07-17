@@ -2,8 +2,7 @@
 
 @section('konten')
     <div class="w-full h-hero">
-        {{-- navigasi --}}
-        @livewire('navigasi', ['companyInfo' => $companyInfo])
-        {{-- end navigasi --}}
+        <h1>Hello World</h1>
+        @include('components.slider')
     </div>
 @endsection

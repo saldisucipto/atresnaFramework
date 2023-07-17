@@ -15,9 +15,8 @@
     <script src="https://kit.fontawesome.com/7a249e95a6.js" crossorigin="anonymous"></script>
     {{-- tailwind css --}}
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="/assets/css/atresnaStyle.css">
 
-    {{-- Livewire --}}
-    @livewireStyles
 </head>
 
 <body>
@@ -26,9 +25,7 @@
     </div>
 
 
-
-
-    @livewireScripts
+    <script src="/assets/js/atresnaScript.js"></script>
 </body>
 
 </html>
