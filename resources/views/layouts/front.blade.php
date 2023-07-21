@@ -21,6 +21,10 @@
 
 <body>
     <div class="w-full h-full m-0">
+        {{-- Navigasi Components --}}
+        @include('components.navigasi')
+
+        {{-- End Navigasi Components --}}
         @yield('konten')
     </div>
 

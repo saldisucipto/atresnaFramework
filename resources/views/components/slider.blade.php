@@ -1,9 +1,9 @@
-<div class="mx-auto ">
-    <div class="relative drop-shadow-lg">
+<div class="mx-auto  ">
+    <div class="relative">
         <ul id="slider" class="bg-gray-200">
             @foreach ($sliders as $item)
-                <li class="h-[50vh] @if (!$loop->first) hidden @endif">
-                    <img class="h-full w-full object-cover" src="{{ '/storage/img/sliders/' . $item->slider_image }}"
+                <li class="h-slider @if (!$loop->first) hidden @endif">
+                    <img class="h-full  w-full object-cover" src="{{ '/storage/img/sliders/' . $item->slider_image }}"
                         alt="" />
                 </li>
             @endforeach

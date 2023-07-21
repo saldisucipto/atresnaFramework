@@ -18,10 +18,11 @@ module.exports = {
                 "bg-primary-mtma": "#283681",
                 "primary-color-mtma": "#2185C5",
                 "secondary-color-mtma": "#00BA9B",
+                "secondary1-color-mtma": "#0F8D9A",
             },
             height: {
                 hero: "768px",
-                slider: "350px",
+                slider: "440px",
                 banner: "669px",
                 "card-artikel": "400px",
             },
