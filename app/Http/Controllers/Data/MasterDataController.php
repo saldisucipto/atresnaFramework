@@ -10,6 +10,7 @@ use App\Models\BlogNews;
 use App\Models\BrandProduk;
 use App\Models\Customer;
 use App\Models\ImagesProduk;
+use App\Models\PanelUtama;
 use App\Models\Produk;
 use App\Models\Servis;
 use App\Models\Slider;
@@ -533,5 +534,53 @@ class MasterDataController extends Controller
         FileProcess::deleteFoto($slider->slider_image, 'sliders');
         $slider->delete();
         return redirect()->back()->with('message', 'Berhasil Delete Data Slider');
+    }
+
+    public function createPanelUtama(Request $request)
+    {
+
+        $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'required',
+            'image' => 'required|file|mimes:png,jpg',
+        ]);
+        $data = $request->all();
+        $panelUtama = new PanelUtama();
+
+        $panelUtama->title = $data['title'];
+        $panelUtama->description = $data['description'];
+        $image_panel = new FileProcess($request->file('image'), Str::slug($data['title']), 'panel');
+        $panelUtama->image = $image_panel->uploadFoto();
+        $panelUtama->save();
+        return redirect()->back()->with('message', 'Berhasil Mmebuat Data Panel');
+    }
+
+    public function updatePanelUtama(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'required',
+            'image' => 'nullable|file|mimes:png,jpg',
+        ]);
+        $data = $request->all();
+        $panelUtama = PanelUtama::find($id);
+
+        $panelUtama->title = $data['title'];
+        $panelUtama->description = $data['description'];
+        if ($request->file('image')) {
+            FileProcess::deleteFoto($panelUtama->image, 'panel');
+            $image_panel = new FileProcess($request->file('image'), Str::slug($data['title']), 'panel');
+            $panelUtama->image = $image_panel->uploadFoto();
+        }
+        $panelUtama->update();
+        return redirect()->back()->with('message', 'Berhasil update Data Panel');
+    }
+
+    public function deletePanel($id)
+    {
+        $panelUtama = PanelUtama::find($id);
+        FileProcess::deleteFoto($panelUtama->image, 'panel');
+        $panelUtama->delete();
+        return redirect()->back()->with('message', 'Berhasil Delete Data Panel');
     }
 }

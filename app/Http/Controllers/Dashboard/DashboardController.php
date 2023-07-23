@@ -13,6 +13,7 @@ use App\Models\KategoriProduk;
 use App\Models\BrandProduk;
 use App\Models\CompanyInfo;
 use App\Models\Customer;
+use App\Models\PanelUtama;
 use App\Models\Servis;
 use App\Models\Slider;
 use App\Models\Sosmed;
@@ -111,5 +112,11 @@ class DashboardController extends Controller
     public function sliderPages()
     {
         return Inertia::render('Dashboard/Master/Slider/Index', ['data' => MasterDataController::ambilSemuaData(new Slider()), 'message' => null]);
+    }
+
+    // panel utama
+    public function panelUtama()
+    {
+        return Inertia::render('Dashboard/Master/PanelUtama/Index', ['data' => MasterDataController::ambilSemuaData(new PanelUtama()), 'message' => null]);
     }
 }

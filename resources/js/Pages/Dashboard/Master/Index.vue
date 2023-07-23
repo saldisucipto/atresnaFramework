@@ -22,6 +22,11 @@
             <card-master-data :linkTujuan="'slider'" :iconData="'fa-images'"
                 >Master Slider</card-master-data
             >
+            <card-master-data
+                :linkTujuan="'panel-utama'"
+                :iconData="'fa-columns'"
+                >Master Panel</card-master-data
+            >
             <!-- End Card Master Data -->
         </div>
         <!-- End Main Menu -->

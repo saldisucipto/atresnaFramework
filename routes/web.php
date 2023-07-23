@@ -51,6 +51,9 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
         });
         // Sliders
         Route::get('/slider', [DashboardController::class, 'sliderPages']);
+
+        // Panel Utama
+        Route::get('/panel-utama', [DashboardController::class, 'panelUtama']);
     });
 
     Route::prefix('/konfigurasi')->group(function () {
@@ -128,6 +131,12 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             Route::post('/create-slider', [MasterDataController::class, 'createSlider']);
             Route::post('/update-slider/{id}', [MasterDataController::class, 'updateSlider']);
             Route::delete('/delete-slider/{id}', [MasterDataController::class, 'deleteSlider']);
+        });
+
+        Route::prefix('/panel-utama')->group(function () {
+            Route::post('/create-panel', [MasterDataController::class, 'createPanelUtama']);
+            Route::post('/update-panel/{id}', [MasterDataController::class, 'updatePanelUtama']);
+            Route::delete('/delete-panel/{id}', [MasterDataController::class, 'deletePanel']);
         });
     });
 

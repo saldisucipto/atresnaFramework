@@ -22,7 +22,7 @@ module.exports = {
             },
             height: {
                 hero: "768px",
-                slider: "440px",
+                slider: "460px",
                 banner: "669px",
                 "card-artikel": "400px",
             },
