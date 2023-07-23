@@ -16,7 +16,7 @@
     {{-- tailwind css --}}
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="/assets/css/atresnaStyle.css">
-
+    @livewireStyles
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         @yield('konten')
     </div>
 
-
+    @livewireScripts
     <script src="/assets/js/atresnaScript.js"></script>
 </body>
 
