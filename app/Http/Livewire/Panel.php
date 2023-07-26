@@ -12,7 +12,7 @@ class Panel extends Component
 
     public function mount()
     {
-        $this->dataPanel = PanelUtama::get();
+        $this->dataPanel = PanelUtama::get()->take(5);
     }
 
 

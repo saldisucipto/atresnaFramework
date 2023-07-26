@@ -34,6 +34,10 @@ module.exports = {
                 // => @media (min-width: 640px) { ... }
                 tab: { max: "820px" },
             },
+            borderRadius: {
+                panel: "150px",
+                panel1: "170px",
+            },
         },
     },
     plugins: [],

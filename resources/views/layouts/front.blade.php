@@ -20,7 +20,7 @@
     @livewireStyles
 </head>
 
-<body>
+<body class="text-gray-800">
 
 
     <div class="w-full h-full m-0">
