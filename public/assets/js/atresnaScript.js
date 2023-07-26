@@ -15,9 +15,6 @@ function next() {
 }
 
 function prev() {
-    console.log("kurentSlide =" + currentSlide);
-    console.log("totalSlide =" + totalSlide);
-
     if (currentSlide <= 1) {
         currentSlide = totalSlide;
         showSlide();
@@ -28,7 +25,6 @@ function prev() {
 }
 
 function showSlide() {
-    console.log("show slide function");
     slides = document.getElementById("slider").getElementsByTagName("li");
     for (let index = 0; index < totalSlide; index++) {
         const element = slides[index];
