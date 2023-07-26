@@ -19,6 +19,9 @@
             <card-master-data :linkTujuan="'sosmed'" :iconData="'fa-thumbs-up'"
                 >Master Sosial Media</card-master-data
             >
+            <card-master-data :linkTujuan="'slider'" :iconData="'fa-images'"
+                >Master Slider</card-master-data
+            >
             <!-- End Card Master Data -->
         </div>
         <!-- End Main Menu -->

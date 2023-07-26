@@ -53,16 +53,18 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|exists:users,email',
-            'profile' => 'nullable|file|mimes:png,jpg',
             'sandi' => 'nullable|confirmed|max:100',
             'sandi_confirmation' => 'nullable '
         ]);
         $user = User::find($id);
         $data = $request->all();
+        // dd($data);
 
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->password = Hash::make($data['sandi']);
+        if ($data['sandi'] != null) {
+            $user->password = Hash::make($data['sandi']);
+        }
         if ($request->file('profile')) {
             FileProcess::deleteFoto($user->profile, 'profile');
             $avatar = new FileProcess($request->file('profile'), Str::slug($data['name']), 'profile');

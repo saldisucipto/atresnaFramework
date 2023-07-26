@@ -12,6 +12,7 @@ use App\Models\Customer;
 use App\Models\ImagesProduk;
 use App\Models\Produk;
 use App\Models\Servis;
+use App\Models\Slider;
 use App\Models\Sosmed;
 use App\Models\StaticPages;
 use Illuminate\Database\Eloquent\Model;
@@ -483,5 +484,54 @@ class MasterDataController extends Controller
         FileProcess::deleteFoto($sosmed->image, 'sosmed');
         $sosmed->delete();
         return redirect()->back()->with('message', 'Berhasil Hapus Data ' . $sosmed->title);
+    }
+
+    // slider
+    public function createSlider(Request $request)
+    {
+
+        $request->validate([
+            'slider_title' => 'nullable|string|max:100',
+            'slider_desc' => 'nullable|string|max:255',
+            'slider_image' => 'required|file|mimes:png,jpg',
+        ]);
+        $data = $request->all();
+        // dd($data);
+        $slider = new Slider();
+        $slider->slider_title = $data['slider_title'];
+        $slider->slider_desc = $data['slider_desc'];
+        $image = new FileProcess($request->file('slider_image'), 'sliders', 'sliders');
+        $slider->slider_image = $image->uploadFoto();
+        $slider->save();
+        return redirect()->back()->with('message', 'Berhasil Buat Data Slider');
+    }
+
+    public function updateSlider(Request $request, $id = null)
+    {
+        $request->validate([
+            'slider_title' => 'nullable|string|max:100',
+            'slider_desc' => 'nullable|string|max:255',
+            // 'slider_image' => 'required|file|mimes:png,jpg',
+        ]);
+        $data = $request->all();
+        // dd($data);
+        $slider = Slider::find($id);
+        $slider->slider_title = $data['slider_title'];
+        $slider->slider_desc = $data['slider_desc'];
+        if ($request->file('slider_image')) {
+            FileProcess::deleteFoto($slider->slider_image, 'sliders');
+            $image = new FileProcess($request->file('slider_image'), 'sliders', 'sliders');
+            $slider->slider_image = $image->uploadFoto();
+        }
+        $slider->update();
+        return redirect()->back()->with('message', 'Berhasil Update Data Slider');
+    }
+
+    public function deleteSlider($id)
+    {
+        $slider = Slider::find($id);
+        FileProcess::deleteFoto($slider->slider_image, 'sliders');
+        $slider->delete();
+        return redirect()->back()->with('message', 'Berhasil Delete Data Slider');
     }
 }

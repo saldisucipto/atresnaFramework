@@ -29,13 +29,24 @@
                         </div>
                         <div class="flex gap-2 text-black font-semibold">
                             <div
+                                v-if="$page.props.users.profile == ''"
                                 class="h-10 w-10 rounded-full bg-gray-700 text-center flex flex-col justify-center"
                             >
-                                <i
-                                    v-if="$page.props.users.profile == ''"
-                                    class="fas fa-user text-gray-50"
-                                ></i>
+                                <i class="fas fa-user text-gray-50"></i>
                             </div>
+                            <div
+                                v-else
+                                class="h-10 w-10 rounded-full text-center flex flex-col justify-center drop-shadow-md"
+                            >
+                                <img
+                                    :src="
+                                        '/storage/img/profile/' +
+                                        $page.props.users.profile
+                                    "
+                                    alt=""
+                                />
+                            </div>
+
                             <button @click="modalShow()">
                                 <span class="my-auto"
                                     >{{ $page.props.users.name }}
