@@ -28,8 +28,9 @@
         @yield('konten')
     </div>
 
-    @livewireScripts
+
     <script src="/assets/js/atresnaScript.js"></script>
+    @livewireScripts
 </body>
 
 </html>

@@ -5,7 +5,7 @@
                 <div>
                     <a href="/" class="flex justify-start">
                         <img class="max-h-24 py-5 px-2" src="{{ '/storage/img/company/' . $companyInfo->company_logo }}"
-                            alt="    {{ $companyInfo->company_name }} " />
+                            alt="{{ $companyInfo->company_name }} " />
                         <h1 class="my-auto text-primary-color-mtma font-bold text-1xl">
                             {{ $companyInfo->company_name }}
                         </h1>

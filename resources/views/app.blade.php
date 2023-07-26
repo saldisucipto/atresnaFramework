@@ -8,10 +8,8 @@
     <script src="https://kit.fontawesome.com/7a249e95a6.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
 
-
     {{-- inertia js --}}
     @vite('resources/js/app.js')
-
     {{-- tailwind css --}}
     @vite('resources/css/app.css')
     @inertiaHead

@@ -9,6 +9,7 @@
         {{-- Components --}}
         <livewire:panel />
 
+
         {{-- END Componets --}}
     </div>
 @endsection

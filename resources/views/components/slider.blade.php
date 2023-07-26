@@ -3,8 +3,8 @@
         <ul id="slider" class="bg-gray-200">
             @foreach ($sliders as $item)
                 <li class="h-slider @if (!$loop->first) hidden @endif">
-                    <img class=" h-slider w-full object-cover absolute " style="z-index: 1;"
-                        src="{{ '/storage/img/sliders/' . $item->slider_image }}" alt="{{ $item->slider_title }}" />
+                    <img class=" h-slider w-full object-cover" src="{{ '/storage/img/sliders/' . $item->slider_image }}"
+                        alt="{{ $item->slider_title }}" />
                 </li>
             @endforeach
         </ul>

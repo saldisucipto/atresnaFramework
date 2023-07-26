@@ -1,6 +1,7 @@
 <div>
 
     <div class=" text-white flex justify-center gap-16  ">
+
         @foreach ($dataPanel as $item)
             <div class="flex flex-col gap-1">
                 <div class="mx-auto h-36 w-36 bg-slate-400 rounded-full border-4 border-secondary1-color-mtma">
