@@ -7,6 +7,7 @@ use App\Http\Utils\Meta;
 use App\Models\CompanyInfo;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use App\Models\Produk;
 
 class FrontPagesControlller extends Controller
 {

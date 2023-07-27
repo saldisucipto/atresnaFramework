@@ -14,8 +14,15 @@
 
             {{-- introduction --}}
             <livewire:intro-section />
-
             {{-- End Introduction --}}
+
+            {{-- Produk Showcahse --}}
+            <livewire:produk-showcase />
+            {{-- End Produk Showcase --}}
+
+            {{-- Blog News Showcahse --}}
+            <livewire:blog-news-showcase />
+            {{-- End Blog News Showcase --}}
         </div>
 
     </div>
