@@ -6,13 +6,17 @@
         @include('components.slider')
         {{-- End Slider Components --}}
 
-        {{-- Components Panel Components --}}
-        <livewire:panel />
-        {{-- END Componets --}}
 
-        {{-- introduction --}}
-        <livewire:intro-section />
+        <div class="flex flex-col gap-20  mt-16 mb-20 ">
+            {{-- Components Panel Components --}}
+            <livewire:panel />
+            {{-- END Componets --}}
 
-        {{-- End Introduction --}}
+            {{-- introduction --}}
+            <livewire:intro-section />
+
+            {{-- End Introduction --}}
+        </div>
+
     </div>
 @endsection

@@ -36,7 +36,7 @@ class Meta
         $html .= '<meta property="og:description" content="' . self::$description . '"/>' . PHP_EOL . '    ';
         $html .= '<meta property="og:url" content="' . url()->full() . '"/>' . PHP_EOL . '    ';
         $html .= '<meta property="og:image" content="' . url()->full()  . self::$image . '"/>' . PHP_EOL . '    ';
-        $html .= '<meta property="og:type" content="website"' . PHP_EOL . '    ';
+        $html .= '<meta property="og:type" content="website"/>' . PHP_EOL . '    ';
         return $html;
     }
 }
