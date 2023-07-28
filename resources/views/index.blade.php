@@ -6,7 +6,6 @@
         @include('components.slider')
         {{-- End Slider Components --}}
 
-
         <div class="flex flex-col gap-20  mt-16 mb-20 ">
             {{-- Components Panel Components --}}
             <livewire:panel />
@@ -28,6 +27,6 @@
             <livewire:customer-showcase />
             {{-- End Customer Session Showcase --}}
         </div>
-
+        @include('components.footer')
     </div>
 @endsection
