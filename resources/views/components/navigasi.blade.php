@@ -17,7 +17,13 @@
                         <a href="/produk">
                             <div
                                 class="border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
-                                <h1 class="px-3">Produk</h1>
+                                <h1 class="px-3">Produk & Servis</h1>
+                            </div>
+                        </a>
+                        <a href="/blogs">
+                            <div
+                                class="border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
+                                <h1 class="px-3">Blogs</h1>
                             </div>
                         </a>
                         <a href="tentang-kami">

@@ -37,6 +37,7 @@ module.exports = {
             borderRadius: {
                 panel: "150px",
                 panel1: "170px",
+                custpanel: "50px",
             },
         },
     },

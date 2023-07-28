@@ -23,6 +23,10 @@
             {{-- Blog News Showcahse --}}
             <livewire:blog-news-showcase />
             {{-- End Blog News Showcase --}}
+
+            {{-- Customer Session Showcahse --}}
+            <livewire:customer-showcase />
+            {{-- End Customer Session Showcase --}}
         </div>
 
     </div>
