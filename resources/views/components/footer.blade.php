@@ -1,9 +1,20 @@
 <div class=" h-96 bg-secondary1-color-mtma w-full ">
     <div class="max-w-screen-lg mx-auto flex flex-col justify-start  h-full">
-        <div class="my-7">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi accusantium accusamus fugit voluptates?
-            Expedita,
-            aliquam quae labore earum laudantium at nam esse totam! Maxime quas veniam iure, tempore animi eum!
+        <div class="my-7 flex">
+            <div class="flex-1 flex flex-col flex-2 gap-2 text-gray-200">
+                <h3 class="font-semibold text-xl">{{ $companyInfo->company_name }}</h3>
+                <div class="flex flex-col gap-1">
+                    <a href="#">Home</a>
+                    <a href="#">Produk & Servis</a>
+                    <a href="#">Tentang</a>
+                    <a href="#">Hubungi Kami</a>
+                    <a href="#">Blogs & News</a>
+                </div>
+            </div>
+            {{-- Customer Session Showcahse --}}
+            <livewire:sosial-media-showcase />
+            {{-- End Customer Session Showcase --}}
+            <div class="flex-1"></div>
         </div>
     </div>
 </div>
