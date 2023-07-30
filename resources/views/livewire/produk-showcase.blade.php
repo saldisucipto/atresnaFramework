@@ -6,9 +6,9 @@
 
         <div class="grid grid-flow-row grid-cols-3 gap-5">
             @foreach ($produk as $item)
-                <div class="overflow-hidden  h-96 bg-slate-100 flex flex-col  w-56">
+                <div class="overflow-hidden  h-96 bg-slate-100 flex flex-col  w-56 rounded-lg drop-shadow-lg">
                     <div class=" h-48 w-full overflow-hidden">
-                        <img class="w-full h-48 object-cover"
+                        <img class="w-full h-48 object-cover rounded-tl-lg rounded-tr-lg "
                             src="{{ '/storage/img/produk/' . $item['imagesProduk'][0]->gambar_produk }}" alt="">
                     </div>
                     <div class="m-3 flex flex-col gap-2 text-gray-700 text-sm">

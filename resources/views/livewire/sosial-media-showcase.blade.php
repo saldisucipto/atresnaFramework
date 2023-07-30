@@ -1,10 +1,13 @@
-<div class="flex-1 flex flex-col flex-2 gap-2 text-gray-200">
+<div class="flex-1 flex flex-col flex-2 gap-4 text-gray-200">
     <h3 class="font-semibold text-xl">Terhubung Dengan Kami</h3>
-    <div class="flex flex-col gap-1">
-        <a href="#">Home</a>
-        <a href="#">Produk & Servis</a>
-        <a href="#">Tentang</a>
-        <a href="#">Hubungi Kami</a>
-        <a href="#">Blogs & News</a>
+    <div class="flex">
+        @foreach ($sosmed as $item)
+            <div class="h-12 w-12 rounded-full">
+                <a target="_blank" href="{{ $item->link }}">
+                    <img class=" drop-shadow-lg " src="{{ '/storage/img/sosmed/' . $item->image }}"
+                        alt="{{ $item->title }}">
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>

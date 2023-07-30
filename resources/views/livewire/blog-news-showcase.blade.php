@@ -5,12 +5,12 @@
         </div>
         <div class="grid grid-flow-row grid-cols-2 gap-5">
             @foreach ($blogs as $item)
-                <div class="flex-1 flex flex-col">
+                <div class="flex-1 flex flex-col rounded-lg bg-slate-50 drop-shadow-lg">
                     <div class="flex-1 max-h-48 ">
-                        <img class="h-full w-full object-cover" src="{{ '/storage/img/blog-news/' . $item->image }}"
-                            alt="{{ $item->title }}">
+                        <img class="h-full w-full object-cover rounded-tl-lg rounded-tr-lg"
+                            src="{{ '/storage/img/blog-news/' . $item->image }}" alt="{{ $item->title }}">
                     </div>
-                    <div class="flex-1 my-2 flex flex-col gap-2">
+                    <div class="flex-1 my-2 flex flex-col gap-2 m-3">
                         <div class="flex flex-col gap-1">
                             <a class=" hover:font-semibold  font-italic text-primary-color-mtma "
                                 href="{{ '/blogs/' . $item->slug }}"> {{ $item->title }}</a>

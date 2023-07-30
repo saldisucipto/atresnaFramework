@@ -1,8 +1,12 @@
 <div class="w-full bg-primary-color-mtma h-auto ">
     <div class="flex flex-col justify-center gap-5 h-full my-10">
-        <div class="text-center font-semibold text-2xl text-slate-100">
-            <h2>Our Customers</h2>
+        <div class="flex flex-col text-slate-100">
+            <div class="text-center font-semibold text-2xl ">
+                <h2>Our Customers</h2>
+            </div>
+            <span class="text-center text-xs font-semibold"><i>Our Amazing Customers</i></span>
         </div>
+
         <div class="mx-auto max-w-screen-lg grid grid-flow-row grid-cols-4  gap-3">
             @foreach ($customers as $customer)
                 <div
