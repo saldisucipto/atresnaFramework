@@ -30,7 +30,7 @@
 
         {{-- End Navigasi Components --}}
         @yield('konten')
-
+        @include('components.footer')
     </div>
 
 

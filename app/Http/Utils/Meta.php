@@ -11,6 +11,9 @@ class Meta
     protected static string $description;
     protected static string $image;
 
+
+    public static string $keyWord = 'Pengolahan Air Bersih dan Air Limbah';
+
     public function __construct(string $title, string $description, string $image)
     {
         static::$title = $title;

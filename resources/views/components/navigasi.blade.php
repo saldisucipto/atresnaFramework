@@ -11,12 +11,11 @@
                         </h1>
                     </a>
                 </div>
-
                 <div class="flex flex-col justify-center">
                     <div class="flex justify-between gap-4 text-md">
                         <a href="/produk">
                             <div
-                                class="border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
+                                class=" @if (Route::current()->getName() == 'produk') bg-primary-color-mtma text-white @endif border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
                                 <h1 class="px-3">Produk & Servis</h1>
                             </div>
                         </a>

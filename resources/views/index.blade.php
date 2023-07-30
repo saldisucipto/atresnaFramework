@@ -27,6 +27,5 @@
             <livewire:customer-showcase />
             {{-- End Customer Session Showcase --}}
         </div>
-        @include('components.footer')
     </div>
 @endsection
