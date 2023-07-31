@@ -34,6 +34,7 @@ class KonfigurasiDataController extends Controller
         $companyInfo->company_name = $data['company_name'];
         $companyInfo->company_phone = $data['company_phone'];
         $companyInfo->company_phone1 = $data['company_phone1'];
+        $companyInfo->company_slogan = $data['company_slogan'];
         $companyInfo->company_email = $data['company_email'];
         $companyInfo->company_npwp = $data['company_npwp'];
         $companyInfo->company_address = $data['company_address'];
