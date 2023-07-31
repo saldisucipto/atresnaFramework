@@ -13,7 +13,7 @@ class ProdukBannerPages extends Component
 
     public function mount()
     {
-        $this->produkPages = DB::table('static_pages')->where('id', 3)->get();
+        $this->produkPages = DB::table('static_pages')->where('id', 2)->get();
     }
 
     public function render()
