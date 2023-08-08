@@ -11,22 +11,6 @@
             @include('components.grid-produk-head')
             {{-- End Produk Head --}}
 
-
-            {{-- introduction --}}
-            <livewire:intro-section />
-            {{-- End Introduction --}}
-
-            {{-- Produk Showcahse --}}
-            <livewire:produk-showcase />
-            {{-- End Produk Showcase --}}
-
-            {{-- Blog News Showcahse --}}
-            <livewire:blog-news-showcase />
-            {{-- End Blog News Showcase --}}
-
-            {{-- Customer Session Showcahse --}}
-            <livewire:customer-showcase />
-            {{-- End Customer Session Showcase --}}
         </div>
     </div>
 @endsection

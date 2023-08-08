@@ -16,13 +16,19 @@
                         <a href="/produk">
                             <div
                                 class=" @if (Route::current()->getName() == 'produk') bg-primary-color-mtma text-white @endif border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
-                                <h1 class="px-3">Produk & Servis</h1>
+                                <h1 class="px-3">Produk</h1>
                             </div>
                         </a>
-                        <a href="/blogs">
+                        <a href="/servis">
+                            <div
+                                class=" @if (Route::current()->getName() == 'servis') bg-primary-color-mtma text-white @endif border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
+                                <h1 class="px-3">Servis</h1>
+                            </div>
+                        </a>
+                        <a href="/news">
                             <div
                                 class="border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
-                                <h1 class="px-3">Blogs</h1>
+                                <h1 class="px-3">News</h1>
                             </div>
                         </a>
                         <a href="tentang-kami">

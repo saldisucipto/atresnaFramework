@@ -12,10 +12,4 @@
             </div>
         </div>
     </div>
-    <div class="text-sm max-w-screen-lg mx-auto  w-full text-primary-color-mtma">
-        <a class="  " href="/"> <i class="fas fa-home font-thin "></i> </a> <i
-            class="fas fa-arrow-right "></i> <a class="hover:font-semibold" href="/produk">Produk &
-            Servis</a>
-    </div>
-    <hr>
 </div>
