@@ -161,4 +161,12 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
 // Front Pages Routes
 Route::get('/', [FrontPagesControlller::class, 'index'])->name('index');
-Route::get('/produk', [FrontPagesControlller::class, 'produkPages'])->name('produk');
+
+
+// Produk Route
+Route::prefix('/produk')->group(function () {
+    Route::get('/', [FrontPagesControlller::class, 'produkPages'])->name('produk');
+    Route::get('/{slugs}', function () {
+        return 'detail produk';
+    });
+});
