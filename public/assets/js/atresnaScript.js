@@ -37,3 +37,15 @@ function showSlide() {
     }
 }
 // End Slider Function
+
+function changeImage(value, id) {
+    var image = (document.getElementById("produkMainImage").src = value);
+    var panel = document.getElementById("imagePanel" + id).src;
+    if (image == value) {
+        document
+            .getElementById("imagePanel" + id)
+            .classList.add("border-2", "border-primary-color-mtma");
+    }
+    console.log(panel);
+    console.log(value);
+}

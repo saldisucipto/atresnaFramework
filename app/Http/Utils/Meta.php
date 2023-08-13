@@ -38,7 +38,7 @@ class Meta
         $html .= '<meta property="og:title" content="' . self::$title . '"/>' . PHP_EOL . '    ';
         $html .= '<meta property="og:description" content="' . self::$description . '"/>' . PHP_EOL . '    ';
         $html .= '<meta property="og:url" content="' . url()->full() . '"/>' . PHP_EOL . '    ';
-        $html .= '<meta property="og:image" content="' . url()->full()  . self::$image . '"/>' . PHP_EOL . '    ';
+        $html .= '<meta property="og:image" content="' . env('APP_URL')  . self::$image . '"/>' . PHP_EOL . '    ';
         $html .= '<link rel="canonical" href="' . url()->full() . '">' . PHP_EOL . '    ';
         $html .= '<meta property="og:type" content="website"/>' . PHP_EOL . '    ';
         return $html;

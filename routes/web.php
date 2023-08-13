@@ -166,7 +166,5 @@ Route::get('/', [FrontPagesControlller::class, 'index'])->name('index');
 // Produk Route
 Route::prefix('/produk')->group(function () {
     Route::get('/', [FrontPagesControlller::class, 'produkPages'])->name('produk');
-    Route::get('/{slugs}', function () {
-        return 'detail produk';
-    });
+    Route::get('/{slugs}', [FrontPagesControlller::class, 'produkDetailsPages']);
 });
