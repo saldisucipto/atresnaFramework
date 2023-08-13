@@ -12,7 +12,8 @@
     @if ($companyInfo->company_logo == 'logo.png')
         <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
     @else
-        <link rel="shortcut icon" href="{{ '/storage/img/company/' . $companyInfo->company_logo }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ env('APP_URL') . '/storage/img/company/' . $companyInfo->company_logo }}"
+            type="image/x-icon">
     @endif
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="/assets/css/atresnaStyle.css">
