@@ -173,3 +173,19 @@ Route::prefix('/produk')->group(function () {
     Route::get('/kategori/{slugs}', [FrontPagesControlller::class, 'produkByKategori']);
     Route::get('/brand/{slugs}', [FrontPagesControlller::class, 'produkByBrand']);
 });
+
+// Servis Route
+Route::prefix('/servis')->group(function () {
+    Route::get('/', [FrontPagesControlller::class, 'servisPages'])->name('servis');
+    Route::get('/{slugs}', [FrontPagesControlller::class, 'servisDetailPages']);
+});
+
+// News and Blog
+Route::prefix('/news')->group(function () {
+    Route::get('/', [FrontPagesControlller::class, 'newsPages'])->name('news');
+    Route::get('/{slugs}', [FrontPagesControlller::class, 'newssDetailPages']);
+});
+
+
+// Tentang Kami
+Route::get('/tentang-kami', [FrontPagesControlller::class, 'tentangKamiPages'])->name('about');

@@ -27,22 +27,17 @@
                         </a>
                         <a href="/news">
                             <div
-                                class="border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
+                                class="@if (Route::current()->getName() == 'news') bg-primary-color-mtma text-white @endif border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
                                 <h1 class="px-3">News</h1>
                             </div>
                         </a>
                         <a href="tentang-kami">
                             <div
-                                class="border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
+                                class="@if (Route::current()->getName() == 'about') bg-primary-color-mtma text-white @endif border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
                                 <h1 class="px-3">Tentang Kami</h1>
                             </div>
                         </a>
-                        <a href="hubungi-kami">
-                            <div
-                                class="border-primary-color-mtma border-r-2 font-semibold  h-8 flex flex-col justify-center hover:text-white hover:bg-primary-color-mtma">
-                                <h1 class="px-3">Hubungi Kami</h1>
-                            </div>
-                        </a>
+
                     </div>
                 </div>
             </div>

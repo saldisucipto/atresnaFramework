@@ -4,7 +4,6 @@
     <div class="w-full ">
         <div class="flex flex-col gap-20  mt-16 mb-20 max-w-screen-lg  mx-auto ">
             {{-- Katgeori --}}
-
             <div class="flex flex-col gap-5">
                 <h1 class=" font-semibold text-2xl text-primary-color-mtma ">Produk By Kategori</h1>
                 <div class="grid grid-flow-col grid-cols-12 gap-8   ">

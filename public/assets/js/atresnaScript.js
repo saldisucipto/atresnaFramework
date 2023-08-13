@@ -1,10 +1,8 @@
 // Slider Function
 let slideElement = document.getElementById("slider");
 
-if (slideElement) {
-    let currentSlide = 1;
-    let totalSlide = slideElement.childElementCount;
-}
+let currentSlide = 1;
+let totalSlide = slideElement.childElementCount;
 
 function next() {
     if (currentSlide < totalSlide) {
