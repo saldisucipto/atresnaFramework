@@ -165,6 +165,11 @@ Route::get('/', [FrontPagesControlller::class, 'index'])->name('index');
 
 // Produk Route
 Route::prefix('/produk')->group(function () {
+    // Produk Show
     Route::get('/', [FrontPagesControlller::class, 'produkPages'])->name('produk');
     Route::get('/{slugs}', [FrontPagesControlller::class, 'produkDetailsPages']);
+
+    // Produk By Kategori
+    Route::get('/kategori/{slugs}', [FrontPagesControlller::class, 'produkByKategori']);
+    Route::get('/brand/{slugs}', [FrontPagesControlller::class, 'produkByBrand']);
 });

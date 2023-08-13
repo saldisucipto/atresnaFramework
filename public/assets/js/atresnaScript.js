@@ -1,8 +1,10 @@
 // Slider Function
-let currentSlide = 1;
-
 let slideElement = document.getElementById("slider");
-let totalSlide = slideElement.childElementCount;
+
+if (slideElement) {
+    let currentSlide = 1;
+    let totalSlide = slideElement.childElementCount;
+}
 
 function next() {
     if (currentSlide < totalSlide) {
@@ -36,16 +38,15 @@ function showSlide() {
         }
     }
 }
-// End Slider Function
 
+// End Slider Function
 function changeImage(value, id) {
     var image = (document.getElementById("produkMainImage").src = value);
-    var panel = document.getElementById("imagePanel" + id).src;
+    var panel = document.getElementById("imagePanel" + id);
+
     if (image == value) {
         document
             .getElementById("imagePanel" + id)
             .classList.add("border-2", "border-primary-color-mtma");
     }
-    console.log(panel);
-    console.log(value);
 }

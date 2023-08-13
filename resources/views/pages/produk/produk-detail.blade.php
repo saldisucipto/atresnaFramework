@@ -13,7 +13,7 @@
                         <div class=" h-24 w-full flex gap-2 overflow-x-auto">
                             @foreach ($produk->imagesProduk as $foto)
                                 <img id="imagePanel{{ $foto->id }}"
-                                    class="h-full w-full object-cover rounded-md cursor-pointer"
+                                    class="h-full w-full object-cover rounded-md cursor-pointer panel"
                                     onclick="changeImage('{{ '/storage/img/produk/' . $foto->gambar_produk }}', '{{ $foto->id }}')"
                                     src="{{ '/storage/img/produk/' . $foto->gambar_produk }}" alt="">
                             @endforeach
