@@ -46,7 +46,7 @@
                     >
                         <img
                             class="rounded-md max-w-sm mx-auto max-h-52"
-                            src="/assets/img/logo.png"
+                            :src="'/assets/img/logo.png'"
                         />
                     </div>
                     <div v-else>
