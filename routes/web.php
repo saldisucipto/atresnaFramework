@@ -8,7 +8,7 @@ use App\Http\Controllers\FrontPages\FrontPagesControlller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use Illuminate\Support\Facades\DB;
 // auth route
 Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout']);
@@ -187,3 +187,13 @@ Route::prefix('/news')->group(function () {
 
 // Tentang Kami
 Route::get('/tentang-kami', [FrontPagesControlller::class, 'tentangKamiPages'])->name('about');
+
+
+// distink value
+Route::get('/distinct', function () {
+
+    $visitor = DB::table('analisis_pengunjung')->distinct()->count('ip_address');
+
+    // $visitor = DB::raw('SELECT count(distinct ip_address) from analisis_pengunjung;');
+    echo $visitor;
+});

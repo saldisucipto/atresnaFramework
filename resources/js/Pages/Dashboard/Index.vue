@@ -10,7 +10,7 @@
                     </div>
                     <div class="flex flex-col">
                         <div class="font-semibold text-gray-500 text-4xl">
-                            372
+                            {{ produk }}
                         </div>
                         <div class="text-xs text-gray-400">
                             <span>Produk</span>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="flex flex-col">
                         <div class="font-semibold text-gray-500 text-4xl">
-                            372
+                            {{ visitor }}
                         </div>
                         <div class="text-xs text-gray-400">
                             <span>Visitors</span>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="flex flex-col">
                         <div class="font-semibold text-gray-500 text-4xl">
-                            372
+                            {{ servis }}
                         </div>
                         <div class="text-xs text-gray-400">
                             <span>Services</span>
@@ -57,14 +57,17 @@
             >
                 <div class="flex justify-center gap-3">
                     <div class="my-auto">
-                        <i class="fas fa-shopping-cart fa-2x text-blue-900"></i>
+                        <i
+                            class="fa fa-newspaper-o fa-2x text-blue-900"
+                            aria-hidden="true"
+                        ></i>
                     </div>
                     <div class="flex flex-col">
                         <div class="font-semibold text-gray-500 text-4xl">
-                            372
+                            {{ blog }}
                         </div>
                         <div class="text-xs text-gray-400">
-                            <span>Produk</span>
+                            <span>Blog and News</span>
                         </div>
                     </div>
                 </div>
@@ -81,7 +84,9 @@
                         alt=""
                     />
                     <div class="flex flex-col my-auto">
-                        <h1 class="text-2xl py-3">Hallo.. Saldi Sucipto</h1>
+                        <h1 class="text-2xl py-3">
+                            Hallo.. {{ $page.props.users.name }}
+                        </h1>
                         <p class="text-sm font-thin">
                             Selamat Datang di Dashboard Website Anda
                         </p>
@@ -182,6 +187,10 @@ export default {
     },
     props: {
         chart: Object,
+        visitor: Number,
+        produk: Number,
+        servis: Number,
+        blog: Number,
     },
     layout: DashboardLayout,
 };

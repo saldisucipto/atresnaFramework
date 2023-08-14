@@ -20,14 +20,19 @@ use App\Models\Sosmed;
 use App\Models\StaticPages;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Return_;
+// use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    // index function dashboard
+    // index function dashboardw
     public function index(VisitorCharts $chart)
     {
-        return Inertia::render('Dashboard/Index', ['chart' => $chart->build()]);
+        $analytics = DB::table('analisis_pengunjung')->distinct()->count('ip_address');
+        $produk = DB::table('produks')->count();
+        $servis = DB::table('servis')->count();
+        $blog = DB::table('blog_news')->count();
+        return Inertia::render('Dashboard/Index', ['chart' => $chart->build(), 'visitor' => $analytics, 'produk' => $produk, 'servis' => $servis, 'blog' => $blog]);
     }
 
     // master function dashboard
@@ -118,5 +123,12 @@ class DashboardController extends Controller
     public function panelUtama()
     {
         return Inertia::render('Dashboard/Master/PanelUtama/Index', ['data' => MasterDataController::ambilSemuaData(new PanelUtama()), 'message' => null]);
+    }
+
+    // get anayltics data
+    public function getAnalyticsData()
+    {
+        $analytics = DB::statement('SELECT count(distinct ip_address) from analisis_pengunjung;');
+        return response()->json($analytics, 200);
     }
 }
