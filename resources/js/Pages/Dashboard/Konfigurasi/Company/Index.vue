@@ -291,7 +291,7 @@ export default {
         },
         submitForm() {
             {
-                router.post("/dashboard/konfigurasi/company-info/", this.form, {
+                router.post("/dashboard/konfigurasi/update", this.form, {
                     preserveScroll: true,
                     onSuccess: () => {
                         this.imageBaru = null;
