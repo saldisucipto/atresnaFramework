@@ -22,7 +22,6 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
     Route::post('/user/{id}', [AuthController::class, 'updateProfile']);
 
-
     // Route View and Get Data
     Route::prefix('/master')->group(function () {
         Route::get('/', [DashboardController::class, 'masterPages']);

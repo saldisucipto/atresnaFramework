@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class AnalisisPengunjung extends Model
 {
     use HasFactory;
-    protected $table = 'user_agent';
+    protected $table = 'analisis_pengunjung';
 }
