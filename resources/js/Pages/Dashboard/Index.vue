@@ -112,47 +112,14 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <div
+                        v-for="visitor in this.visitorList"
                         class="bg-white rounded-md h-10 flex flex-col justify-center hover:bg-blue-300 hover:font-semibold hover:text-white"
                     >
                         <div class="px-3 flex justify-between">
-                            <span>Home</span>
-                            <span class="text-sm"
-                                ><b class="my-auto h-full">200</b>
-                                Pengunjung</span
-                            >
-                        </div>
-                    </div>
-                    <div
-                        class="bg-white rounded-md h-10 flex flex-col justify-center hover:bg-blue-300 hover:font-semibold hover:text-white"
-                    >
-                        <div class="px-3 flex justify-between">
-                            <span>Home</span>
-                            <span class="text-sm"
-                                ><b class="my-auto h-full">200</b>
-                                Pengunjung</span
-                            >
-                        </div>
-                    </div>
-                    <div
-                        class="bg-white rounded-md h-10 flex flex-col justify-center hover:bg-blue-300 hover:font-semibold hover:text-white"
-                    >
-                        <div class="px-3 flex justify-between">
-                            <span>Home</span>
-                            <span class="text-sm"
-                                ><b class="my-auto h-full">200</b>
-                                Pengunjung</span
-                            >
-                        </div>
-                    </div>
-                    <div
-                        class="bg-white rounded-md h-10 flex flex-col justify-center hover:bg-blue-300 hover:font-semibold hover:text-white"
-                    >
-                        <div class="px-3 flex justify-between">
-                            <span>Home</span>
-                            <span class="text-sm"
-                                ><b class="my-auto h-full">200</b>
-                                Pengunjung</span
-                            >
+                            <span>{{ visitor.url }}</span>
+                            <!-- <span class="text-sm"
+                                ><b class="my-auto h-full">1</b>
+                            </span> -->
                         </div>
                     </div>
                 </div>
@@ -191,6 +158,7 @@ export default {
         produk: Number,
         servis: Number,
         blog: Number,
+        visitorList: Object,
     },
     layout: DashboardLayout,
 };

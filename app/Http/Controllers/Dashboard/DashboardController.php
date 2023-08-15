@@ -6,6 +6,7 @@ use App\Http\Charts\VisitorCharts;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Data\KonfigurasiDataController;
 use App\Http\Controllers\Data\MasterDataController;
+use App\Models\AnalisisPengunjung;
 use App\Models\BlogNews;
 use Inertia\Inertia;
 use App\Models\Produk;
@@ -18,9 +19,7 @@ use App\Models\Servis;
 use App\Models\Slider;
 use App\Models\Sosmed;
 use App\Models\StaticPages;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-// use PhpParser\Node\Stmt\Return_;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -32,7 +31,8 @@ class DashboardController extends Controller
         $produk = DB::table('produks')->count();
         $servis = DB::table('servis')->count();
         $blog = DB::table('blog_news')->count();
-        return Inertia::render('Dashboard/Index', ['chart' => $chart->build(), 'visitor' => $analytics, 'produk' => $produk, 'servis' => $servis, 'blog' => $blog]);
+        $visitorList = AnalisisPengunjung::distinct()->get(['url']);
+        return Inertia::render('Dashboard/Index', ['chart' => $chart->build(), 'visitor' => $analytics, 'produk' => $produk, 'servis' => $servis, 'blog' => $blog, 'visitorList' => $visitorList]);
     }
 
     // master function dashboard
