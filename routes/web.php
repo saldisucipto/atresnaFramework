@@ -5,10 +5,10 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Data\KonfigurasiDataController;
 use App\Http\Controllers\Data\MasterDataController;
 use App\Http\Controllers\FrontPages\FrontPagesControlller;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Models\AnalisisPengunjung;
 use Illuminate\Support\Facades\DB;
+
 // auth route
 Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout']);
@@ -189,11 +189,8 @@ Route::prefix('/news')->group(function () {
 Route::get('/tentang-kami', [FrontPagesControlller::class, 'tentangKamiPages'])->name('about');
 
 
-// distink value
-Route::get('/distinct', function () {
+// Route::get('/visitor', function () {
 
-    $visitor = DB::table('analisis_pengunjung')->distinct()->count('ip_address');
-
-    // $visitor = DB::raw('SELECT count(distinct ip_address) from analisis_pengunjung;');
-    echo $visitor;
-});
+//     $month = date('F j, Y, g:i a', mktime(3, 2, 2, 10, 23));
+//     echo ($month);
+// });
