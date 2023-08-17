@@ -2,12 +2,19 @@
     <div>
         <layouts>
             <div
-                class="max-w-screen-lg mx-auto flex flex-col justify-center h-full text-gray-800"
+                class="max-w-screen-lg mx-auto flex flex-col justify-center h-full text-gray-800 overflow-hidden"
             >
                 <div
-                    class="bg-bg-primary h-3/4 rounded-3xl flex flex-col justify-center"
+                    class="bg-bg-primary h-3/4 hape:h-fit hape:py-4 rounded-3xl flex flex-col justify-center hape:m-3"
                 >
-                    <div class="flex">
+                    <div class="flex hape:flex-col hape:justify-end">
+                        <div class="flex-1 hape:h-44 hape:w-full">
+                            <img
+                                class="object-cover max-h-72 hape:max-h-44 mx-auto"
+                                :src="'./assets/img/human-login.png'"
+                                alt=""
+                            />
+                        </div>
                         <div class="flex-1">
                             <div
                                 class="flex flex-col justify-center h-full w-full"
@@ -38,7 +45,7 @@
                                                 class="mx-4 flex justify-between py-2"
                                             >
                                                 <div
-                                                    class="my-auto font-semibold text-white"
+                                                    class="my-auto font-semibold text-white hape:text-xs"
                                                 >
                                                     {{
                                                         $page.props.flash
@@ -115,13 +122,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex-1">
-                            <img
-                                class="object-cover max-h-72 mx-auto"
-                                :src="'./assets/img/human-login.png'"
-                                alt=""
-                            />
                         </div>
                     </div>
                 </div>

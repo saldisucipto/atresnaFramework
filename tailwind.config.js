@@ -39,6 +39,19 @@ module.exports = {
                 panel1: "170px",
                 custpanel: "50px",
             },
+            screens: {
+                hape: { max: "412px" },
+                // => @media (min-width: 412px) { ... }
+
+                tablet: "640px",
+                // => @media (min-width: 640px) { ... }
+
+                laptop: "1024px",
+                // => @media (min-width: 1024px) { ... }
+
+                desktop: "1280px",
+                // => @media (min-width: 1280px) { ... }
+            },
         },
     },
     plugins: [],

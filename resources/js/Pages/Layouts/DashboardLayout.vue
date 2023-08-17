@@ -5,7 +5,7 @@
         >
             <div class="col-span-2">
                 <div
-                    class="h-10 py-8 overflow-hidden flex flex-col justify-center"
+                    class="h-10 py-8 overflow-hidden flex flex-col justify-center hape:hidden"
                 >
                     <div class="mx-auto flex justify-center h-max gap-1">
                         <img class="max-h-8" :src="'/assets/img/logo.png'" />
@@ -15,13 +15,27 @@
                         >
                     </div>
                 </div>
+                <div
+                    class="h-10 py-8 overflow-hidden flex flex-col justify-center"
+                >
+                    <div class="mx-auto flex justify-center h-max gap-1">
+                        <button
+                            @click="openMenu()"
+                            class="font-base text-gray-800 text-2xl font-semibold"
+                        >
+                            <div class="fas fa-bars"></div>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="col-span-10">
                 <div
                     class="py-8 overflow-hidden h-10 flex flex-col justify-center"
                 >
-                    <div class="flex justify-between text-gray-600 mx-3">
-                        <div class="flex gap-4 my-auto">
+                    <div
+                        class="flex justify-between hape:justify-end text-gray-600 mx-3"
+                    >
+                        <div class="flex gap-4 my-auto hape:hidden">
                             <div>
                                 <i class="fas fa-envelope"></i>
                             </div>
@@ -68,14 +82,22 @@
         </div>
         <div>
             <div class="grid grid-flow-col grid-cols-12 bg-white">
-                <div class="col-span-2 border-r h-screen border-gray-300">
+                <div
+                    class="col-span-2 border-r h-screen border-gray-300 hape:hidden"
+                >
                     <div class="overflow-hidden flex flex-col justify-center">
                         <!-- Navigasi -->
                         <navigasi></navigasi>
                         <!-- End Navigasi -->
                     </div>
                 </div>
-                <div class="col-span-10 h-screen">
+                <div v-if="openMenuBar" class="h-full col-span-10">
+                    <div class="w-full m-3S">
+                        <navigasi></navigasi>
+                    </div>
+                </div>
+
+                <div v-else class="col-span-10 h-screen hape:col-span-12">
                     <div class="p-8 bg-bg-primary h-full">
                         <slot> </slot>
                     </div>
@@ -129,6 +151,7 @@ export default {
     data() {
         return {
             showModal: false,
+            openMenuBar: false,
         };
     },
     props: {
@@ -143,6 +166,12 @@ export default {
                 preserveScroll: true,
             });
         },
+        openMenu() {
+            this.openMenuBar = !this.openMenuBar;
+        },
+    },
+    mounted() {
+        this.openMenu();
     },
 };
 </script>

@@ -5,7 +5,9 @@
         <!-- Endt Title Pages -->
 
         <!-- Main menu  -->
-        <div class="grid grid-flow-row grid-cols-4 gap-5 mb-10">
+        <div
+            class="grid grid-flow-row grid-cols-4 gap-5 mb-10 hape:flex hape:flex-col"
+        >
             <!-- Card Master Data -->
             <card-master-data :linkTujuan="'produk'" :iconData="'fa-boxes'"
                 >Master Produk</card-master-data

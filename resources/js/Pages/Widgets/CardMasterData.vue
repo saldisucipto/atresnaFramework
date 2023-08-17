@@ -4,7 +4,7 @@
     >
         <Link
             :href="'/dashboard/master/' + linkTujuan"
-            class="mx-auto flex gap-3 justify-center"
+            class="mx-auto flex gap-3 justify-center hape:text-left hape:mx-4 hape:w-full hape:justify-start"
         >
             <i :class="'fas ' + iconData + ' fa-2x my-auto'"></i>
             <span class="my-auto font-semibold"><slot></slot></span>

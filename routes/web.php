@@ -187,10 +187,3 @@ Route::prefix('/news')->group(function () {
 
 // Tentang Kami
 Route::get('/tentang-kami', [FrontPagesControlller::class, 'tentangKamiPages'])->name('about');
-
-
-// Route::get('/visitor', function () {
-//     $visitorList = AnalisisPengunjung::distinct()->get(['url']);
-//     $counting = DB::table('analisis_pengunjung')->select(DB::raw('DISTINCT url, COUNT(*) AS total_pengunjung'))->groupBy('url')->orderBy('total_pengunjung', 'DESC')->get();
-//     echo ($counting);
-// });

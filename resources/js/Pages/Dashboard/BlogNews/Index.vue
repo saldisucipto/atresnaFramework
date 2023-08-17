@@ -23,7 +23,7 @@
             </div>
         </div>
         <!-- End Message -->
-        <div class="flex justify-between mb-10">
+        <div class="flex justify-between mb-10 hape:gap-2">
             <input
                 type="search"
                 name=""
@@ -39,7 +39,9 @@
             </button>
         </div>
         <!-- Main menu  -->
-        <div class="grid grid-flow-row grid-cols-5 gap-5 mb-10">
+        <div
+            class="grid grid-flow-row grid-cols-5 gap-5 mb-10 hape:flex hape:flex-col"
+        >
             <!-- Card Staic Pages -->
             <div
                 v-for="blogNews in this.data.data"
@@ -72,7 +74,9 @@
                 v-if="modal"
                 class="absolute backdrop-blur-sm top-12 h-screen w-full left-0 flex flex-col justify-center"
             >
-                <div class="mx-auto w-2/4 bg-white drop-shadow-lg rounded-lg">
+                <div
+                    class="mx-auto w-2/4 hape:w-full hape:mt-72 hape:relative bg-white drop-shadow-lg rounded-lg"
+                >
                     <div class="p-5">
                         <div class="flex justify-between h-6">
                             <div

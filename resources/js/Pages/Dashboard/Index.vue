@@ -4,15 +4,19 @@
             <div
                 class="h-32 bg-bg-primary rounded-md flex flex-col justify-center"
             >
-                <div class="flex justify-center gap-3">
-                    <div class="my-auto">
+                <div
+                    class="flex justify-center hape:flex-col hape:justify-center gap-3"
+                >
+                    <div class="my-auto hape:mx-auto">
                         <i class="fas fa-boxes fa-2x text-blue-900"></i>
                     </div>
                     <div class="flex flex-col">
-                        <div class="font-semibold text-gray-500 text-4xl">
+                        <div
+                            class="font-semibold text-center text-gray-500 text-4xl"
+                        >
                             {{ produk }}
                         </div>
-                        <div class="text-xs text-gray-400">
+                        <div class="text-xs text-center text-gray-400">
                             <span>Produk</span>
                         </div>
                     </div>
@@ -21,15 +25,19 @@
             <div
                 class="h-32 bg-bg-primary rounded-md flex flex-col justify-center"
             >
-                <div class="flex justify-center gap-3">
-                    <div class="my-auto">
+                <div
+                    class="flex justify-center hape:flex-col hape:justify-center gap-3"
+                >
+                    <div class="my-auto hape:mx-auto">
                         <i class="fas fa-users fa-2x text-secondary-color"></i>
                     </div>
                     <div class="flex flex-col">
-                        <div class="font-semibold text-gray-500 text-4xl">
+                        <div
+                            class="font-semibold text-center text-gray-500 text-4xl"
+                        >
                             {{ visitor }}
                         </div>
-                        <div class="text-xs text-gray-400">
+                        <div class="text-xs text-center text-gray-400">
                             <span>Visitors</span>
                         </div>
                     </div>
@@ -38,15 +46,19 @@
             <div
                 class="h-32 bg-bg-primary rounded-md flex flex-col justify-center"
             >
-                <div class="flex justify-center gap-3">
-                    <div class="my-auto">
+                <div
+                    class="flex justify-center hape:flex-col hape:justify-center gap-3"
+                >
+                    <div class="my-auto hape:mx-auto">
                         <i class="fas fa-box fa-2x text-red-400"></i>
                     </div>
                     <div class="flex flex-col">
-                        <div class="font-semibold text-gray-500 text-4xl">
+                        <div
+                            class="font-semibold text-center text-gray-500 text-4xl"
+                        >
                             {{ servis }}
                         </div>
-                        <div class="text-xs text-gray-400">
+                        <div class="text-xs text-center text-gray-400">
                             <span>Services</span>
                         </div>
                     </div>
@@ -55,36 +67,42 @@
             <div
                 class="h-32 bg-bg-primary rounded-md flex flex-col justify-center"
             >
-                <div class="flex justify-center gap-3">
-                    <div class="my-auto">
+                <div
+                    class="flex justify-center hape:flex-col hape:justify-center gap-3"
+                >
+                    <div class="my-auto hape:mx-auto">
                         <i
                             class="fa fa-newspaper-o fa-2x text-blue-900"
                             aria-hidden="true"
                         ></i>
                     </div>
                     <div class="flex flex-col">
-                        <div class="font-semibold text-gray-500 text-4xl">
+                        <div
+                            class="font-semibold text-center text-gray-500 text-4xl"
+                        >
                             {{ blog }}
                         </div>
-                        <div class="text-xs text-gray-400">
+                        <div class="text-xs text-center text-gray-400">
                             <span>Blog and News</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex gap-4">
+        <div class="flex hape:flex-col gap-4">
             <div
-                class="flex-1 h-56 rounded-md bg-blue-400 text-white font-semibold flex flex-col justify-center"
+                class="flex-1 h-56 rounded-md bg-blue-400 text-white font-semibold flex flex-col justify-center p-3"
             >
-                <div class="flex justify-center gap-2 mx-3">
+                <div
+                    class="flex hape:flex-col hape:overflow-scroll justify-center gap-2 mx-3"
+                >
                     <img
-                        class="drop-shadow-xl max-h-36 shadow-white"
+                        class="drop-shadow-xl max-h-36 hape:hidden shadow-white"
                         :src="'./assets/img/welcome.png'"
                         alt=""
                     />
                     <div class="flex flex-col my-auto">
-                        <h1 class="text-2xl py-3">
+                        <h1 class="text-2xl hape:hidden py-3">
                             Hallo.. {{ $page.props.users.name }}
                         </h1>
                         <p class="text-sm font-thin">
@@ -95,7 +113,7 @@
                             Konten pada website anda.
                         </p>
                         <button
-                            class="text-xs bg-slate-200 py-1 px-3 rounded-md text-gray-900 my-5 w-32"
+                            class="text-xs bg-slate-200 hape:my-0 py-1 px-3 rounded-md text-gray-900 my-5 w-32"
                         >
                             Tutorial
                         </button>
@@ -117,7 +135,8 @@
                     >
                         <div class="px-3 flex justify-between">
                             <span>{{ visitor.url }}</span>
-                            <span class="text-sm"
+                            <span
+                                class="text-sm hape:flex hape:flex-col hape:text-center"
                                 ><b class="my-auto h-full">{{
                                     visitor.total_pengunjung
                                 }}</b>
