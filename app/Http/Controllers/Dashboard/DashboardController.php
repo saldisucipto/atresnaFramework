@@ -31,7 +31,7 @@ class DashboardController extends Controller
         $produk = DB::table('produks')->count();
         $servis = DB::table('servis')->count();
         $blog = DB::table('blog_news')->count();
-        $visitorList = AnalisisPengunjung::distinct()->get(['url']);
+        $visitorList = DB::table('analisis_pengunjung')->select(DB::raw('DISTINCT url, COUNT(*) AS total_pengunjung'))->groupBy('url')->orderBy('total_pengunjung', 'DESC')->get();
         return Inertia::render('Dashboard/Index', ['chart' => $chart->build(), 'visitor' => $analytics, 'produk' => $produk, 'servis' => $servis, 'blog' => $blog, 'visitorList' => $visitorList]);
     }
 

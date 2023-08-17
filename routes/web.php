@@ -190,7 +190,7 @@ Route::get('/tentang-kami', [FrontPagesControlller::class, 'tentangKamiPages'])-
 
 
 // Route::get('/visitor', function () {
-
-//     $month = date('F j, Y, g:i a', mktime(3, 2, 2, 10, 23));
-//     echo ($month);
+//     $visitorList = AnalisisPengunjung::distinct()->get(['url']);
+//     $counting = DB::table('analisis_pengunjung')->select(DB::raw('DISTINCT url, COUNT(*) AS total_pengunjung'))->groupBy('url')->orderBy('total_pengunjung', 'DESC')->get();
+//     echo ($counting);
 // });

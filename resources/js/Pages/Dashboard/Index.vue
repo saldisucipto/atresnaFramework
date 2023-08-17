@@ -117,9 +117,12 @@
                     >
                         <div class="px-3 flex justify-between">
                             <span>{{ visitor.url }}</span>
-                            <!-- <span class="text-sm"
-                                ><b class="my-auto h-full">1</b>
-                            </span> -->
+                            <span class="text-sm"
+                                ><b class="my-auto h-full">{{
+                                    visitor.total_pengunjung
+                                }}</b>
+                                <span class="text-xs"> visitor</span>
+                            </span>
                         </div>
                     </div>
                 </div>
