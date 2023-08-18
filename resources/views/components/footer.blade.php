@@ -1,47 +1,113 @@
-<div class="h-80 bg-secondary1-color-mtma w-full relative ">
-    <div class="max-w-screen-lg mx-auto flex flex-col justify-between  h-full  ">
-        <div class="my-7 flex mx-auto gap-8 justify-between">
-            {{-- Navigasi --}}
-            <div class=" flex-1 flex flex-col flex-2 gap-4 text-gray-200">
-                <h3 class="font-semibold text-xl">Navigasi</h3>
-                <div class="flex flex-col gap-1">
-                    <a class=" hover:text-gray-300 hover:font-bold " href="#">Home</a>
-                    <a class=" hover:text-gray-300 hover:font-bold " href="#">Produk & Servis</a>
-                    <a class=" hover:text-gray-300 hover:font-bold " href="#">Tentang</a>
-                    <a class=" hover:text-gray-300 hover:font-bold " href="#">Hubungi Kami</a>
-                    <a class=" hover:text-gray-300 hover:font-bold " href="#">Blogs & News</a>
-                </div>
-            </div>
-            {{-- End Navigasi --}}
-            {{-- Customer Session Showcahse --}}
-            <livewire:sosial-media-showcase />
-            {{-- End Customer Session Showcase --}}
-            {{-- About --}}
-            <div class=" flex-1 flex flex-col flex-2 gap-4 text-gray-200 text-sm">
+<div class="w-full h-72 bg-primary relative">
+    <!-- <div class="flex justify-between"> -->
+    <div class="absolute hape:max-h-20 hape:max-w-20 h-56 w-56 bg-secondary rounded-br-full"></div>
+    <div class="absolute right-0 bottom-0 rounded-tl-full hape:max-h-20 hape:max-w-20 h-56 w-56 bg-secondary"></div>
+    <!-- </div> -->
+    <div>
+        <div class="absolute w-full">
+            <div class="hape:h-72 hape:flex hape:flex-col hape:my-4 hape:justify-start hape:gap-2 hape:mx-2 hidden">
                 <div class=" flex flex-col ">
-                    <h3 class="font-semibold text-xl">{{ $companyInfo->company_name }}</h3>
-                    <span class="text-xs font-semibold"><i>{{ $companyInfo->company_slogan }}</i></span>
+                    <img class="object-cover hape:max-h-10 hidden"
+                        src="{{ '/storage/img/company/' . $companyInfo->company_logo }}" alt="Logo Narayana Consulting" />
+
                 </div>
-                <div class="flex flex-col gap-1">
-                    <a href=""> <i class="fas fa-map-marker-alt"></i> {{ $companyInfo->company_address }}
-                    </a>
-                    <a href=""> <i class="fas fa-phone"></i> {{ $companyInfo->company_phone }}
-                    </a>
-                    <a href=""> <i class="fas fa-envelope"></i> {{ $companyInfo->company_email }}
-                    </a>
+                <div class="mt-4 text-gray-200">
+                    <h1 class="font-bold">Head Office :</h1>
+                    <p class="text-sm">
+                        {{ $companyInfo->company_address }}
+                    </p>
+                </div>
+                <div class="text-gray-200">
+                    <h1 class="font-bold">Contact Us :</h1>
+                    <table>
+                        <tr>
+                            <td><i class="fas fa-phone mx-1"></i></td>
+                            <td>
+                                <a :href="'+' + $companyInfo - > company_phone">
+                                    {{ $companyInfo->company_phone }}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fas fa-envelope mx-1"></i>
+                            </td>
+                            <td>
+                                <a :href="'mailto:' + $companyInfo - > company_email">
+                                    {{ $companyInfo->company_email }}</a>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-            {{-- End About --}}
-        </div>
-        <hr>
-        <div class="text-center text-gray-100 text-xs my-3">
-            <i class="far fa-copyright"></i> Copyright {{ date('Y') }} {{ $companyInfo->company_name }}
-        </div>
+            <div class="max-w-screen-lg mx-auto hape:hidden">
+                <div class="h-72 flex flex-wrap content-center justify-items-center gap-3">
+                    <div class="flex-1 flex flex-col">
+                        <img class="object-cover" src="{{ '/assets/img/footer-logo.png' }}" alt="Narayana Consulting" />
+                    </div>
+                    <div class="flex-1 text-gray-200">
+                        <div class="m-1">
+                            <h1 class="font-bold">Head Office :</h1>
+                            <p class="text-sm">
+                                {{ $companyInfo->company_address }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex flex-col text-gray-200">
+                        <div class="m-1">
+                            <h1 class="font-bold">Contact Us :</h1>
+                            <table>
+                                <tr>
+                                    <td><i class="fas fa-phone mx-1"></i></td>
+                                    <td>
+                                        <a :href="'+' + $companyInfo - > company_phone">
+                                            {{ $companyInfo->company_phone }}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fas fa-envelope mx-1"></i>
+                                    </td>
+                                    <td>
+                                        <a :href="'mailto:' + $companyInfo - > company_email">
+                                            {{ $companyInfo->company_email }}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <livewire:sosial-media-showcase />
 
-    </div>
-    <div class="absolute top-0">
-        <div class="h-80 w-80 overflow-hidden">
-            <img class="object-cover -rotate-90 opacity-40 h-full w-full " src="/assets/img/patern.png">
+                    </div>
+                    <div class="flex-1 text-gray-200 hape:hidden">
+                        <div class="m-1">
+                            <h1 class="font-bold">Quick Links :</h1>
+                            <ul class="text-sm">
+                                <li>Beranda</li>
+                                <li>Services</li>
+                                <li>About</li>
+                                <li>News</li>
+                                <li>Contact</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hape:absolute hape:bottom-0">
+                <div class="text-xs bg-yellow-600 text-gray-200">
+                    <div class="max-w-screen-lg mx-auto">
+                        <div class="py-1 flex justify-between">
+                            <div>
+                                <i class="font-bold far fa-copyright"></i>
+                                copyright 2022
+                                <b class="capitalize">Narayana Consulting</b>
+                            </div>
+                            <div class="text-xs">
+                                Produksi Dan Design By.
+                                <a href="mailto:atreesnacreative@gmail.com">Atresna Creative</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
