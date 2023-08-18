@@ -6,7 +6,7 @@
         @include('components.slider')
         {{-- End Slider Components --}}
 
-        <div class="flex flex-col gap-20  mt-16 mb-20 ">
+        <div class="flex flex-col gap-20 mb-20 ">
             {{-- Components Panel Components --}}
             <livewire:panel />
             {{-- END Componets --}}
