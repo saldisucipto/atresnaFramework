@@ -11,13 +11,9 @@
             <livewire:panel />
             {{-- END Componets --}}
 
-            {{-- introduction --}}
-            <livewire:intro-section />
-            {{-- End Introduction --}}
-
-            {{-- Produk Showcahse --}}
-            <livewire:produk-showcase />
-            {{-- End Produk Showcase --}}
+            {{-- Components Panel Components --}}
+            <livewire:why-choose-us />
+            {{-- END Componets --}}
 
             {{-- Blog News Showcahse --}}
             <livewire:blog-news-showcase />

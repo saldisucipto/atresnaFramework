@@ -4,7 +4,7 @@
             <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-primary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-2 hape:flex hape:flex-col hape:justify-center">
+                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-primary">1</span>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
             <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-secondary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-2 hape:flex hape:flex-col hape:justify-center">
+                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-secondary">2</span>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
             <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-primary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-2 hape:flex hape:flex-col hape:justify-center">
+                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-primary">3</span>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
             <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-secondary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-2 hape:flex hape:flex-col hape:justify-center">
+                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-secondary">4</span>
                         </div>
                     </div>
@@ -67,10 +67,10 @@
                 </div>
             </div>
         </div>
-        <div class="hape:hidden grid grid-rows-2 grid-flow-col grid-cols-2 gap-2 h-96">
-            <div class="grid-cols-1 tablet:mx-2">
-                <div class="bg-secondary overflow-hidden tablet:my-2 tablet:py-2 rounded-bl-3xl rounded-tr-3xl mt-2">
-                    <div class="m-2">
+        <div class="hape:hidden grid grid-rows-2 grid-flow-col grid-cols-2 h-96 gap-5">
+            <div class="grid-cols-1">
+                <div class="bg-secondary overflow-hidden rounded-bl-3xl rounded-tr-3xl mt-7 ">
+                    <div class="m-5">
                         <div class="flex justify-end">
                             <div class="w-10 h-10 border-4 border-primary rounded-full">
                                 <h1 class="text-xl font-bold text-center text-white">1</h1>
@@ -87,9 +87,9 @@
                     </div>
                 </div>
             </div>
-            <div class="grid-cols-1 tablet:mx-2 tablet:my-5 tablet:mt-14">
-                <div class="bg-primary overflow-hidden tablet:py-2 rounded-br-3xl rounded-tl-3xl">
-                    <div class="m-2">
+            <div class="grid-cols-1 ">
+                <div class="bg-primary overflow-hidden rounded-br-3xl rounded-tl-3xl">
+                    <div class="m-5">
                         <div class="w-10 h-10 border-4 border-white rounded-full">
                             <h1 class="text-xl font-bold text-center text-white">3</h1>
                         </div>
@@ -101,9 +101,9 @@
                     </div>
                 </div>
             </div>
-            <div class="grid-cols-1 tablet:mx-2">
-                <div class="m-1 mt-14 bg-primary overflow-hidden tablet:my-2 tablet:py-2 rounded-br-3xl rounded-tl-3xl">
-                    <div class="m-2">
+            <div class="grid-cols-1 ">
+                <div class="m-1 mt-14 bg-primary overflow-hidden  rounded-br-3xl rounded-tl-3xl">
+                    <div class="m-5">
                         <div class="w-10 h-10 border-4 border-white rounded-full">
                             <h1 class="text-xl font-bold text-center text-white">2</h1>
                         </div>
@@ -115,9 +115,9 @@
                     </div>
                 </div>
             </div>
-            <div class="grid-cols-1 tablet:mx-2 my-6">
-                <div class="m-1 bg-secondary overflow-hidden tablet:my-2 tablet:py-2 rounded-bl-3xl rounded-tr-3xl">
-                    <div class="m-2">
+            <div class="grid-cols-1">
+                <div class="m-1 bg-secondary overflow-hidden  rounded-bl-3xl rounded-tr-3xl">
+                    <div class="m-5">
                         <div class="flex justify-end">
                             <div class="w-10 h-10 border-4 border-primary rounded-full">
                                 <h1 class="text-xl font-bold text-center text-white">4</h1>
