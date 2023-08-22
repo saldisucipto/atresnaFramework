@@ -28,27 +28,25 @@ class FileProcess
     public function uploadFoto(UploadedFile $mutlipleImages = null)
     {
         // aapbila tidak ada yang di upload tidak melakukan apa apa
-        if(is_null($this->fileData)) {
+        if (is_null($this->fileData)) {
             return;
         }
-        if($mutlipleImages !== null) {
-            $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $mutlipleImages->getClientOriginalName();
+        if ($mutlipleImages !== null) {
+            $namaFoto = time() . '-' . Str::slug($this->namaFile) . '.' . $mutlipleImages->getClientOriginalName();
             Storage::putFileAs('public/img/' . $this->dirFile, $mutlipleImages, $namaFoto);
             return $namaFoto;
         } else {
-            $namaFoto = time(). '-'. Str::slug($this->namaFile) . '.'. $this->fileData->getClientOriginalExtension();
+            $namaFoto = time() . '-' . Str::slug($this->namaFile) . '.' . $this->fileData->getClientOriginalExtension();
             Storage::putFileAs('public/img/' . $this->dirFile, $this->fileData, $namaFoto);
             return $namaFoto;
         }
-
-
     }
 
     // update foto
     public function updateFoto(string $fileSebelumnya)
     {
         // dd(file_exists(storage_path('app\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya)));
-        if(file_exists(storage_path('app\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya))) {
+        if (file_exists(storage_path('app\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya))) {
             unlink(storage_path('app\public\img\\' . $this->dirFile . '\\' . $fileSebelumnya));
         } else {
             self::uploadFoto();
@@ -63,8 +61,8 @@ class FileProcess
     // delete foto
     public static function deleteFoto($fileSebelumnya, string $dirFile)
     {
-        if($fileSebelumnya !== null) {
-            if(file_exists(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya))) {
+        if ($fileSebelumnya !== null && "") {
+            if (file_exists(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya))) {
                 unlink(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya));
             } else {
                 return;
@@ -79,8 +77,8 @@ class FileProcess
     {
 
         $filesFoto = [];
-        if($request->file($fileUploadName)) {
-            foreach($request->file($fileUploadName) as $foto) {
+        if ($request->file($fileUploadName)) {
+            foreach ($request->file($fileUploadName) as $foto) {
                 $filesFoto[] = [
                     'id_produk' => $idrelation,
                     'gambar_produk' => self::uploadFoto($foto),
@@ -90,6 +88,5 @@ class FileProcess
         } else {
             return;
         }
-
     }
 }
