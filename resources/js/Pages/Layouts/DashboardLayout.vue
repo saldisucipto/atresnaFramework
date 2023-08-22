@@ -169,6 +169,12 @@ export default {
         openMenu() {
             this.openMenuBar = !this.openMenuBar;
         },
+        closeMenuBar() {
+            this.openMenuBar = false;
+        },
+    },
+    mounted() {
+        this.closeMenuBar();
     },
 };
 </script>

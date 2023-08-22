@@ -61,7 +61,9 @@ class FileProcess
     // delete foto
     public static function deleteFoto($fileSebelumnya, string $dirFile)
     {
-        if ($fileSebelumnya !== null && "") {
+
+
+        if ($fileSebelumnya !== null && $fileSebelumnya !== "") {
             if (file_exists(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya))) {
                 unlink(storage_path('app\public\img\\' . $dirFile . '\\' . $fileSebelumnya));
             } else {
