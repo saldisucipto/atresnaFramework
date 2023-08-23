@@ -25,7 +25,9 @@
         </div>
         <!-- End Message -->
         <!-- Main menu  -->
-        <div class="mx-3 grid grid-flow-col grid-cols-7">
+        <div
+            class="mx-3 grid grid-flow-col grid-cols-7 hape:flex hape:flex-col"
+        >
             <div class="col-span-2 p-5 overflow-hidden">
                 <div class="flex flex-col justify-start gap-2">
                     <div

@@ -1,8 +1,14 @@
 <template>
     <div class="p-5 flex flex-col gap-6">
         <div class="flex flex-col gap-4">
-            <div class="text-xs text-gray-600">
+            <div class="text-xs text-gray-600 hape:flex hape:justify-between">
                 <h1>HOMES</h1>
+                <button
+                    @click="$emit('closeMenu')"
+                    class="hidden hape:inline font-semibold text-red-600"
+                >
+                    Closed
+                </button>
             </div>
             <Link
                 href="/dashboard"

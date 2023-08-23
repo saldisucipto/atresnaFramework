@@ -28,6 +28,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-span-10">
                 <div
                     class="py-8 overflow-hidden h-10 flex flex-col justify-center"
@@ -81,7 +82,7 @@
             </div>
         </div>
         <div>
-            <div class="grid grid-flow-col grid-cols-12 bg-white">
+            <div class="grid grid-flow-col grid-cols-12">
                 <div
                     class="col-span-2 border-r h-screen border-gray-300 hape:hidden"
                 >
@@ -91,19 +92,14 @@
                         <!-- End Navigasi -->
                     </div>
                 </div>
-                <div v-if="openMenuBar" class="h-full col-span-10">
-                    <div class="w-full m-3S">
-                        <navigasi></navigasi>
-                    </div>
-                </div>
-
-                <div v-else class="col-span-10 h-screen hape:col-span-12">
+                <div class="col-span-10 h-screen hape:col-span-12">
                     <div class="p-8 bg-bg-primary h-full">
                         <slot> </slot>
                     </div>
                 </div>
             </div>
         </div>
+
         <div
             v-if="showModal"
             class="absolute w-52 bg-white drop-shadow-md top-20 overflow-hidden right-0 mx-3 rounded-md"
@@ -135,6 +131,14 @@
                         </div>
                     </div>
                 </button>
+            </div>
+        </div>
+        <div
+            v-if="openMenuBar"
+            class="absolute bg-white drop-shadow-md top-16 mt-1 overflow-hidden left-0 rounded-md"
+        >
+            <div class="w-full">
+                <navigasi @close-menu="closeMenuBar"></navigasi>
             </div>
         </div>
     </div>
