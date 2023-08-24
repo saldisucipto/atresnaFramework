@@ -1,6 +1,6 @@
 <div class="w-full bg-primary-color-mtma h-auto ">
     <div class="flex flex-col justify-center gap-5 h-full my-10">
-        <div class="flex flex-col text-slate-100">
+        <div class="flex flex-col text-primary">
             <div class="text-center font-semibold text-2xl ">
                 <h2>Our Customers</h2>
             </div>

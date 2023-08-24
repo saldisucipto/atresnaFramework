@@ -1,6 +1,6 @@
 <div class="flex-1 overflow-hidden ">
     <div class="m-2 flex flex-col gap-4">
-        <h2 class=" text-lg font-semibold text-primary-color-mtma border-left border-l-4 border-primary-color-mtma  ">
+        <h2 class=" text-lg font-semibold text-primary border-left border-l-4 border-primary  ">
             Brand Produk</h2>
         <div class="flex justify-start overflow-x-auto">
             @foreach ($brandData as $item)

@@ -12,17 +12,12 @@ module.exports = {
                 "primary-color": "#180d51",
                 "secondary-color": "#f5821f",
                 "bg-primary": "#f7fafc",
-                primary: "#283681",
-                secondary: "#283681",
-                "text-primary-mtma": "#101924",
-                "bg-primary-mtma": "#283681",
-                "primary-color-mtma": "#2185C5",
-                "secondary-color-mtma": "#00BA9B",
-                "secondary1-color-mtma": "#0F8D9A",
+                primary: "#083580",
+                secondary: "#D4A51A",
             },
             height: {
                 hero: "768px",
-                slider: "460px",
+                slider: "470px",
                 banner: "669px",
                 "card-artikel": "400px",
             },
@@ -31,8 +26,8 @@ module.exports = {
             },
             screens: {
                 phone: { max: "390px" },
-                // => @media (min-width: 640px) { ... }
-                tab: { max: "820px" },
+                tablet: { max: "640px" },
+                laptop: { max: "1024px" },
             },
             borderRadius: {
                 panel: "150px",

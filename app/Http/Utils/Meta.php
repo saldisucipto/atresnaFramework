@@ -12,7 +12,7 @@ class Meta
     protected static string $image;
 
 
-    public static string $keyWord = 'Pengolahan Air Bersih dan Air Limbah';
+    public static string $keyWord = 'Layanan Konsultan Pajak';
 
     public function __construct(string $title, string $description, string $image)
     {

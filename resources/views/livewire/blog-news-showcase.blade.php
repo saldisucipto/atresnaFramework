@@ -1,7 +1,7 @@
 <div class="max-w-screen-lg mx-auto">
     <div class="flex flex-col gap-10">
-        <div class="text-center font-semibold text-2xl text-primary-color-mtma  ">
-            <h2>Update Terbaru</h2>
+        <div class="text-center font-semibold text-2xl text-primary  ">
+            <h2>Berita dan Update Terbaru</h2>
         </div>
         <div class="grid grid-flow-row grid-cols-2 gap-5">
             @foreach ($blogs as $item)
@@ -12,7 +12,7 @@
                     </div>
                     <div class="flex-1 my-2 flex flex-col gap-2 m-3">
                         <div class="flex flex-col gap-1">
-                            <a class=" hover:font-semibold  font-italic text-primary-color-mtma "
+                            <a class=" hover:font-semibold  font-italic text-primary "
                                 href="{{ '/news/' . $item->slug }}"> {{ $item->title }}</a>
                             <div class="text-xs text-gray-700 font-semibold">
                                 {{ \Carbon\Carbon::parse($item->created_at)->diffForhumans() }}
@@ -28,7 +28,7 @@
         @if (url()->full() == env('APP_URL'))
             <div class="text-center text-sm">
                 <button
-                    class=" text-primary-color-mtma py-2 rounded-full  border-primary-color-mtma border-2 hover:bg-primary-color-mtma hover:text-white">
+                    class=" text-primary-color-mtma py-2 rounded-full bg-secondary text-primary  border-primary-color-mtma border-2 hover:bg-primary hover:text-white">
                     <a href="/news" class="py-2 px-6">
                         Selengkapnya
                     </a>

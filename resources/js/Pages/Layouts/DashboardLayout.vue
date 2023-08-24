@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div
-                    class="h-10 py-8 overflow-hidden hape:flex flex-col justify-center hidden"
+                    class="h-10 py-8 overflow-hidden hape:flex flex-col justify-center hidden hidden"
                 >
                     <div class="mx-auto flex justify-center h-max gap-1">
                         <button
@@ -177,9 +177,7 @@ export default {
             this.openMenuBar = false;
         },
     },
-    mounted() {
-        this.closeMenuBar();
-    },
+    mounted() {},
 };
 </script>
 
