@@ -21,7 +21,7 @@
                             <a href="/">Beranda</a>
                         </li>
                         <li>
-                            <a href="/services">Services</a>
+                            <a href="/servis">Servis</a>
                         </li>
                         <li>
                             <a href="/news">News</a>
@@ -79,7 +79,8 @@
                                     <a href="/">Beranda</a>
                                 </li>
                                 <li>
-                                    <a href="/services">Services</a>
+                                    <a class=" @if (url()->current() == env('APP_URL') . '/servis') font-bold text-primary @endif"
+                                        href="/servis">Servis</a>
                                 </li>
                                 <li>
                                     <a href="/news">News</a>
