@@ -186,4 +186,4 @@ Route::prefix('/news')->group(function () {
 
 
 // Tentang Kami
-Route::get('/tentang-kami', [FrontPagesControlller::class, 'tentangKamiPages'])->name('about');
+Route::get('/about', [FrontPagesControlller::class, 'tentangKamiPages'])->name('about');

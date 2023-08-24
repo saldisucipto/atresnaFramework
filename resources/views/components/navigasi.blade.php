@@ -83,14 +83,14 @@
                                         href="/servis">Servis</a>
                                 </li>
                                 <li>
-                                    <a href="/news">News</a>
+                                    <a class=" @if (url()->current() == env('APP_URL') . '/news') font-bold text-primary @endif"
+                                        href="/news">News</a>
                                 </li>
                                 <li>
-                                    <a href="/about">About</a>
+                                    <a class=" @if (url()->current() == env('APP_URL') . '/about') font-bold text-primary @endif"
+                                        href="/about">About</a>
                                 </li>
-                                <li>
-                                    <a href="/contact">Contact</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
