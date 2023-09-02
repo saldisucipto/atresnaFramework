@@ -2,7 +2,7 @@
 
 @section('konten')
     <div class="w-full ">
-        <div class="flex flex-col gap-20  mt-16 mb-20 ">
+        <div class="flex flex-col gap-20 hape:gap-10 hape:mt-10  mt-16 mb-20 ">
             {{-- Produk Banner  --}}
             <livewire:servis-banner-pages />
             {{-- End Produk Banner --}}
@@ -13,7 +13,7 @@
                 <span class="text-center text-xs font-semibold"><i>Servis dan Layanan yang kami sediakan</i></span>
             </div>
             {{-- Produk Head --}}
-            <div class="grid grid-flow-col grid-cols-4  gap-3 max-w-screen-lg mx-auto">
+            <div class="grid grid-flow-col grid-cols-4 hape:grid-cols-1 hape:mx-5 gap-3 max-w-screen-lg mx-auto">
                 @foreach ($servis as $item)
                     <div class=" overflow-hidden  h-96 bg-primary flex flex-col  rounded-lg drop-shadow-lg">
                         <div class="flex-1 h-48 w-full overflow-hidden">

@@ -1,27 +1,28 @@
 <div class="max-w-screen-lg mx-auto">
     <div class="max-w-screen-md mx-auto py-2 tablet:m-3">
-        <div class="hidden hape:flex hape:flex-col hape:gap-3">
-            <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-primary w-full">
+        <div class="hidden hape:flex hape:flex-col hape:gap-3 w-full">
+            <div class="flex-1  max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-primary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
+                        <div
+                            class="h-8 w-8 bg-white hape:m-0 rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-primary">1</span>
                         </div>
                     </div>
                     <div class="my-auto">
-                        <div class="h-8 w-full rounded-full my-2 ">
-                            <h2 class="font-primary font-bold">
+                        <div class="h-8 w-full rounded-full my-2 hape:flex hape:flex-col hape:justify-center ">
+                            <h2 class="font-primary font-bold hape:text-white hape:text-xs">
                                 {{ $dataPanel[0]->title }}
-
                             </h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-secondary w-full">
+            <div class="flex-1  max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-secondary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
+                        <div
+                            class="h-8 w-8 bg-white hape:m-0 rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-secondary">2</span>
                         </div>
                     </div>
@@ -34,10 +35,11 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-primary w-full">
+            <div class="flex-1  max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-primary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
+                        <div
+                            class="h-8 w-8 bg-white hape:m-0 rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-primary">3</span>
                         </div>
                     </div>
@@ -50,10 +52,11 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-1 max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-secondary w-full">
+            <div class="flex-1  max-h-14 overflow-hidden rounded-tl-xl rounded-br-xl bg-secondary w-full">
                 <div class="my-1 mx-2 flex gap-2">
                     <div class="my-auto">
-                        <div class="h-8 w-8 bg-white rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
+                        <div
+                            class="h-8 w-8 bg-white hape:m-0 rounded-full m-5 hape:flex hape:flex-col hape:justify-center">
                             <span class="font-primary text-center font-bold text-secondary">4</span>
                         </div>
                     </div>

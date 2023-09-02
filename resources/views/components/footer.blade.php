@@ -1,24 +1,24 @@
-<div class="w-full h-72 bg-primary relative">
+<div class="w-full h-72 bg-primary relative hape:-mt-10">
     <!-- <div class="flex justify-between"> -->
     <div class="absolute hape:max-h-20 hape:max-w-20 h-56 w-56 bg-secondary rounded-br-full"></div>
     <div class="absolute right-0 bottom-0 rounded-tl-full hape:max-h-20 hape:max-w-20 h-56 w-56 bg-secondary"></div>
     <!-- </div> -->
     <div>
         <div class="absolute w-full">
-            <div class="hape:h-72 hape:flex hape:flex-col hape:my-4 hape:justify-start hape:gap-2 hape:mx-2 hidden">
+            <div class=" hape:h-72 hape:flex hape:flex-col hape:my-4 hape:justify-center hape:gap-2 hape:mx-2 hidden">
                 <div class=" flex flex-col ">
-                    <img class="object-cover hape:max-h-10 hidden"
-                        src="{{ '/storage/img/company/' . $companyInfo->company_logo }}" alt="Logo Narayana Consulting" />
+                    <img class=" hidden " src="{{ '/storage/img/company/' . $companyInfo->company_logo }}"
+                        alt="Logo Narayana Consulting" />
 
                 </div>
-                <div class="mt-4 text-gray-200">
+                <div class="mt-4 hape:-mt-3 text-gray-200">
                     <h1 class="font-bold">Head Office :</h1>
                     <p class="text-sm">
                         {{ $companyInfo->company_address }}
                     </p>
                 </div>
-                <div class="text-gray-200">
-                    <h1 class="font-bold">Contact Us :</h1>
+                <div class="text-gray-200 hape:flex hape:gap-2">
+                    <h1 class="font-bold hape:hidden">Contact Us :</h1>
                     <table>
                         <tr>
                             <td><i class="fas fa-phone mx-1"></i></td>
@@ -37,14 +37,16 @@
                             </td>
                         </tr>
                     </table>
+                    <livewire:sosial-media-showcase />
                 </div>
             </div>
-            <div class="max-w-screen-lg mx-auto hape:hidden">
-                <div class="h-72 flex flex-wrap content-center justify-items-center gap-3">
+            <div class="max-w-screen-lg mx-auto hape:hidden ">
+                <div class="h-72  flex flex-wrap content-center justify-items-center gap-3">
                     <div class="flex-1 flex flex-col">
-                        <img class="object-cover" src="{{ '/assets/img/footer-logo.png' }}" alt="Narayana Consulting" />
+                        <img class="object-cover hape:object-contain" src="{{ '/assets/img/footer-logo.png' }}"
+                            alt="Narayana Consulting" />
                     </div>
-                    <div class="flex-1 text-gray-200">
+                    <div class="flex-1 hape:flex-none text-gray-200">
                         <div class="m-1">
                             <h1 class="font-bold">Head Office :</h1>
                             <p class="text-sm">
@@ -52,7 +54,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="flex-1 flex flex-col text-gray-200">
+                    <div class="flex-1 hape:flex-none flex flex-col text-gray-200">
                         <div class="m-1">
                             <h1 class="font-bold">Contact Us :</h1>
                             <table>
@@ -73,7 +75,9 @@
                                     </td>
                                 </tr>
                             </table>
+
                         </div>
+
                         <livewire:sosial-media-showcase />
 
                     </div>

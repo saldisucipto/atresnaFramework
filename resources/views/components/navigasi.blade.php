@@ -41,7 +41,7 @@
                 <div class="bg-primary w-full">
                     <div class="max-w-screen-xl mx-auto">
                         <div class="flex justify-between text-white py-2 gap-2">
-                            <div class="my-auto text-xs pl-5 tablet:px-5 tablet:w-full">
+                            <div class="my-auto text-xs pl-5 tablet:px-5 tablet:w-full hape:hidden">
                                 <div class="flex gap-2 tablet:flex tablet:justify-between">
                                     <div>
                                         <i class="fas fa-phone-alt"></i>
@@ -54,11 +54,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="hidden hape:flex hape:justify-between w-full mx-3 text-xs">
+                                <div class="flex">
+                                    <i class="fas fa-phone-alt my-auto"></i>
+                                    <a href="{{ 'tel:' . $companyInfo->company_phone }}" class="mx-2">
+                                        {{ $companyInfo->company_phone }}</a>
+                                </div>
+                                <div class="">
+                                    <i class="fas fa-envelope"></i>
+                                    {{ $companyInfo->company_email }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="container mx-auto max-w-screen-xl ">
-                    <div class="container mx-auto">
+                <div class="container mx-auto max-w-screen-xl hape:hidden">
+                    <div class="container mx-auto ">
                         <div class="flex py-7 justify-between">
                             <div class="pl-2 flex flex-col jus\  h-full ">
                                 <a href="/" class="mx-2 flex ">
@@ -96,20 +107,21 @@
                     </div>
                 </div>
             </div>
-            <div class="tablet:flex tablet:my-5 tablet:mx-6 justify-between hidden desktop:hidden">
-                <div>
+            <div class="hidden hape:flex hape:justify-between h-12 mx-3 ">
+                <div class="max-h-12 flex justify-start  my-auto">
                     <a href="/">
-                        <img class="w-44 tablet:w-28 cursor-pointer"
+                        <img class="max-h-12 tablet:max-h-12 cursor-pointer p-2"
                             src="{{ '/storage/img/company/' . $companyInfo->company_logo }}"
                             alt="{{ $companyInfo->company_name }}" /></a>
+                    <h1 class=" font-bold text-1xl my-auto">{{ $companyInfo->company_name }}
+                    </h1>
                 </div>
                 <div class="my-auto ">
-                    <button>
+                    <button onclick="openModalBar()">
                         <i class="fas fa-bars fa-1x font-thin text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>

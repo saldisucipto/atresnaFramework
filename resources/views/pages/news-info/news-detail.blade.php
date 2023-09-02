@@ -16,9 +16,8 @@
                         <span class="text-xs"> {{ \Carbon\Carbon::parse($news->created_at)->diffForhumans() }} | Oleh :
                             Admin</span>
                     </div>
-                    <h3 class="capitalize font-semibold text-primary-color-mtma ">Deskripsi</h3>
                     <div>
-                        {{ strip_tags($news->content) }}
+                        {!! $news->content !!}
                     </div>
                 </div>
 

@@ -2,7 +2,9 @@
 let slideElement = document.getElementById("slider");
 
 let currentSlide = 1;
-let totalSlide = slideElement.childElementCount;
+if (currentSlide >= 2) {
+    let totalSlide = slideElement.childElementCount;
+}
 
 function next() {
     if (currentSlide < totalSlide) {
@@ -47,4 +49,14 @@ function changeImage(value, id) {
             .getElementById("imagePanel" + id)
             .classList.add("border-2", "border-primary-color-mtma");
     }
+}
+
+// Open Modal
+function openModalBar() {
+    document.getElementById("modalMenubar").classList.add(["hape:flex"]);
+}
+
+// clsoed modal
+function closedModal() {
+    document.getElementById("modalMenubar").classList.remove("hape:flex");
 }
