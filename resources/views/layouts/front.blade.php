@@ -24,15 +24,29 @@
 
 <body class="text-gray-800">
 
-
-    <div class="w-full h-full m-0">
+    <div class="w-full h-full m-0 font-primary flex flex-col gap-10">
         {{-- Navigasi Components --}}
-        @include('components.navigasi')
-        {{-- End Navigasi Components --}}
-        @yield('konten')
-        @include('components.footer')
+        <section>
+            @include('components.navigasi')
+        </section>
 
-        <div id="modalMenubar" class="hidden  hape:flex-col absolute h-screen backdrop-blur-md w-full  top-20">
+        {{-- End Navigasi Components --}}
+        {{-- Slider Components --}}
+        <section class="max-w-screen-lg mx-auto">
+            <div class=" h-hero max-w-screen-lg bg-black">
+                {{-- <img class=""
+                    src="https://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
+                    alt=""> --}}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptatum laudantium quos nobis ratione
+                excepturi, quas nisi, est quod blanditiis quidem obcaecati dignissimos suscipit reiciendis autem quis et
+                soluta nulla.
+            </div>
+        </section>
+        {{-- End Slider Components --}}
+        @yield('konten')
+        {{-- @include('components.footer') --}}
+
+        {{-- <div id="modalMenubar" class="hidden  hape:flex-col absolute h-screen backdrop-blur-md w-full  top-20">
             <div class="flex justify-end ">
                 <div class=" w-2/3 h-screen bg-white flex flex-col gap-3 p-6 ">
                     <div class="flex justify-between">
@@ -66,7 +80,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <script src="/assets/js/atresnaScript.js"></script>

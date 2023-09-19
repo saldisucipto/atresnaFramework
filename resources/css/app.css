@@ -5,3 +5,8 @@
 .active {
     @apply: hover: text-white hover: text-bold bg-blue-400;
 }
+
+@font-face {
+    font-family: Arial;
+    src: url("assets/fonts/arial-narrow.ttf") format("opentype");
+}

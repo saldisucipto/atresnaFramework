@@ -8,15 +8,19 @@ module.exports = {
 
     theme: {
         extend: {
+            fontFamily: {
+                primary: "Arial",
+            },
             colors: {
                 "primary-color": "#180d51",
                 "secondary-color": "#f5821f",
                 "bg-primary": "#f7fafc",
                 primary: "#083580",
                 secondary: "#D4A51A",
+                "caa-primary": "#0077BA",
             },
             height: {
-                hero: "768px",
+                hero: "332px",
                 slider: "470px",
                 banner: "669px",
                 "card-artikel": "400px",

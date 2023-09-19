@@ -1,5 +1,5 @@
 <div>
-    <div class="drop-shadow-lg border-b-2 relative">
+    <div class="relative">
         <div
             class="w-56 h-screen absolute right-0 top-10 z-10 rounded-tl-lg rounded-bl-lg drop-shadow-lg bg-primary hidden">
             <div class="my-1
@@ -36,9 +36,9 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white">
+        <div class="bg-white mt-5">
             <div class="flex flex-col justify-start ">
-                <div class="bg-primary w-full">
+                {{-- <div class="bg-primary w-full">
                     <div class="max-w-screen-xl mx-auto">
                         <div class="flex justify-between text-white py-2 gap-2">
                             <div class="my-auto text-xs pl-5 tablet:px-5 tablet:w-full hape:hidden">
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="container mx-auto max-w-screen-xl hape:hidden">
                     <div class="container mx-auto ">
                         <div class="flex py-7 justify-between">
@@ -78,32 +78,56 @@
                                             src="{{ '/storage/img/company/' . $companyInfo->company_logo }}"
                                             alt="Narayana Consulting" />
                                         <div class="flex flex-col justify-center h-16  ">
-                                            <h1 class="uppercase font-bold text-1xl">{{ $companyInfo->company_name }}
-                                            </h1>
+
                                         </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="h-full my-auto">
-                            <ul class="flex gap-4 text-lg font-semibold text-gray-600">
-                                <li class=" @if (url()->current() == env('APP_URL')) font-bold text-primary @endif ">
-                                    <a href="/">Beranda</a>
-                                </li>
-                                <li>
-                                    <a class=" @if (url()->current() == env('APP_URL') . '/servis') font-bold text-primary @endif"
-                                        href="/servis">Servis</a>
-                                </li>
-                                <li>
-                                    <a class=" @if (url()->current() == env('APP_URL') . '/news') font-bold text-primary @endif"
-                                        href="/news">News</a>
-                                </li>
-                                <li>
-                                    <a class=" @if (url()->current() == env('APP_URL') . '/about') font-bold text-primary @endif"
-                                        href="/about">About</a>
-                                </li>
-
-                            </ul>
+                        <div class="h-full my-auto flex flex-col text-caa-primary font-normal">
+                            <div class="font-semibold flex gap-2">
+                                <i class="fas fa-phone my-auto"></i>
+                                {{ $companyInfo->company_phone }}
+                            </div>
+                            <div class="flex gap-2">
+                                <i class="fas fa-envelope my-auto"></i>
+                                {{ $companyInfo->company_email }}
+                            </div>
+                            <div class="flex gap-2">
+                                <i class="fab fa-instagram my-auto"></i>
+                                {{ '@ciptaanekaair' }}
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="w-full h-full">
+                    <img class="object-cover w-full h-full" src="/assets/img/headerbg.jpg" alt="">
+                </div>
+
+                <div class="flex justify-between max-w-screen-lg mx-auto">
+                    <div
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3 border-b-2 pb-3">
+                        <div class="text-lg font-semibold">Home</div>
+                        <span class=" text-sm font-italic italic ">Introduction</span>
+                    </div>
+                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        <div class="text-lg font-semibold">About Us</div>
+                        <span class=" text-sm font-italic italic ">Our Company Profile</span>
+                    </div>
+                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        <div class="text-lg font-semibold">Product</div>
+                        <span class=" text-sm font-italic italic ">Our Products</span>
+                    </div>
+                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        <div class="text-lg font-semibold">Services</div>
+                        <span class=" text-sm font-italic italic ">Our Services</span>
+                    </div>
+                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        <div class="text-lg font-semibold">Industries</div>
+                        <span class=" text-sm font-italic italic ">Industries We Serve</span>
+                    </div>
+                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        <div class="text-lg font-semibold">Careers</div>
+                        <span class=" text-sm font-italic italic ">We Are Hiring</span>
                     </div>
                 </div>
             </div>
