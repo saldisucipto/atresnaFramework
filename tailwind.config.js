@@ -27,6 +27,7 @@ module.exports = {
             },
             width: {
                 banner: "1208px",
+                hero: "1024px",
             },
             screens: {
                 phone: { max: "390px" },

@@ -34,3 +34,14 @@
         opacity: 1;
     }
 }
+
+.slides-container {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* WebKit */
+.slides-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

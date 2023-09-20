@@ -60,3 +60,24 @@ function openModalBar() {
 function closedModal() {
     document.getElementById("modalMenubar").classList.remove("hape:flex");
 }
+
+const slidesContainer = document.getElementById("slides-container");
+const slide = document.querySelector(".slide");
+const prevButton = document.getElementById("slide-arrow-prev");
+const nextButton = document.getElementById("slide-arrow-next");
+nextButton.addEventListener("click", () => {
+    const slideWidth = slide.clientWidth;
+    let totalSlide = slidesContainer.childElementCount;
+    let totalSize = slideWidth * totalSlide;
+    console.log(totalSize - slideWidth);
+    // slidesContainer.scrollLeft = ;
+    if (slidesContainer.scrollLeft == totalSize - slideWidth) {
+        slidesContainer.scrollLeft = 0;
+    } else {
+        slidesContainer.scrollLeft += slideWidth;
+    }
+});
+prevButton.addEventListener("click", () => {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft -= slideWidth;
+});
