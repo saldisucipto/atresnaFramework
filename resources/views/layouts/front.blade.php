@@ -32,7 +32,7 @@
 
         {{-- End Navigasi Components --}}
         {{-- Slider Components --}}
-        <section class="max-w-screen-lg mx-auto relative">
+        <section class="max-w-screen-lg mx-auto relative pb-10">
             <div class="absolute flex flex-col justify-center h-full  w-hero">
                 <div class="flex justify-between mx-2">
                     <button
@@ -55,13 +55,7 @@
                             alt="">
                     </div>
                 </li>
-                <li style="flex: 1 0 100%" class="slide">
-                    <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
-                        <img class="object-cover h-full w-hero"
-                            src="htps://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
-                            alt="">
-                    </div>
-                </li>
+
                 <li style="flex: 1 0 100%" class="slide">
                     <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
                         <img class="object-cover h-full w-hero"
@@ -91,9 +85,61 @@
                     </div>
                 </li>
             </ul>
-
         </section>
         {{-- End Slider Components --}}
+        {{-- Intro Section --}}
+        <section class="w-full bg-slate-100 max-w-screen-lg mx-auto relative rounded-br-panel1">
+            <div class="max-w-screen-lg mx-auto py-8 text-gray-800">
+                <div class="m-8 flex flex-col gap-5">
+                    <div>
+                        <h2 class="text-2xl text-gray-700">Complete Equipment Specialist</h2>
+                        <span class="text-xl text-primary italic ">Trusted partner and authorized distributor for the
+                            best
+                            brand
+                            and product in Water Technologies</span>
+                    </div>
+                    <p class=" text-gray-900 text-lg text-justify ">Founded in 2008, PT . CIPTA ANEKA AIR is a dynamic
+                        and
+                        forward-thinking
+                        company that serves off
+                        all kinds of water treatment equipments & At PT. CIPTA ANEKA AIR we take pride in our role as an
+                        authorized distributor, which means that we have been officially recognized and entrusted by the
+                        manufacturers to deliver their products or services to customers with the highest standards of
+                        quality and authenticity. Our reputation as a reliable distributor is built on a foundation of
+                        integrity, expertise, and customer-centric values.</p>
+                </div>
+
+            </div>
+            <div class="absolute flex justify-end  -top-16 w-full ">
+                <img class=" max-h-40  -mr-24  " src="./assets/img/caa-logo.png" alt="">
+            </div>
+            <div class="absolute -top-6  flex justify-start w-full ">
+                <h1 class="py-2 px-10 bg-caa-primary text-xl text-gray-100">Introduction</h1>
+            </div>
+        </section>
+
+        {{-- Authorized Dstributor --}}
+
+        <section class=" bg-primary w-full relative ">
+            <div class="max-w-screen-lg mx-auto py-8 text-gray-200 ">
+                <h2 class="text-center text-3xl">Our Distributor Brand Product</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero dolorem ipsum modi dolore nemo, eius
+                    laborum voluptatem laboriosam ratione neque numquam magni voluptatibus recusandae voluptate
+                    cupiditate
+                    sed labore veniam atque.</p>
+            </div>
+
+            <div class="absolute flex justify-center -top-4 w-full">
+                <div class="h-10 w-10 bg-white rounded-br-3xl rounded-bl-3xl ">
+                </div>
+            </div>
+
+        </section>
+
+        {{-- END Authorized Dstributor --}}
+
+
+        {{-- End Intro Section --}}
         @yield('konten')
         {{-- @include('components.footer') --}}
 
