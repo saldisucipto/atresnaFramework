@@ -1,34 +1,53 @@
-<div class="relative hape:py-5 mx-3 ">
-    <div class="h-slider hape:hidden  ">
-        <img class="h-full object-cover" src="/assets/img/hero-background.png" />
-    </div>
-    <div
-        class="absolute hape:relative  h-slider w-full inset-0 text-white text-xs leading-4 laptop:px-6 tablet:px-4 overflow-hidden ">
-        <div class="flex flex-col justify-center h-slider hape:h-full ">
-            <div class="mx-auto">
-                <div class="max-w-screen-lg">
-                    <div class="flex justify-center hape:gap-0 gap-3 hape:flex-col-reverse">
-                        <div class="flex flex-1 my-auto">
-                            <div class="text-secondary hape:text-center">
-                                <h1 class="text-3xl hape:text-lg font-bold uppercase tablet:text-lg">
-                                    {{ $sliders->slider_title }}
-                                </h1>
-                                <h2
-                                    class="text-primary text-xl font-semibold capitalize text-justify leading-6 tablet:text-sm hape:text-xs">
-                                    {{ $sliders->slider_desc }}
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="flex-1 flex z-0">
-                            <div class="my-auto tablet:mx-auto  w-full">
-                                <img class=" h-slider m-6 p-16 hape:max-h-80 hape:mx-auto "
-                                    src="{{ '/storage/img/sliders/' . $sliders->slider_image }}"
-                                    alt="Tax Illustrations" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="max-w-screen-lg mx-auto relative pb-10">
+    <div class="absolute flex flex-col justify-center h-full  w-hero">
+        <div class="flex justify-between mx-2">
+            <button
+                class=" bg-white bg-opacity-50 hover:bg-opacity-75 text-3xl drop-shadow-lg h-20 px-3 rounded-full flex flex-col justify-center "
+                id="slide-arrow-prev">
+                <span class="my-auto"> &#8249;</span>
+            </button>
+            <button class=" bg-white text-3xl drop-shadow-lg px-3 rounded-full bg-opacity-50 hover:bg-opacity-75 "
+                id="slide-arrow-next">
+                &#8250;
+            </button>
         </div>
     </div>
-</div>
+    <ul id="slides-container" class=" slides-container flex w-full overflow-scroll scroll-smooth">
+        <li style="flex: 1 0 100%" class="slide">
+            <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
+                <img class="object-cover h-full w-hero"
+                    src="https://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
+                    alt="">
+            </div>
+        </li>
+
+        <li style="flex: 1 0 100%" class="slide">
+            <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
+                <img class="object-cover h-full w-hero"
+                    src="https://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
+                    alt="">
+            </div>
+        </li>
+        <li style="flex: 1 0 100%" class="slide">
+            <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
+                <img class="object-cover h-full w-hero"
+                    src="https://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
+                    alt="">
+            </div>
+        </li>
+        <li style="flex: 1 0 100%" class="slide">
+            <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
+                <img class="object-cover h-full w-hero"
+                    src="https://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
+                    alt="">
+            </div>
+        </li>
+        <li style="flex: 1 0 100%" class="slide">
+            <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
+                <img class="object-cover h-full w-hero"
+                    src="https://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
+                    alt="">
+            </div>
+        </li>
+    </ul>
+</section>

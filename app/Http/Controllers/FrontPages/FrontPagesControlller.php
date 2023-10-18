@@ -111,12 +111,42 @@ class FrontPagesControlller extends Controller
     }
 
     // Tentang kami
-    public function tentangKamiPages()
+    public function about()
     {
         $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
         $tentangData = StaticPages::find(5);
         $meta = new Meta('Tentang Kami ' . ' - ' . Meta::$keyWord, 'Tentang - ' .  $companyInfo[0]->company_name, '/storage/img/company/' . $companyInfo[0]->company_logo);
         AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
-        return view('pages.tentang-kami', ['companyInfo' => $companyInfo[0], 'tentangData' => $tentangData,  'title' => Meta::getTitle()]);
+        return view('pages.about.tentang-kami', ['companyInfo' => $companyInfo[0], 'tentangData' => $tentangData,  'title' => Meta::getTitle()]);
+    }
+
+    // history
+    public function history()
+    {
+        $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
+        $tentangData = StaticPages::find(5);
+        $meta = new Meta('Tentang Kami ' . ' - ' . Meta::$keyWord, 'Tentang - ' .  $companyInfo[0]->company_name, '/storage/img/company/' . $companyInfo[0]->company_logo);
+        AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
+        return view('pages.about.history', ['companyInfo' => $companyInfo[0], 'tentangData' => $tentangData,  'title' => Meta::getTitle()]);
+    }
+
+    // visimisi
+    public function visimisi()
+    {
+        $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
+        $tentangData = StaticPages::find(5);
+        $meta = new Meta('Tentang Kami ' . ' - ' . Meta::$keyWord, 'Tentang - ' .  $companyInfo[0]->company_name, '/storage/img/company/' . $companyInfo[0]->company_logo);
+        AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
+        return view('pages.about.visimisi', ['companyInfo' => $companyInfo[0], 'tentangData' => $tentangData,  'title' => Meta::getTitle()]);
+    }
+
+    // whoweare
+    public function whoweare()
+    {
+        $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
+        $tentangData = StaticPages::find(5);
+        $meta = new Meta('Tentang Kami ' . ' - ' . Meta::$keyWord, 'Tentang - ' .  $companyInfo[0]->company_name, '/storage/img/company/' . $companyInfo[0]->company_logo);
+        AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
+        return view('pages.about.who-we-are', ['companyInfo' => $companyInfo[0], 'tentangData' => $tentangData,  'title' => Meta::getTitle()]);
     }
 }

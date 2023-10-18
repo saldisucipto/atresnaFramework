@@ -104,31 +104,37 @@
                 </div>
 
                 <div class="flex justify-between max-w-screen-lg mx-auto">
-                    <div
-                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3 border-b-2 pb-3">
+                    <a href="/"
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3  @if (url()->current() == env('APP_URL')) border-b-4 @endif pb-3">
                         <div class="text-lg font-semibold">Home</div>
                         <span class=" text-sm font-italic italic ">Introduction</span>
-                    </div>
-                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                    </a>
+
+                    <a href="/about-us"
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3  @if (url()->current() == env('APP_URL') . '/about-us' || Str::startsWith(url()->current(), env('APP_URL') . '/about-us')) border-b-4) border-b-4 @endif">
                         <div class="text-lg font-semibold">About Us</div>
                         <span class=" text-sm font-italic italic ">Our Company Profile</span>
-                    </div>
-                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                    </a>
+                    <a href="/products"
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
                         <div class="text-lg font-semibold">Product</div>
                         <span class=" text-sm font-italic italic ">Our Products</span>
-                    </div>
-                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                    </a>
+                    <a href="https://ciptaanekaservis.co.id/" target="_blank"
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
                         <div class="text-lg font-semibold">Services</div>
                         <span class=" text-sm font-italic italic ">Our Services</span>
-                    </div>
-                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
-                        <div class="text-lg font-semibold">Industries</div>
-                        <span class=" text-sm font-italic italic ">Industries We Serve</span>
-                    </div>
-                    <div class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                    </a>
+                    <a href="/projects"
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        <div class="text-lg font-semibold">Projects</div>
+                        <span class=" text-sm font-italic italic ">Our Experience</span>
+                    </a>
+                    <a href="/hiring"
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
                         <div class="text-lg font-semibold">Careers</div>
                         <span class=" text-sm font-italic italic ">We Are Hiring</span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="hidden hape:flex hape:justify-between h-12 mx-3 ">
