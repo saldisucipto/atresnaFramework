@@ -18,7 +18,8 @@ module.exports = {
                 primary: "#083580",
                 secondary: "#D4A51A",
                 "caa-primary": "#0077BA",
-                "caa-secondary" : "#59C6F2"
+                "caa-secondary": "#59C6F2",
+                gold: "#FFA81E",
             },
             height: {
                 hero: "332px",
