@@ -168,7 +168,7 @@ Route::get('/about-us/who-we-are', [FrontPagesControlller::class, 'whoweare']);
 
 
 // Produk Route
-Route::prefix('/produk')->group(function () {
+Route::prefix('/products')->group(function () {
     // Produk Show
     Route::get('/', [FrontPagesControlller::class, 'produkPages'])->name('produk');
     Route::get('/{slugs}', [FrontPagesControlller::class, 'produkDetailsPages']);
@@ -189,7 +189,3 @@ Route::prefix('/news')->group(function () {
     Route::get('/', [FrontPagesControlller::class, 'newsPages'])->name('news');
     Route::get('/{slugs}', [FrontPagesControlller::class, 'newssDetailPages']);
 });
-
-
-// Tentang Kami
-Route::get('/about', [FrontPagesControlller::class, 'tentangKamiPages'])->name('about');

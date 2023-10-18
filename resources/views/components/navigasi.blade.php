@@ -116,7 +116,7 @@
                         <span class=" text-sm font-italic italic ">Our Company Profile</span>
                     </a>
                     <a href="/products"
-                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3 @if (url()->current() == env('APP_URL') . '/about-us' || Str::startsWith(url()->current(), env('APP_URL') . '/products')) border-b-4) border-b-4 @endif">
                         <div class="text-lg font-semibold">Product</div>
                         <span class=" text-sm font-italic italic ">Our Products</span>
                     </a>
