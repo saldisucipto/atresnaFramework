@@ -14,7 +14,7 @@
         </div>
         @include('components.nav-about')
 
-        <div class="flex justify-between gap-2">
+        <div class="flex justify-between gap-2 my-20">
             <div class="flex-1  rounded-lg relative">
                 <img class=" w-full max-[700]: object-cover rounded-lg " src="/assets/img/teams.jpg" alt="">
                 <div class="absolute top-0 flex w-full bg-caa-primary bg-opacity-50 rounded-tl-lg rounded-tr-lg">
@@ -23,7 +23,7 @@
                     </p>
                 </div>
             </div>
-            <div class="flex-1 bg-slate-50 rounded-lg flex flex-col gap-4 p-4">
+            <div class="flex-1 bg-slate-50 rounded-lg flex flex-col gap-4 p-4 ">
 
                 <div class="flex-1 bg-slate-50 rounded-lg flex flex-col gap-4 p-4">
 
