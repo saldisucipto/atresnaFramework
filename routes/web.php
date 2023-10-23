@@ -165,6 +165,9 @@ Route::get('/about-us/vision-mission', [FrontPagesControlller::class, 'visimisi'
 Route::get('/about-us/who-we-are', [FrontPagesControlller::class, 'whoweare']);
 
 
+Route::prefix('/projects')->group(function () {
+    Route::get('/', [FrontPagesControlller::class, 'projects']);
+});
 
 
 // Produk Route
