@@ -169,6 +169,11 @@ Route::prefix('/projects')->group(function () {
     Route::get('/', [FrontPagesControlller::class, 'projects']);
 });
 
+// Hirring
+Route::prefix('/hiring')->group(function () {
+    Route::get('/', [FrontPagesControlller::class, 'hiring']);
+});
+
 
 // Produk Route
 Route::prefix('/products')->group(function () {

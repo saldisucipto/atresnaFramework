@@ -131,7 +131,7 @@
                         <span class=" text-sm font-italic italic ">Our Experience</span>
                     </a>
                     <a href="/hiring"
-                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3">
+                        class="flex flex-col font-primary text-caa-primary border-l-2 border-caa-primary pl-3 @if (url()->current() == env('APP_URL') . '/hiring' || Str::startsWith(url()->current(), env('APP_URL') . '/hiring')) border-b-4) border-b-4 @endif">
                         <div class="text-lg font-semibold">Careers</div>
                         <span class=" text-sm font-italic italic ">We Are Hiring</span>
                     </a>

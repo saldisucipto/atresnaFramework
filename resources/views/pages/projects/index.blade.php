@@ -71,295 +71,63 @@
             </div>
         </div>
         {{-- END Kategori --}}
-        {{-- Brand Product --}}
-        <div class="flex flex-col gap-2">
-            <h2 class="text-left text-xl text-gray-800">Our Experiences</h2>
-            <div class="h-12 bg-slate-100 w-full rounded-lg flex flex-col justify-center px-3">
-                <form class="" action="#">
-                    <select class="p-2 rounded-lg" name="" id="">
-                        <option value="">On Going Projects</option>
-                        <option value="">Finished Projects</option>
-                    </select>
-                </form>
-            </div>
+        {{-- Latest Projects --}}
+        <div class="flex flex-col ">
+            <h2 class="text-left text-xl text-gray-800">List Of Project</h2>
+            <div class="p-3 grid grid-flow-col grid-cols-12  max-w-screen-xl rounded-lg mx-auto bg-slate-100 w-full gap-3">
+                <div class="col-span-3 w-full  flex justify-end">
+                    <form class="w-full" action="">
+                        <select name="" id="" class=" p-2 rounded-lg drop-shadow-lg w-full ">
+                            <option value="">On Going Projects</option>
+                            <option value="">Finish Projects</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-span-9 w-full">
+                    <div class="p-3 bg-white drop-shadow-lg rounded-lg">
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class="text-xs text-gray-100 uppercase bg-caa-primary rounded-lg ">
+                                    <tr class="">
+                                        <th scope="col" class="px-6 py-3 rounded-tl-lg">
+                                            Project Names
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Customer
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Project Details
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 rounded-tr-lg ">
+                                            Years
+                                        </th>
 
-        </div>
-        {{-- END Brand Product --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b  text-gray-900  hover:bg-gray-50">
+                                        <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">
+                                            Apple MacBook Pro 17"
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            Silver
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Laptop
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            $2999
+                                        </td>
 
+                                    </tr>
 
-        {{-- Latest Produk --}}
-        <div class="flex flex-col gap-2">
-            <h2 class="text-left text-xl text-gray-800">Latest Products</h2>
-            <div class=" grid grid-flow-row grid-cols-5 gap-4 ">
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class=" h-96 bg-slate-100 drop-shadow-xl rounded-xl flex flex-col gap-2 ">
-                    <div class=" h-56 ">
-                        <img class=" h-full w-full object-cover rounded-tl-xl rounded-tr-xl "
-                            src="/assets/img/cartridge-cobtter.jpg" alt="">
-                    </div>
-                    <div class="p-2 flex flex-col gap-2">
-                        <a href="#" class=" text-gray-700 font-semibold ">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing
-                            elit...</a>
-                        <div class="flex gap-1">
-                            <div
-                                class="text-xs  px-3 bg-caa-primary text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>C-Pure</span>
-                            </div>
-                            <div
-                                class="text-xs  px-3 bg-caa-secondary  text-white rounded-lg flex flex-col justify-center h-6 w-20 text-center ">
-                                <span>Cartridge</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-gray-700">Ready Stok (60)</span>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         {{-- END Latest Produk --}}
-
-
     </div>
 @endsection

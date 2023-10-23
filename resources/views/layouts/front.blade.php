@@ -8,6 +8,7 @@
 
     {{-- tailwind css --}}
     <title>{{ $title }}</title>
+    @livewireStyles
 
     @if ($companyInfo->company_logo == 'logo.png')
         <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
@@ -18,7 +19,6 @@
     <link rel="stylesheet" href="/assets/css/atresnaStyle.css">
     {{-- add font awesome --}}
     <script src="https://kit.fontawesome.com/7a249e95a6.js" crossorigin="anonymous"></script>
-    @livewireStyles
 </head>
 
 <body class="text-gray-800 pb-14">
@@ -67,9 +67,8 @@
             </div>
         </div> --}}
     </div>
-
-    <script src="/assets/js/atresnaScript.js"></script>
     @livewireScripts
+    <script src="/assets/js/atresnaScript.js"></script>
 </body>
 
 </html>

@@ -8,5 +8,5 @@
 
 @font-face {
     font-family: Arial;
-    src: url("assets/fonts/arial-narrow.ttf") format("opentype");
+    src: url("/assets/fonts/arial-narrow.ttf") format("opentype");
 }

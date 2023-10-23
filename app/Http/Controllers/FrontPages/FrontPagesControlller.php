@@ -159,4 +159,13 @@ class FrontPagesControlller extends Controller
         AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
         return view('pages.projects.index', ['companyInfo' => $companyInfo[0], 'tentangData' => $tentangData,  'title' => Meta::getTitle()]);
     }
+
+    public function hiring()
+    {
+        $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
+        $tentangData = StaticPages::find(5);
+        $meta = new Meta('Tentang Kami ' . ' - ' . Meta::$keyWord, 'Tentang - ' .  $companyInfo[0]->company_name, '/storage/img/company/' . $companyInfo[0]->company_logo);
+        AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
+        return view('pages.hiring.index', ['companyInfo' => $companyInfo[0], 'tentangData' => $tentangData,  'title' => Meta::getTitle()]);
+    }
 }
