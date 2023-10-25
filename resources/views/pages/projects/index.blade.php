@@ -106,19 +106,33 @@
                                 </thead>
                                 <tbody>
                                     <tr class="bg-white border-b  text-gray-900  hover:bg-gray-50">
-                                        <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">
-                                            Apple MacBook Pro 17"
+                                        <th class="px-6 py-4 font-medium  whitespace-nowrap w-28 ">
+                                            Purified Generation System
                                         </th>
                                         <td class="px-6 py-4">
-                                            Silver
+                                            PT. DANKOS FARMA
                                         </td>
                                         <td class="px-6 py-4">
-                                            Laptop
+                                            PW Distribution Loop, WFI Distribution Loop, Puresteam Distribution Installation
                                         </td>
                                         <td class="px-6 py-4">
-                                            $2999
+                                            2021
                                         </td>
+                                    </tr>
 
+                                    <tr class="bg-white border-b  text-gray-900  hover:bg-gray-50">
+                                        <th class="px-6 py-4 font-medium  whitespace-nowrap w-28 ">
+                                            MBR System
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            PT. CISARUA MOUNTAIN DIARY
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Waste Water Treatment Plant System
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            2022
+                                        </td>
                                     </tr>
 
                                 </tbody>
@@ -128,6 +142,5 @@
                 </div>
             </div>
         </div>
-        {{-- END Latest Produk --}}
     </div>
 @endsection

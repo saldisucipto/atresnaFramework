@@ -9,7 +9,7 @@
         <div class="max-w-screen-lg mx-auto py-8 text-gray-800">
             <div class="m-8 flex flex-col gap-5">
                 <div>
-                    <h2 class="text-2xl text-gray-700">Complete Equipment Specialist</h2>
+                    <h2 class="text-2xl text-gray-700">Complete Equipments Specialist</h2>
                     <span class="text-xl text-primary italic ">Trusted partner and authorized distributor for the
                         best
                         brand
@@ -19,7 +19,7 @@
                     and
                     forward-thinking
                     company that serves off
-                    all kinds of water treatment equipments & At PT. CIPTA ANEKA AIR we take pride in our role as an
+                    all kinds of water treatment equipments and at PT. CIPTA ANEKA AIR we take pride in our role as an
                     authorized distributor, which means that we have been officially recognized and entrusted by the
                     manufacturers to deliver their products or services to customers with the highest standards of
                     quality and authenticity. Our reputation as a reliable distributor is built on a foundation of

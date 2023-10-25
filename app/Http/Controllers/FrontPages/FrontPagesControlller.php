@@ -24,7 +24,7 @@ class FrontPagesControlller extends Controller
     {
         $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
         $sliders = Slider::find(1);
-        $meta = new Meta($companyInfo[0]->company_name . ' - ' . Meta::$keyWord, 'Solusi Konsultan Pajak Terintegrasi untuk Pertumbuhan Bisnis yang Berkelanjutan ' . $companyInfo[0]->company_slogan, '/storage/img/company/' . $companyInfo[0]->company_logo);
+        $meta = new Meta($companyInfo[0]->company_name . ' - ' . Meta::$keyWord, 'Water And Waste Water Equipments Sepecialist ' . $companyInfo[0]->company_slogan, '/storage/img/company/' . $companyInfo[0]->company_logo);
         AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
         return view('index', ['companyInfo' => $companyInfo[0], 'sliders' => $sliders, 'title' => Meta::getTitle()]);
     }

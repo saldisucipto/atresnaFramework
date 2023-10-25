@@ -4,66 +4,55 @@
     <div class=" max-w-screen-xl mx-auto my-20 flex flex-col gap-10 ">
         {{-- Hirring Banner --}}
         <div class="  bg-slate-100 drop-shadow-lg h-slider rounded-2xl ">
-            <img class="h-full w-full object-cover rounded-3xl" src="/assets/img/banner-promotion.jpg" alt="">
+            <img class="h-full w-full object-cover rounded-3xl" src="/assets/img/hiring.jpg" alt="">
         </div>
         {{-- End Hirring Banner --}}
 
         {{-- Latest Projects --}}
-        <div class="flex flex-col ">
-            <h2 class="text-left text-xl text-gray-800"></h2>
-            <div class="p-3 grid grid-flow-col grid-cols-12  max-w-screen-xl rounded-lg mx-auto bg-slate-100 w-full gap-3">
-                <div class="col-span-3 w-full  flex justify-end">
-                    <form class="w-full" action="">
-                        <select name="" id="" class=" p-2 rounded-lg drop-shadow-lg w-full ">
-                            <option value="">On Going Projects</option>
-                            <option value="">Finish Projects</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="col-span-9 w-full">
-                    <div class="p-3 bg-white drop-shadow-lg rounded-lg">
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-100 uppercase bg-caa-primary rounded-lg ">
-                                    <tr class="">
-                                        <th scope="col" class="px-6 py-3 rounded-tl-lg">
-                                            Project Names
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Customer
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Project Details
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 rounded-tr-lg ">
-                                            Years
-                                        </th>
+        <div class="flex flex-col gap-3 ">
+            <h2 class="text-left text-xl text-gray-800">Available Position</h2>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 text-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            Silver
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Laptop
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            $2999
-                                        </td>
+            <div class="flex flex-col gap-2">
 
-                                    </tr>
+                <div class="bg-white drop-shadow-lg rounded-lg">
+                    <div class="p-5 flex justify-between ">
+                        <h2 class="text-xl text-gray-700 font-semibold">Accounting & Finance</h2>
+                        <div class="flex justify-end gap-6">
+                            <button class=" bg-caa-primary text-gray-100 px-3 py-1 rounded-lg ">Apply Now</button>
+                            <button> <i class="fas fa-arrow-down"></i> </button>
+                        </div>
 
-                                </tbody>
-                            </table>
+                    </div>
+                    <div class="px-5 pb-5 py-1">
+                        <hr>
+                        <div class="flex flex-col gap-3">
+                            <div class="flex flex-col gap-2">
+                                <h2 class="text-lg font-semibold text-gray-700">Job Highlights</h2>
+                                <li>
+                                    Working with Multinational Colleague
+                                </li>
+                                <li>
+                                    Career as a Finance Manager
+                                </li>
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <h2 class="text-lg font-semibold text-gray-700">Technical Skills:</h2>
+                                <li>Degree or equivalent professional qualification in IT and finance.</li>
+                                <li>Through knowledge of ERP systems and database administration</li>
+                                <li>Hands on experience dealing with day-to-day troubleshooting of IT issues in a large
+                                    organization</li>
+                                <li>Understanding the requirements of the stakeholders and the ability to suggest sortable
+                                    solutions.</li>
+                                <li>Strong communication skills to work with all levels of employees in the organization.
+                                </li>
+                                <li>Strong technical skills in IT systems such as SAP/Microsoft/HRIS</li>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         {{-- END Latest Produk --}}

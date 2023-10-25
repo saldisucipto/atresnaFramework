@@ -15,9 +15,7 @@
     <ul id="slides-container" class=" slides-container flex w-full overflow-scroll scroll-smooth">
         <li style="flex: 1 0 100%" class="slide">
             <div class=" h-hero max-w-screen-lg bg-black overflow-hidden">
-                <img class="object-cover h-full w-hero"
-                    src="https://img.freepik.com/free-vector/mineral-water-bottle-ad-banner-flask-with-drink_107791-2565.jpg?w=1380&t=st=1695028307~exp=1695028907~hmac=a1aab9a6fbf36e4890d4456b59810f1572cebccf07bf27bf1917772c1e6a6df9"
-                    alt="">
+                <img class="object-cover h-full w-hero" src="/assets/img/banner.jpg" alt="">
             </div>
         </li>
 
