@@ -16,6 +16,7 @@ use App\Models\Servis;
 use App\Models\StaticPages;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class FrontPagesControlller extends Controller
 {
@@ -26,7 +27,8 @@ class FrontPagesControlller extends Controller
         $sliders = Slider::find(1);
         $meta = new Meta($companyInfo[0]->company_name . ' - ' . Meta::$keyWord, 'Water And Waste Water Equipments Sepecialist ' . $companyInfo[0]->company_slogan, '/storage/img/company/' . $companyInfo[0]->company_logo);
         AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
-        return view('index', ['companyInfo' => $companyInfo[0], 'sliders' => $sliders, 'title' => Meta::getTitle()]);
+        // return view('index', ['companyInfo' => $companyInfo[0], 'sliders' => $sliders, 'title' => Meta::getTitle()]);
+        return Inertia::render('FrontPages/LandingPages', ['companyInfo' => $companyInfo[0]]);
     }
 
     // Produk and Servis Pages
