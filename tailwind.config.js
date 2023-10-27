@@ -13,6 +13,12 @@ module.exports = {
                 "secondary-color": "#f5821f",
                 "bg-primary": "#f7fafc",
             },
+            height: {
+                hero: "370px",
+            },
+            width: {
+                hero: "850px",
+            },
         },
     },
     plugins: [],

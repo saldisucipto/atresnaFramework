@@ -6,7 +6,7 @@
         <!-- Tranding Info -->
         <div class="h-10 w-full bg-white">
             <div
-                class="max-w-screen-2xl mx-auto flex flex-col justify-center h-full"
+                class="max-w-screen-xl mx-auto flex flex-col justify-center h-full"
             >
                 <div class="flex justify-between">
                     <div class="flex justify-start gap-3">
@@ -52,7 +52,7 @@
         </div>
         <!-- End Tranding Info -->
         <!-- Logo Places -->
-        <div class="h-20 flex max-w-screen-2xl mx-auto justify-start w-full">
+        <div class="h-20 flex max-w-screen-xl mx-auto justify-start w-full">
             <a href="#" class="my-auto flex gap-1">
                 <img
                     class="max-h-16"
@@ -60,13 +60,169 @@
                     alt=""
                 />
                 <div class="flex flex-col justify-end">
-                    <span class="text-4xl font-bold text-blue-900"
-                        >ATRESNA</span
-                    >
+                    <div class="flex">
+                        <span class="text-4xl font-bold text-secondary-color"
+                            >ATRESNA</span
+                        >
+                        <span
+                            class="text-sm font-bold text-primary-color mt-auto"
+                            >CREATIVE</span
+                        >
+                    </div>
                 </div>
             </a>
         </div>
         <!-- End Logo Placed -->
+        <!-- Main Navigasi Info -->
+        <div class="h-12 w-full bg-white">
+            <div
+                class="max-w-screen-xl mx-auto flex flex-col justify-center h-full"
+            >
+                <div class="flex justify-between">
+                    <div class="flex justify-start gap-3">
+                        <button
+                            class="bg-primary-color h-12 flex flex-col justify-center"
+                        >
+                            <span class="px-8 text-gray-100 text-xl">Home</span>
+                        </button>
+                        <div class="flex">
+                            <button
+                                class="hover:bg-primary-color hover:text-gray-100 h-12 flex flex-col justify-center"
+                            >
+                                <span class="px-8 text-xl">Kategori</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="my-auto">
+                        <form action="#">
+                            <input
+                                placeholder="Pencarian Artikel"
+                                class="border border-gray-700 py-1 px-2 focus:outline-none text-lg"
+                                type="search"
+                                name=""
+                                id=""
+                            />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Navigasi Info -->
+        <!-- Main Banner -->
+        <div
+            class="max-w-screen-xl mx-auto grid grid-flow-col grid-cols-12 h-hero gap-2"
+        >
+            <div class="col-span-8 bg-white w-hero h-hero">
+                <!-- img slider w-full h-hero -->
+                <div class="relative h-hero w-full bg-black">
+                    <img
+                        class="w-hero h-hero object-cover"
+                        src="https://images.pexels.com/photos/1181317/pexels-photo-1181317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt=""
+                    />
+                    <div class="absolute bottom-0">
+                        <div class="p-9 text-white flex flex-col">
+                            <div class="text-xl font-bold">
+                                <span class="">Teknologi / 1 Januari 2023</span>
+                            </div>
+                            <div class="text-4xl font-semibold">
+                                <span class=""
+                                    >Lorem ipsum dolor sit amet consectetur,
+                                    adipisicing elit.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-0 h-full flex flex-col justify-center"
+                    >
+                        <div class="flex justify-between w-hero">
+                            <button
+                                class="h-10 w-10 bg-white bg-opacity-70 text-black hover:bg-primary-color hover:text-white"
+                            >
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <button
+                                class="h-10 w-10 bg-white bg-opacity-70 text-black hover:bg-primary-color hover:text-white"
+                            >
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- end img slider -->
+            </div>
+            <div class="col-span-4 flex justify-between flex-col">
+                <div
+                    class="h-16 bg-white drop-shadow-md flex flex-col justify-center"
+                >
+                    <div class="px-2 text-lg flex justify-between">
+                        <span class="text-gray-800 text-xl font-semibold"
+                            >Kategori</span
+                        >
+                        <button>View All</button>
+                    </div>
+                </div>
+                <div class="h-14 bg-slate-100 flex flex-col justify-center">
+                    <div class="relative h-14">
+                        <img
+                            class="h-full w-full object-cover"
+                            src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt=""
+                        />
+                        <div
+                            class="absolute text-white flex flex-col justify-center h-full top-0 text-center w-full font-semibold"
+                        >
+                            <a class="text-2xl" href="#">Kategori 1</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-14 bg-slate-100 flex flex-col justify-center">
+                    <div class="relative h-14">
+                        <img
+                            class="h-full w-full object-cover"
+                            src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt=""
+                        />
+                        <div
+                            class="absolute text-white flex flex-col justify-center h-full top-0 text-center w-full font-semibold"
+                        >
+                            <a class="text-2xl" href="#">Kategori 1</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-14 bg-slate-100 flex flex-col justify-center">
+                    <div class="relative h-14">
+                        <img
+                            class="h-full w-full object-cover"
+                            src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt=""
+                        />
+                        <div
+                            class="absolute text-white flex flex-col justify-center h-full top-0 text-center w-full font-semibold"
+                        >
+                            <a class="text-2xl" href="#">Kategori 1</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-14 bg-slate-100 flex flex-col justify-center">
+                    <div class="relative h-14">
+                        <img
+                            class="h-full w-full object-cover"
+                            src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt=""
+                        />
+                        <div
+                            class="absolute text-white flex flex-col justify-center h-full top-0 text-center w-full font-semibold"
+                        >
+                            <a class="text-2xl" href="#">Kategori 1</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Main Banner -->
     </div>
     <!-- End Body -->
 </template>
