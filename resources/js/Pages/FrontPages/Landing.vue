@@ -1,8 +1,6 @@
 <template>
     <!-- Body  -->
-    <div
-        class="w-full h-screen bg-slate-100 flex flex-col gap-10 text-gray-700"
-    >
+    <div class="w-full bg-slate-100 flex flex-col gap-10 text-gray-700 pb-32">
         <!-- Tranding Info -->
         <div class="h-10 w-full bg-white">
             <div
@@ -110,13 +108,13 @@
         <!-- End Main Navigasi Info -->
         <!-- Main Banner -->
         <div
-            class="max-w-screen-xl mx-auto grid grid-flow-col grid-cols-12 h-hero gap-2"
+            class="max-w-screen-xl mx-auto grid grid-flow-col grid-cols-12 h-hero gap-2 w-full px-10"
         >
-            <div class="col-span-8 bg-white w-hero h-hero">
+            <div class="col-span-8 bg-white h-hero">
                 <!-- img slider w-full h-hero -->
                 <div class="relative h-hero w-full bg-black">
                     <img
-                        class="w-hero h-hero object-cover"
+                        class="h-full w-full object-cover"
                         src="https://images.pexels.com/photos/1181317/pexels-photo-1181317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         alt=""
                     />
@@ -134,9 +132,9 @@
                         </div>
                     </div>
                     <div
-                        class="absolute top-0 h-full flex flex-col justify-center"
+                        class="absolute top-0 h-full flex flex-col justify-center w-full"
                     >
-                        <div class="flex justify-between w-hero">
+                        <div class="flex justify-between w-full">
                             <button
                                 class="h-10 w-10 bg-white bg-opacity-70 text-black hover:bg-primary-color hover:text-white"
                             >
@@ -221,8 +219,124 @@
                 </div>
             </div>
         </div>
-
         <!-- End Main Banner -->
+
+        <!-- Main Content -->
+        <div
+            class="max-w-screen-xl mx-auto grid grid-flow-col grid-cols-12 gap-2 w-full px-10"
+        >
+            <div class="col-span-9 flex flex-col gap-3">
+                <div
+                    class="h-12 bg-white drop-shadow-md flex flex-col justify-center"
+                >
+                    <div class="px-2 text-lg flex justify-between">
+                        <span class="text-gray-800 text-xl font-semibold"
+                            >Artikel Terbaru</span
+                        >
+                        <button>View All</button>
+                    </div>
+                </div>
+                <div class="grid grid-flow-row grid-cols-2 gap-5">
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                    <div class="h-72 w-full bg-white drop-shadow-lg"></div>
+                </div>
+            </div>
+            <div class="col-span-3 flex justify-start flex-col gap-5">
+                <div
+                    class="h-12 bg-white drop-shadow-md flex flex-col justify-center"
+                >
+                    <div class="px-2 text-lg flex justify-between">
+                        <span class="text-gray-800 text-xl font-semibold"
+                            >Trending Artikel</span
+                        >
+                        <button>View All</button>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="flex h-20 drop-shadow-lg bg-white gap-2">
+                        <div class="h-20 w-20 bg-slate-500 my-auto">
+                            <i
+                                class="fas fa-image text-center my-auto h-20 w-20"
+                            ></i>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="text-sm font-semibold">
+                                <a href="#">Technology</a> / Januari 2023
+                            </div>
+                            <div class="text-sm font-bold">
+                                <a href="#">
+                                    Lorem ipsum dolor sit, amet consectetur
+                                    adipisicing elit.</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex h-20 drop-shadow-lg bg-white gap-2">
+                        <div class="h-20 w-20 bg-slate-500 my-auto">
+                            <i
+                                class="fas fa-image text-center my-auto h-20 w-20"
+                            ></i>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="text-sm font-semibold">
+                                <a href="#">Technology</a> / Januari 2023
+                            </div>
+                            <div class="text-sm font-bold">
+                                <a href="#">
+                                    Lorem ipsum dolor sit, amet consectetur
+                                    adipisicing elit.</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex h-20 drop-shadow-lg bg-white gap-2">
+                        <div class="h-20 w-20 bg-slate-500 my-auto">
+                            <i
+                                class="fas fa-image text-center my-auto h-20 w-20"
+                            ></i>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="text-sm font-semibold">
+                                <a href="#">Technology</a> / Januari 2023
+                            </div>
+                            <div class="text-sm font-bold">
+                                <a href="#">
+                                    Lorem ipsum dolor sit, amet consectetur
+                                    adipisicing elit.</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex h-20 drop-shadow-lg bg-white gap-2">
+                        <div class="h-20 w-20 bg-slate-500 my-auto">
+                            <i
+                                class="fas fa-image text-center my-auto h-20 w-20"
+                            ></i>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="text-sm font-semibold">
+                                <a href="#">Technology</a> / Januari 2023
+                            </div>
+                            <div class="text-sm font-bold">
+                                <a href="#">
+                                    Lorem ipsum dolor sit, amet consectetur
+                                    adipisicing elit.</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Content -->
     </div>
     <!-- End Body -->
 </template>
