@@ -7,6 +7,9 @@
         <big-slider :slidesData="slides"></big-slider>
     </div>
     <!-- End Slider -->
+    <!-- Introduction Section -->
+    <section></section>
+    <!-- End Introduction Section -->
 </template>
 
 <script>

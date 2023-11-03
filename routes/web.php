@@ -158,7 +158,8 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
 
 // Front Pages Routes
-Route::get('/', [FrontPagesControlller::class, 'index'])->name('index');
+Route::get('/', [FrontPagesControlller::class, 'index1'])->name('index');
+// Route::get('/home1', [FrontPagesControlller::class, 'index1'])->name('index1');
 Route::get('/about-us', [FrontPagesControlller::class, 'about']);
 Route::get('/about-us/our-history', [FrontPagesControlller::class, 'history']);
 Route::get('/about-us/vision-mission', [FrontPagesControlller::class, 'visimisi']);

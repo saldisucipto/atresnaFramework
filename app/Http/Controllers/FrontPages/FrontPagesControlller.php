@@ -21,15 +21,18 @@ use Inertia\Inertia;
 class FrontPagesControlller extends Controller
 {
     // Home Pages
-    public function index()
+    public function index1()
     {
         $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
-        $sliders = Slider::find(1);
+        $sliders = Slider::get(['slider_title', 'slider_image']);
+        $intro = StaticPages::where('id', 1)->get(['title', 'content']);
+        // dd($intro);
         $meta = new Meta($companyInfo[0]->company_name . ' - ' . Meta::$keyWord, 'Water And Waste Water Equipments Sepecialist ' . $companyInfo[0]->company_slogan, '/storage/img/company/' . $companyInfo[0]->company_logo);
         AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
-        // return view('index', ['companyInfo' => $companyInfo[0], 'sliders' => $sliders, 'title' => Meta::getTitle()]);
-        return Inertia::render('FrontPages/LandingPages', ['companyInfo' => $companyInfo[0]]);
+        return view('index', ['companyInfo' => $companyInfo[0], 'sliders' => $sliders, 'title' => Meta::getTitle(), 'intro' => $intro[0]]);
+        // return Inertia::render('FrontPages/LandingPages', ['companyInfo' => $companyInfo[0]]);
     }
+
 
     // Produk and Servis Pages
     public function produkPages()
