@@ -29,6 +29,14 @@
                 :iconData="'fa-columns'"
                 >Master Panel</card-master-data
             >
+            <card-master-data :linkTujuan="'history'" :iconData="'fa-history'"
+                >Company History</card-master-data
+            >
+            <card-master-data
+                :linkTujuan="'why-choose-us'"
+                :iconData="'fa-question-circle'"
+                >Why Choose Us</card-master-data
+            >
             <!-- End Card Master Data -->
         </div>
         <!-- End Main Menu -->

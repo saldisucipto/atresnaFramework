@@ -53,6 +53,16 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
 
         // Panel Utama
         Route::get('/panel-utama', [DashboardController::class, 'panelUtama']);
+
+        // History
+        Route::prefix('/history')->group(function () {
+            Route::get('/', [DashboardController::class, 'historyPage']);
+        });
+
+        // Why Choose Us
+        Route::prefix('/why-choose-us')->group(function () {
+            Route::get('/', [DashboardController::class, 'wcuPage']);
+        });
     });
 
     Route::prefix('/konfigurasi')->group(function () {
@@ -93,6 +103,16 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
             Route::delete('/delete-produk/{id}', [MasterDataController::class, 'deleteProduk']);
             // Delete Images Produk
             Route::delete('/delete-images-produk/{id}', [MasterDataController::class, 'deleteImagesProduk']);
+        });
+
+        Route::prefix('/history')->group(function () {
+            Route::post('/create', [MasterDataController::class, 'createHistory']);
+            Route::post('/update/{id}', [MasterDataController::class, 'updateHistory']);
+        });
+
+        Route::prefix('/why-choose-us')->group(function () {
+            Route::post('/create', [MasterDataController::class, 'createWcu']);
+            Route::post('/update/{id}', [MasterDataController::class, 'updateWcu']);
         });
 
         Route::prefix('/servis')->group(function () {

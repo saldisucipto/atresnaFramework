@@ -7,6 +7,7 @@ use App\Http\Utils\AnalisisPengunjung;
 use App\Http\Utils\Meta;
 use App\Models\BlogNews;
 use App\Models\BrandProduk;
+use App\Models\CompanyHistory;
 use App\Models\CompanyInfo;
 use App\Models\KategoriProduk;
 use App\Models\Slider;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Servis;
 use App\Models\StaticPages;
+use App\Models\WhyChooseUs;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -26,10 +28,14 @@ class FrontPagesControlller extends Controller
         $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo', 'company_address', 'company_email', 'company_phone',]);
         $sliders = Slider::get(['slider_title', 'slider_image']);
         $intro = StaticPages::where('id', 1)->get(['title', 'content']);
+        $brand = BrandProduk::get(['slugs', 'gambar_brand']);
+        $brandDesc = StaticPages::where('id', 2)->get(['title', 'content']);
+        $history = CompanyHistory::get(['tahun', 'descripiton']);
+        $wCu = WhyChooseUs::get(['content']);
         // dd($intro);
         $meta = new Meta($companyInfo[0]->company_name . ' - ' . Meta::$keyWord, 'Water And Waste Water Equipments Sepecialist ' . $companyInfo[0]->company_slogan, '/storage/img/company/' . $companyInfo[0]->company_logo);
         AnalisisPengunjung::recordVisitor($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'], url()->current());
-        return view('index', ['companyInfo' => $companyInfo[0], 'sliders' => $sliders, 'title' => Meta::getTitle(), 'intro' => $intro[0]]);
+        return view('index', ['companyInfo' => $companyInfo[0], 'sliders' => $sliders, 'title' => Meta::getTitle(), 'intro' => $intro[0], 'brand' => $brand, 'brandDesc' => $brandDesc[0], 'history' => $history, 'wCu' => $wCu]);
         // return Inertia::render('FrontPages/LandingPages', ['companyInfo' => $companyInfo[0]]);
     }
 

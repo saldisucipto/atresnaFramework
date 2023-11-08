@@ -12,6 +12,7 @@ use Inertia\Inertia;
 use App\Models\Produk;
 use App\Models\KategoriProduk;
 use App\Models\BrandProduk;
+use App\Models\CompanyHistory;
 use App\Models\CompanyInfo;
 use App\Models\Customer;
 use App\Models\PanelUtama;
@@ -19,6 +20,7 @@ use App\Models\Servis;
 use App\Models\Slider;
 use App\Models\Sosmed;
 use App\Models\StaticPages;
+use App\Models\WhyChooseUs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -130,5 +132,17 @@ class DashboardController extends Controller
     {
         $analytics = DB::statement('SELECT count(distinct ip_address) from analisis_pengunjung;');
         return response()->json($analytics, 200);
+    }
+
+    // history pages
+    public function historyPage()
+    {
+        return Inertia::render('Dashboard/Master/History/Index', ['data' => MasterDataController::ambilSemuaData(new CompanyHistory()), 'message' => null]);
+    }
+
+    // why choose us
+    public function wcuPage()
+    {
+        return Inertia::render('Dashboard/Master/Wcu/Index', ['data' => MasterDataController::ambilSemuaData(new WhyChooseUs()), 'message' => null]);
     }
 }

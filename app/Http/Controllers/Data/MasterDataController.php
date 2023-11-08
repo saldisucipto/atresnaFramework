@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Utils\FileProcess;
 use App\Models\BlogNews;
 use App\Models\BrandProduk;
+use App\Models\CompanyHistory;
 use App\Models\Customer;
 use App\Models\ImagesProduk;
 use App\Models\PanelUtama;
@@ -16,6 +17,7 @@ use App\Models\Servis;
 use App\Models\Slider;
 use App\Models\Sosmed;
 use App\Models\StaticPages;
+use App\Models\WhyChooseUs;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -582,5 +584,63 @@ class MasterDataController extends Controller
         FileProcess::deleteFoto($panelUtama->image, 'panel');
         $panelUtama->delete();
         return redirect()->back()->with('message', 'Berhasil Delete Data Panel');
+    }
+
+    public function createHistory(Request $request)
+    {
+        $request->validate([
+            'tahun' => 'required',
+            'description' => 'required',
+        ]);
+        $data = $request->all();
+        $historyCompany = new CompanyHistory();
+        $historyCompany->tahun = $data['tahun'];
+        $historyCompany->descripiton = $data['description'];
+        $historyCompany->icon = $data['image'];
+        $historyCompany->save();
+        return redirect()->back()->with('message', 'Berhasil Mmebuat History Company');
+    }
+
+    public function updateHistory(Request $request, $id = null)
+    {
+        $request->validate([
+            'tahun' => 'required',
+            'description' => 'required',
+        ]);
+        $data = $request->all();
+        $historyCompany = CompanyHistory::find($id);
+        $historyCompany->tahun = $data['tahun'];
+        $historyCompany->descripiton = $data['description'];
+        $historyCompany->icon = $data['image'];
+        $historyCompany->update();
+        return redirect()->back()->with('message', 'Berhasil Update History Company');
+    }
+
+    public function createWcu(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+        $data = $request->all();
+        $wCU = new WhyChooseUs();
+        $wCU->title = $data['title'];
+        $wCU->content = $data['description'];
+        $wCU->save();
+        return redirect()->back()->with('message', 'Berhasil Buat Why Choose Us');
+    }
+
+    public function updateWcu(Request $request, $id = null)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+        $data = $request->all();
+        $wCU = WhyChooseUs::find($id);
+        $wCU->title = $data['title'];
+        $wCU->content = $data['description'];
+        $wCU->update();
+        return redirect()->back()->with('message', 'Berhasil Update Why Choose Us');
     }
 }
