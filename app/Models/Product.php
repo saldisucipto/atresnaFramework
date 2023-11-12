@@ -4,8 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $table = 'products';
+
+    // fillable row
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'categories_id',
+        'tags',
+    ];
+
+    public function galleries()
+    {
+        return $this->hasMany(ProductGallerie::class, 'products_id', 'id');
+    }
+
+    // relasi kebalikan antara table product ke product categoories
+    public function category()
+    {
+        return $this->belongsTo(ProductCategories::class, 'categories_id', 'id');
+    }
 }

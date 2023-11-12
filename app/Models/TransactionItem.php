@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionItem extends Model
 {
     use HasFactory;
+
+    protected $table = 'transaction_items';
+
+    protected $fillable = [
+        'users_id',
+        'products_id',
+        'transactions_id',
+        'quantity'
+    ];
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'products_id');
+    }
 }
