@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\CategoriesController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('products', [ProductController::class, 'all']);
 Route::post('categories', [CategoriesController::class, 'all']);
+Route::post('categories', [AuthController::class, 'register']);
