@@ -20,6 +20,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
+        'phone',
+        'roles',
         'password',
     ];
 
@@ -41,4 +44,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relations with transaction table
+     * User table will have many Transaction table
+     * @var users_id adalah row foreign yang ada pada table transactions
+     * @var id adalah row local yang kita miliki
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'users_id', 'id');
+    }
 }
