@@ -28,6 +28,8 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login_api']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    // authentikasi url
     Route::get('/user', [AuthController::class, 'fetchuser']);
     Route::post('/user/update', [AuthController::class, 'updateUser']);
+    Route::post('/user/logout', [AuthController::class, 'api_logout']);
 });

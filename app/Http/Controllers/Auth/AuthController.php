@@ -169,4 +169,10 @@ class AuthController extends Controller
 
         return ResponseFormater::success($user, 'Data Berhasil Di Update');
     }
+
+    public function api_logout(Request $request)
+    {
+        $token = $request->user()->currentAccessToken()->delete();
+        return ResponseFormater::success($token, 'Token Revoked');
+    }
 }
