@@ -159,4 +159,14 @@ class AuthController extends Controller
     {
         return ResponseFormater::success($request->user(), 'Data User Berhasil Diambil');
     }
+
+    public function updateUser(Request $request)
+    {
+        $data = $request->all();
+
+        $user = Auth::user();
+        $user->update($data);
+
+        return ResponseFormater::success($user, 'Data Berhasil Di Update');
+    }
 }

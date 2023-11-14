@@ -29,4 +29,5 @@ Route::post('login', [AuthController::class, 'login_api']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'fetchuser']);
+    Route::post('/user/update', [AuthController::class, 'updateUser']);
 });
