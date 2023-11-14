@@ -17,7 +17,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 // end auth route
 
 // dashboard
-Route::prefix('/dashboard')->middleware('auth')->group(function () {
+Route::prefix('/dashboard')->middleware('auth', 'admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
     Route::post('/user/{id}', [AuthController::class, 'updateProfile']);
