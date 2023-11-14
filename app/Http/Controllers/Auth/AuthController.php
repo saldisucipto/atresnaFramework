@@ -154,4 +154,9 @@ class AuthController extends Controller
             ], 'Authentcation Failed', 500);
         }
     }
+
+    public function fetchuser(Request $request)
+    {
+        return ResponseFormater::success($request->user(), 'Data User Berhasil Diambil');
+    }
 }
