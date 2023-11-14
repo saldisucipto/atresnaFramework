@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\CategoriesController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\TransactionController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,4 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'fetchuser']);
     Route::post('/user/update', [AuthController::class, 'updateUser']);
     Route::post('/user/logout', [AuthController::class, 'api_logout']);
+
+    // transaction controller
+    Route::get('/transaction', [TransactionController::class, 'fetchAll']);
 });
