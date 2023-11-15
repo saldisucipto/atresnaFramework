@@ -49,7 +49,7 @@
         </div>
         <!-- End Message -->
         <!-- Main menu  -->
-        <div class="mx-3 flex flex-col">
+        <!-- <div class="mx-3 flex flex-col">
             <div
                 class="h-12 bg-slate-100 rounded-lg flex flex-col justify-center"
             >
@@ -817,7 +817,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- End Main Menu -->
     </div>
 </template>

@@ -98,7 +98,7 @@
                             <td
                                 class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                             >
-                                {{ itemProduk.nama_kategori }}
+                                {{ itemProduk.name }}
                             </td>
 
                             <td
@@ -169,81 +169,16 @@
                                     type="text"
                                     name="Nama Kategori Produk"
                                     placeholder="Nama Kategori Produk"
-                                    v-model="form.nama_kategori"
+                                    v-model="form.name"
                                 />
                                 <div
                                     class="text-xs px-1 text-red-600"
-                                    v-if="errors.nama_kategori"
+                                    v-if="errors.name"
                                 >
-                                    {{ errors.nama_kategori }}
+                                    {{ errors.name }}
                                 </div>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="text-gray-700"
-                                    >Deskripsi Kategori Produk</label
-                                >
-                                <textarea
-                                    class="drop-shadow-sm border py-2 px-3 rounded-md focus:outline-none text-sm"
-                                    name=""
-                                    id=""
-                                    cols="10"
-                                    rows="3"
-                                    placeholder="Dekskripsi Kategori"
-                                    v-model="form.deskripsi_kategori"
-                                ></textarea>
                             </div>
 
-                            <div v-if="updateMode" class="flex justify-center">
-                                <div
-                                    v-if="this.imageBaru != null"
-                                    class="flex justify-between gap-2"
-                                >
-                                    <img
-                                        class="rounded-md max-w-sm mx-auto max-h-60"
-                                        :src="this.imageBaru"
-                                        alt=""
-                                    />
-                                </div>
-                                <div v-else>
-                                    <img
-                                        class="rounded-md max-w-sm mx-auto max-h-60"
-                                        :src="
-                                            '/storage/img/kategori-produk/' +
-                                            singelData[0].gambar_produk
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
-                            <div v-else>
-                                <img
-                                    v-if="this.imageBaru != null"
-                                    class="rounded-md max-w-sm mx-auto max-h-60"
-                                    :src="this.imageBaru"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="text-gray-700"
-                                    >Gambar Kategori</label
-                                >
-
-                                <input
-                                    class="text-sm"
-                                    type="file"
-                                    @input="
-                                        form.gambar_produk =
-                                            $event.target.files[0];
-                                        uploadFoto();
-                                    "
-                                />
-                                <div
-                                    class="text-xs px-1 text-red-600"
-                                    v-if="errors.gambar_produk"
-                                >
-                                    {{ errors.gambar_produk }}
-                                </div>
-                            </div>
                             <button
                                 v-if="updateMode"
                                 class="bg-yellow-400 hover:bg-yellow-700 text-white py-1 rounded-md drop-shadow-sm"
@@ -273,7 +208,7 @@
                                 <div
                                     class="text-gray-600 font-semibold text-lg"
                                 >
-                                    {{ singelData[0].nama_kategori }}
+                                    {{ singelData[0].name }}
                                 </div>
                                 <button
                                     class="bg-red-400 text-white rounded-md p-4 flex flex-col justify-center hover:bg-red-700"
@@ -281,29 +216,6 @@
                                 >
                                     <span class="">Tutup</span>
                                 </button>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="p-5 flex flex-col w-full gap-5">
-                            <div class="flex flex-col gap-2">
-                                <img
-                                    class="rounded-md max-w-sm mx-auto"
-                                    :src="
-                                        '/storage/img/kategori-produk/' +
-                                        singelData[0].gambar_produk
-                                    "
-                                    alt=""
-                                />
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="text-gray-700"
-                                    >Deskripsi Kategori Produk</label
-                                >
-                                <div
-                                    class="drop-shadow-sm border bg-slate-100 text-gray-700 font-semibold py-2 px-3 rounded-md focus:outline-none text-sm"
-                                >
-                                    {{ singelData[0].deskripsi_kategori }}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -330,7 +242,7 @@
                                 <h1>Yakin ingin menghapus Data ini ?</h1>
                                 <span
                                     class="font-semibold text-gray-900 text-center"
-                                    >{{ singelData[0].nama_kategori }}</span
+                                    >{{ singelData[0].name }}</span
                                 >
                             </div>
                             <div class="flex justify-between gap-2">
@@ -394,13 +306,11 @@ export default {
     },
     setup() {
         const form = useForm({
-            nama_kategori: null,
-            deskripsi_kategori: null,
-            gambar_produk: null,
+            name: null,
         });
 
         const deleteForm = useForm({
-            idProduk: [],
+            idKat: [],
         });
 
         return { form, deleteForm };
@@ -465,36 +375,36 @@ export default {
             this.modalCreate = true;
             this.updateMode = true;
             this.singelData = this.produk.data.filter((data) => data.id == id);
-            this.form.nama_kategori = this.singelData[0].nama_kategori;
+            this.form.name = this.singelData[0].name;
             this.form.deskripsi_kategori =
                 this.singelData[0].deskripsi_kategori;
         },
         deleteCheck(id) {
             this.multiDeleteButton = true;
-            if (this.deleteForm.idProduk.length < 1) {
+            if (this.deleteForm.idKat.length < 1) {
                 this.multiDeleteButton = false;
-                this.deleteForm.idProduk = [];
+                this.deleteForm.idKat = [];
             }
-            if (this.deleteForm.idProduk.includes(id)) {
-                let data = this.deleteForm.idProduk.indexOf(id);
-                this.deleteForm.idProduk.splice(data, 1);
+            if (this.deleteForm.idKat.includes(id)) {
+                let data = this.deleteForm.idKat.indexOf(id);
+                this.deleteForm.idKat.splice(data, 1);
             } else {
-                this.deleteForm.idProduk.push(id);
+                this.deleteForm.idKat.push(id);
             }
             // console.log(this.multiDeleteButton);
-            // console.log(this.deleteForm.idProduk.length);
+            // console.log(this.deleteForm.idKat.length);
         },
         deleteMultiple() {
             router.post(
                 "/dashboard/master/produk/delete-kategori-produk",
-                this.deleteForm.idProduk,
+                this.deleteForm.idKat,
                 {
                     preserveScroll: true,
                     onSuccess: () => {
                         this.deleteForm.reset();
                         this.multiDeleteButton = false;
                         this.idForm = [];
-                        this.deleteForm.idProduk = [];
+                        this.deleteForm.idKat = [];
                     },
                 }
             );
@@ -502,7 +412,7 @@ export default {
         showModalDelete(id) {
             this.modalSingleDelete = true;
             this.singelData = this.produk.data.filter((data) => data.id == id);
-            this.form.nama_kategori = this.singelData[0].nama_kategori;
+            this.form.name = this.singelData[0].name;
         },
         actionDeleteSingleData() {
             // alert(this.singelData[0].id);

@@ -13,6 +13,8 @@ use App\Models\KategoriProduk;
 use App\Models\BrandProduk;
 use App\Models\CompanyInfo;
 use App\Models\Customer;
+use App\Models\Product;
+use App\Models\ProductCategories;
 use App\Models\Servis;
 use App\Models\Slider;
 use App\Models\Sosmed;
@@ -38,13 +40,13 @@ class DashboardController extends Controller
     // master produk
     public function masterProduk()
     {
-        return Inertia::render('Dashboard/Master/Produk/Index', ['produk' => MasterDataController::ambilSemuaData(new Produk(), ['kategoriProduk', 'brandProduk', 'imagesProduk']), 'kategoriProduk' => MasterDataController::ambilSemuaData(new KategoriProduk()), 'brandProduk' => MasterDataController::ambilSemuaData(new BrandProduk()),]);
+        return Inertia::render('Dashboard/Master/Produk/Index', MasterDataController::ambilSemuaData(new Product()));
     }
 
     // master kategori produk
     public function kategoriProduk()
     {
-        return Inertia::render('Dashboard/Master/Produk/Kategori/Index', ['produk' => MasterDataController::ambilSemuaData(new KategoriProduk()), 'message' => null]);
+        return Inertia::render('Dashboard/Master/Produk/Kategori/Index', ['produk' => MasterDataController::ambilSemuaData(new ProductCategories()), 'message' => null]);
     }
 
     // master brand produk

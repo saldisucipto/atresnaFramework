@@ -10,6 +10,7 @@ use App\Models\BlogNews;
 use App\Models\BrandProduk;
 use App\Models\Customer;
 use App\Models\ImagesProduk;
+use App\Models\ProductCategories;
 use App\Models\Produk;
 use App\Models\Servis;
 use App\Models\Slider;
@@ -37,18 +38,12 @@ class MasterDataController extends Controller
     {
         //   dd($createDataKategori);
         $createDataKategori->validate([
-            'nama_kategori' => 'required|string',
-            'gambar_produk' => 'file|max:4000|mimes:png,jpg'
+            'name' => 'required|string',
         ]);
-        $kategoriProduk = new KategoriProduk();
-        $photoKategoriProduk = new FileProcess($createDataKategori->file('gambar_produk'), $createDataKategori['nama_kategori'], 'kategori-produk');
-        $kategoriProduk->nama_kategori = $createDataKategori['nama_kategori'];
-        $kategoriProduk->slugs = Str::slug($createDataKategori['nama_kategori']);
-        $kategoriProduk->deskripsi_kategori = $createDataKategori['deskripsi_kategori'];
-        $kategoriProduk->gambar_produk = $photoKategoriProduk->uploadFoto();
+        $kategoriProduk = new ProductCategories();
+        $kategoriProduk->name = $createDataKategori['name'];
         $kategoriProduk->save();
-
-        return redirect()->back()->with('message', 'Berhasil Menambahkan File Data');
+        return redirect()->back()->with('message', 'Berhasil Menambahkan Kategori Produk');
     }
 
 
@@ -56,33 +51,25 @@ class MasterDataController extends Controller
     public function deleteKategoriData(Request $request)
     {
         // $katProduk = KategoriProduk::where('id', $request->all())->delete();
-        DB::table("kategori_produk")->whereIn('id', $request->all())->delete();
+        DB::table("product_categories")->whereIn('id', $request->all())->delete();
         // dd($request->all());
     }
 
     public function updateDataKategoriData(Request $request, $id = null)
     {
         $request->validate([
-            'nama_kategori' => 'string',
+            'name' => 'string',
         ]);
 
-        $data = KategoriProduk::find($id);
-        $data->nama_kategori = $request['nama_kategori'];
-        $data->slugs = Str::slug($request['nama_kategori']);
-        $data->deskripsi_kategori = $request['deskripsi_kategori'];
-        if ($request->file('gambar_produk')) {
-            FileProcess::deleteFoto($data->gambar_produk, 'kategori-produk');
-            $photoKategoriProduk = new FileProcess($request->file('gambar_produk'), $request['nama_kategori'], 'kategori-produk');
-            $data->gambar_produk = $photoKategoriProduk->uploadFoto();
-        }
+        $data = ProductCategories::find($id);
+        $data->name = $request['name'];
         $data->update();
-        return redirect()->back()->with('message', 'Berhasil Memperbaharui Katgeori Produk Data');
+        return redirect()->back()->with('message', 'Berhasil Memperbaharui Kategori Produk Data');
     }
 
     public function deleteSingleKategoriData($id = null)
     {
-        $data = KategoriProduk::find($id);
-        FileProcess::deleteFoto($data->gambar_produk, 'kategori-produk');
+        $data = ProductCategories::find($id);
         $data->delete();
         return redirect()->back()->with('message', 'Berhasil Menghapus Kategori Produk Data');
     }
