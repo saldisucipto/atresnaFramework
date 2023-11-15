@@ -152,3 +152,6 @@ Route::prefix('/dashboard')->middleware('auth', 'admin')->group(function () {
 
 // Front Pages Routes
 Route::get('/', [FrontPagesControlller::class, 'index']);
+// Route::get('/', function () {
+//     return 'Hello';
+// });

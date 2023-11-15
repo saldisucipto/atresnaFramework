@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::post('products', [ProductController::class, 'all']);
+Route::get('products', [ProductController::class, 'all']);
 Route::post('categories', [CategoriesController::class, 'all']);
 
 // auth
