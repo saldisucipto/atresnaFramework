@@ -14,12 +14,10 @@ return new class() extends Migration
         Schema::create('company_info', function (Blueprint $table) {
             $table->id();
             $table->string('company_name', 50);
-            $table->text('company_address');
-            $table->string('company_logo');
-            $table->string('company_phone', 13);
-            $table->string('company_phone1', 13)->nullable();
-            $table->string('company_email', 100);
-            $table->string('company_npwp', 25)->nullable();
+            $table->text('company_address')->nullable();
+            $table->string('company_logo')->nullable();
+            $table->string('company_phone', 13)->nullable();
+            $table->string('company_email', 50)->nullable();
             $table->timestamps();
         });
     }

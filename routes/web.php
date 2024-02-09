@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\StaticPageController;
 use App\Http\Controllers\Data\KonfigurasiDataController;
 use App\Http\Controllers\Data\MasterDataController;
 use App\Http\Controllers\FrontPages\FrontPagesControlller;
@@ -21,6 +22,11 @@ Route::prefix('/dashboard')->middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 
     Route::post('/user/{id}', [AuthController::class, 'updateProfile']);
+
+    // Static Page
+    Route::prefix('/static-page')->group(function () {
+        Route::get('/create-static', [StaticPageController::class, 'createStaticPage']);
+    });
 
 
     // Route View and Get Data

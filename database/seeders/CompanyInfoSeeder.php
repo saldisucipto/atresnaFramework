@@ -21,9 +21,7 @@ class CompanyInfoSeeder extends Seeder
             'company_address' => 'Jl. Maju No.1 Tidak Mundur, Kec. Sukses, Kab. Berhasil, 12201',
             'company_logo' => 'logo.png',
             'company_phone' => '08557456858',
-            'company_phone1' => '08557456858',
             'company_email' => 'support@atresna.com',
-            'company_npwp' => '27.2312.34123.131',
         ]);
     }
 }
