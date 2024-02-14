@@ -212,7 +212,7 @@
                 </div>
                 <div class="grid grid-flow-col grid-cols-10 gap-2">
                     <div class="col-span-4">
-                        <img class=" h-full rounded-lg " src="/assets/img/banner-picture.jpg" alt="">
+                        <img class=" h-full rounded-lg " src="/assets/img/baanner-picture.jpg" alt="">
                     </div>
                     <div class="col-span-2">
                         <img class="h-full rounded-lg object-cover " src="/assets/img/banner-picture.jpg"
