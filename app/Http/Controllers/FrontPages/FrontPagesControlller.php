@@ -13,7 +13,6 @@ class FrontPagesControlller extends Controller
     public function index()
     {
         $companyInfo = CompanyInfo::where('id', 1)->get(['company_name', 'company_slogan', 'company_logo']);
-        // return view('index', ['companyInfo' => $companyInfo[0]]);
-        return Inertia::render('FrontPages/Landing', ['companyInfo' => $companyInfo[0]]);
+        return view('index', ['companyInfo' => $companyInfo[0]]);
     }
 }
