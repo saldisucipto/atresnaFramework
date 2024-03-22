@@ -1,0 +1,15 @@
+{
+    "name": "atresna/atresnaframework",
+    "autoload": {
+        "psr-4": {
+            "Atresna\\Atresnaframework\\": "."
+        }
+    },
+    "authors": [
+        {
+            "name": "saldisucipto",
+            "email": "saldisucipto@gmail.com"
+        }
+    ],
+    "require": {}
+}
