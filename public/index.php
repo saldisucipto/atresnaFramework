@@ -1,7 +1,7 @@
 <?php
 
 // autoload 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Atresna\Atresnaframework\core\Application;
 
@@ -10,6 +10,9 @@ $app = new Application();
 
 $app->router->get('/', function () {
     return 'Hello Wolrd';
+});
+$app->router->get('/contact', function () {
+    return 'Hello Contact';
 });
 
 $app->run();
