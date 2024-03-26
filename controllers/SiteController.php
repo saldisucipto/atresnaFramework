@@ -4,6 +4,8 @@ namespace Atresna\Atresnaframework\controllers;
 
 use Atresna\Atresnaframework\core\Application;
 use Atresna\Atresnaframework\core\Controllers;
+use Atresna\Atresnaframework\core\Request;
+use Atresna\Atresnaframework\core\utils\Debug;
 
 class SiteController extends Controllers
 {
@@ -20,10 +22,12 @@ class SiteController extends Controllers
         $params = [
             'name' => "SALDI",
         ];
-        return Application::$app->router->renderView('contact');
+        return Application::$app->router->renderView('contact', $params);
     }
-    public function Handlecontact()
+    public function Handlecontact(Request $request)
     {
+        $body = $request->getBody($request);
+        Debug::debugInfo($body);
         return "Handling Submitted Data";
     }
 }

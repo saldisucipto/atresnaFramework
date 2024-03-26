@@ -1,5 +1,5 @@
 <?php
-echo $params;
+echo $name;
 ?>
 <section>
     <h1>Contact</h1>
