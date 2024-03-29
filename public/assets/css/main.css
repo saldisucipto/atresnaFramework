@@ -1,0 +1,65 @@
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* font import */
+@font-face {
+  font-family: "Montserrat";
+  src: url("/public/assets/fonts/Montserrat-Regular.ttf");
+  color: var(--primary-font-color);
+}
+
+/* body styling */
+body {
+  font-family: "Montserrat";
+  background-color: var(--bg-priamry-color);
+}
+
+/* main container  */
+body .main-container {
+  margin: 10px;
+}
+
+/* container style */
+body .container {
+  max-width: var(--mobile-breakpoint);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* global variable */
+:root {
+  --primary-font-color: "#222831";
+  --secondary-font-color: "#31363F";
+  --primary-color: "#76ABAE";
+  --bg-priamry-color: "#EEEEEE";
+  --mobile-breakpoint: 768px;
+  --tablet-breakpoint: 1024px;
+  --desktop-breakpoint: 1200px;
+}
+
+/* navbar styling  */
+body .navbar {
+  width: 100%;
+  display: flex;
+  font-weight: 500;
+  font-size: 20px;
+  flex-flow: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* navbar item styling  */
+.navbar-item {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  flex-flow: row;
+  font-size: 14px;
+  justify-content: space-around;
+  gap: 5px;
+}

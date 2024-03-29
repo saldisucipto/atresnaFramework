@@ -15,19 +15,28 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function getMethod()
+    public function method()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
+    // isget
+    public function isGet(){
+        return $this->method() === strtolower('GET');
+    }
+
+    // ispost
+    public function isPost(){
+        return $this->method() === strtolower('POST');
+    }
     function getBody(): array
     {
         $body = [];
-        if ($this->getMethod() === 'get') {
+        if ($this->method() === 'get') {
             foreach ($_GET as $key => $value) {
                 $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
-        } elseif ($this->getMethod() === 'post') {
+        } elseif ($this->method() === 'post') {
             foreach ($_POST as $key => $value) {
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }

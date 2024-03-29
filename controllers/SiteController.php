@@ -28,7 +28,7 @@ class SiteController extends Controllers
     }
     public function Handlecontact(Request $request)
     {
-        $body = $request->getBody($request);
+        $body = $request->getBody();
         Debug::debugInfo($body);
         return "Handling Submitted Data";
     }
