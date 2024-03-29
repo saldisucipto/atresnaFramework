@@ -7,6 +7,8 @@ use Atresna\Atresnaframework\core\Controllers;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\utils\Debug;
 
+
+
 class SiteController extends Controllers
 {
     public function home()

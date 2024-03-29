@@ -4,6 +4,7 @@ namespace Atresna\Atresnaframework\core;
 
 use Atresna\Atresnaframework\core\Request;
 
+
 class Application
 {
     public Router $router;

@@ -2,6 +2,7 @@
 
 namespace Atresna\Atresnaframework\core;
 
+
 class Request
 {
     public function getPath()
