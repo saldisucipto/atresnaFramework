@@ -12,7 +12,7 @@ class Application
     public static string $ROOT_DIR;
     public Response $response;
     public static Application $app;
-
+    public Controllers $controllers;
 
     public function __construct($rootPath)
     {
@@ -26,5 +26,14 @@ class Application
     public function run()
     {
         echo $this->router->resolve();
+    }
+
+    // setter
+    public function getContoller() : Controllers {
+        return $this->controllers;
+    }
+
+    public function setController(Controllers $controllers):void {
+        $this->controllers = $controllers;
     }
 }

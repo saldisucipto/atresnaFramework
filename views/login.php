@@ -1,6 +1,3 @@
-<?php
-echo $name;
-?>
 <section>
     <h1>Login Form</h1>
     <form action="/contact" method="post">

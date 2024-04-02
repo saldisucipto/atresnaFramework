@@ -4,6 +4,7 @@ namespace Atresna\Atresnaframework\controllers;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Controllers;
 use Atresna\Atresnaframework\core\utils\Debug;
+use Atresna\Atresnaframework\models\RegisterModel;
 
 /**
  * Class AuthController
@@ -11,15 +12,30 @@ use Atresna\Atresnaframework\core\utils\Debug;
  */
 class AuthController extends Controllers{
     function login(){
+        $this->setLayout("auth");
         return $this->render('login');
     }
 
     function register(Request $request)
     {
-        // Debug::debugInfo($request->isPost());
+        $this->setLayout("main");
+        $registerModel = new RegisterModel();
+
+        // errors 
+        $errors = [];
         if($request->isPost()){
-            return "Handling SUbmitted Data";
+            $registerModel->loadData($request->getBody());
+
+            var_dump($registerModel);
+
+            if($registerModel->validate() && $registerModel->register()){
+                return 'Success';
+            }
+            return $this->render('register');
         }
-        return $this->render("register");
+
+        return $this->render("register", [
+            'model' => $registerModel
+        ]);
     }
 }

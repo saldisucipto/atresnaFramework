@@ -29,6 +29,7 @@ class Request
     public function isPost(){
         return $this->method() === strtolower('POST');
     }
+    
     function getBody(): array
     {
         $body = [];
