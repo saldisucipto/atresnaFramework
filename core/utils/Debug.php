@@ -6,9 +6,7 @@ class Debug
 {
     static function debugInfo($data)
     {
-        $html = "<pre>";
-        $html = " " . var_dump($data);
-        $html = ".</pre>";
+        $html = print_r($data);
         $html = die;
         return $html;
     }

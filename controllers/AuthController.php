@@ -20,17 +20,17 @@ class AuthController extends Controllers{
     {
         $this->setLayout("main");
         $registerModel = new RegisterModel();
-
-        // errors 
-        $errors = [];
+        
         if($request->isPost()){
             $registerModel->loadData($request->getBody());
 
-            var_dump($registerModel);
 
             if($registerModel->validate() && $registerModel->register()){
                 return 'Success';
             }
+
+           Debug::debugInfo($registerModel->errors);
+
             return $this->render('register');
         }
 

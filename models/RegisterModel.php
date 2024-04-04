@@ -16,14 +16,12 @@ class RegisterModel extends Model {
     }
 
     function rules(): array{
-
         return [
-            
+            'firstname' => [parent::RULE_REQUIRED],
+            'lastname' => [parent::RULE_REQUIRED],
+            'email' => [parent::RULE_REQUIRED, parent::RULE_EMAIL],
+            'password' => [parent::RULE_REQUIRED, [parent::RULE_MIN, 'min' => 8],],
+            'passwordConfirm' => [parent::RULE_REQUIRED, [parent::RULE_MATCH, 'match' => 'password']],
         ];
-        
     }
-
-
-    
-
 }
