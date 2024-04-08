@@ -91,11 +91,11 @@ abstract class Model
     // FUNCTION HAS ERRORS (THROWS BOOL)
     function hasError($atrribute)
     {
-        return $this->errors[$atrribute][0] ?? false;
+        return $this->errors[$atrribute] ?? false;
     }
 
     // FUNCTION GET FIRST ERRORS 
-    function getFirstError($atrribute)
+    function getFirstError($atrribute): string
     {
         return $this->errors[$atrribute][0] ?? false;
     }

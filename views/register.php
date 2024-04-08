@@ -4,7 +4,7 @@
         <div class="flex flex-col gap-10">
             <div class="flex flex-row gap-10">
                 <label class="form-column-label" for="">First Name</label>
-                <input class="form-column <?php $model->hasError('firstname') ? 'invalid-form-column ' : '' ?>"
+                <input class="form-column <?php echo $model->hasError('firstname') ? ' invalid-form-column' : '' ?>"
                     type="text" value="<?php echo $model->firstname ?>" placeholder="First Name" name="firstname">
 
                 <div class="invalid-feedback">
