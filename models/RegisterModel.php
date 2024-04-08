@@ -1,8 +1,10 @@
-<?php 
+<?php
 namespace Atresna\Atresnaframework\models;
-use Atresna\Atresnaframework\core\Model; 
 
-class RegisterModel extends Model {
+use Atresna\Atresnaframework\core\Model;
+
+class RegisterModel extends Model
+{
     // make all properties for the data 
     public string $firstname;
     public string $lastname;
@@ -11,11 +13,13 @@ class RegisterModel extends Model {
     public string $passwordConfirm;
 
 
-    public function register(){
+    public function register()
+    {
         return 'Creating New Data';
     }
 
-    function rules(): array{
+    function rules(): array
+    {
         return [
             'firstname' => [parent::RULE_REQUIRED],
             'lastname' => [parent::RULE_REQUIRED],
@@ -24,4 +28,6 @@ class RegisterModel extends Model {
             'passwordConfirm' => [parent::RULE_REQUIRED, [parent::RULE_MATCH, 'match' => 'password']],
         ];
     }
+
+
 }

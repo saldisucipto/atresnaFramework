@@ -5,10 +5,155 @@
   box-sizing: border-box;
 }
 
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+/* Remove browser specific focus outlines */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
 /* font import */
 @font-face {
   font-family: "Montserrat";
-  src: url("/public/assets/fonts/Montserrat-Regular.ttf");
+  src: url("../../assets/fonts/Montserrat-Regular.ttf");
   color: var(--primary-font-color);
 }
 
@@ -21,6 +166,8 @@ body {
 /* main container  */
 body .main-container {
   margin: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 /* container style */
@@ -62,4 +209,144 @@ body .navbar {
   font-size: 14px;
   justify-content: space-around;
   gap: 5px;
+}
+
+/* display flex */
+body .flex {
+  display: flex;
+}
+
+body .flex-col {
+  flex-flow: row;
+  flex: 1;
+  width: 100%;
+}
+
+body .flex-row {
+  flex-flow: column;
+  flex: 1;
+}
+
+body .gap-1 {
+  gap: 1px;
+}
+
+body .gap-2 {
+  gap: 2px;
+}
+
+body .gap-3 {
+  gap: 3px;
+}
+
+body .gap-4 {
+  gap: 4px;
+}
+
+body .gap-5 {
+  gap: 5px;
+}
+
+body .gap-6 {
+  gap: 6px;
+}
+
+body .gap-7 {
+  gap: 7px;
+}
+
+body .gap-8 {
+  gap: 8px;
+}
+
+body .gap-9 {
+  gap: 9px;
+}
+
+body .gap-10 {
+  gap: 10px;
+}
+
+body .gap-11 {
+  gap: 11px;
+}
+
+body .gap-12 {
+  gap: 12px;
+}
+
+body .gap-13 {
+  gap: 13px;
+}
+
+body .gap-14 {
+  gap: 14px;
+}
+
+body .gap-15 {
+  gap: 15px;
+}
+
+body .gap-16 {
+  gap: 16px;
+}
+
+body .gap-17 {
+  gap: 17px;
+}
+
+body .gap-18 {
+  gap: 18px;
+}
+
+body .my-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+body .form-column {
+  padding: 7px;
+  outline-color: #B6BBC4;
+  border-color: #B6BBC4;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 2px solid #B6BBC4;
+}
+
+
+body .invalid-form-column {
+  padding: 7px;
+  outline-color: #AF2655;
+  border-color: #AF2655;
+  border-radius: 10px;
+  border: 2px solid #AF2655;
+}
+
+.form-column :focus {
+  border: none;
+}
+
+button.btn-simpan {
+  padding: 10px;
+  background-color: cadetblue;
+  border-radius: 10px;
+  border: none;
+  color: #f1f1f1;
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.form-column-label {
+  font-size: 16;
+  font-weight: 600;
+}
+
+.invalid-feedback {
+  font-size: 14px;
+  color: #AF2655;
+  font-weight: 600;
 }
