@@ -6,11 +6,11 @@ use Atresna\Atresnaframework\core\Model;
 class RegisterModel extends Model
 {
     // make all properties for the data 
-    public string $firstname;
-    public string $lastname;
-    public string $email;
-    public string $password;
-    public string $passwordConfirm;
+    public string $firstname = '';
+    public string $lastname = '';
+    public string $email = '';
+    public string $password = '';
+    public string $passwordConfirm = '';
 
 
     public function register()
@@ -28,6 +28,8 @@ class RegisterModel extends Model
             'passwordConfirm' => [parent::RULE_REQUIRED, [parent::RULE_MATCH, 'match' => 'password']],
         ];
     }
+
+
 
 
 }
