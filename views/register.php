@@ -1,7 +1,7 @@
 <section class="my-10">
     <?php $form = Atresna\Atresnaframework\core\form\Form::begin('', 'POST', 'Register Form') ?>
     <div class="flex flex-col gap-10">
-        <?php echo $form->field($model, 'firstname') ?>
+        <?php echo $form->field($model, 'firstanme') ?>
         <?php echo $form->field($model, 'lastname') ?>
     </div>
     <?php echo $form->field($model, 'email') ?>

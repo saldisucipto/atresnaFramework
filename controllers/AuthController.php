@@ -4,7 +4,7 @@ namespace Atresna\Atresnaframework\controllers;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Controllers;
 use Atresna\Atresnaframework\core\utils\Debug;
-use Atresna\Atresnaframework\models\RegisterModel;
+use Atresna\Atresnaframework\models\User;
 
 /**
  * Class AuthController
@@ -19,7 +19,7 @@ class AuthController extends Controllers{
     function register(Request $request)
     {
         $this->setLayout("main");
-        $registerModel = new RegisterModel();
+        $registerModel = new User();
         
         if($request->isPost()){
             $registerModel->loadData($request->getBody());

@@ -33,7 +33,7 @@ class Database
             require_once Application::$ROOT_DIR . '/migrations/' . $migration;
             $classFileName = pathinfo($migration, PATHINFO_FILENAME);
             // make instance for class name 
-            $insatance = new $classFileName();
+            $insatance =  (object) new $classFileName();
             $this->log("Applying Migration $migration");
             $insatance->up(); // execute up method on class Migration
             $this->log("Applied Migration $migration");

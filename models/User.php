@@ -1,27 +1,37 @@
 <?php
 namespace Atresna\Atresnaframework\models;
 
-use Atresna\Atresnaframework\core\Model;
+use Atresna\Atresnaframework\core\DBModel;
 
-class RegisterModel extends Model
+
+class User extends DBModel
 {
     // make all properties for the data 
-    public string $firstname = '';
+    public string $firstanme = '';
     public string $lastname = '';
     public string $email = '';
     public string $password = '';
     public string $passwordConfirm = '';
 
+    // Implementasi Dari Class Abtsract DBModel
+    public function tableName(): string {
+        return 'users';
+    }
+
+    // Implementasi Dari Class Abstract  
+    public function attributes(): array {
+        return ['firstanme', 'lastname', 'email', 'password'];
+    }
 
     public function register()
     {
-        return 'Creating New Data';
+        return $this->save();
     }
 
     function rules(): array
     {
         return [
-            'firstname' => [parent::RULE_REQUIRED],
+            'firstanme' => [parent::RULE_REQUIRED],
             'lastname' => [parent::RULE_REQUIRED],
             'email' => [parent::RULE_REQUIRED, parent::RULE_EMAIL],
             'password' => [parent::RULE_REQUIRED, [parent::RULE_MIN, 'min' => 8],],
