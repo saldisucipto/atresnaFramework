@@ -5,11 +5,12 @@ namespace Atresna\Atresnaframework\core;
 abstract class Model
 {
     // rules properties 
-    public const RULE_REQUIRED = "required";
-    public const RULE_EMAIL = "email";
-    public const RULE_MIN = "min";
-    public const RULE_MAX = "max";
-    public const RULE_MATCH = "match";
+    const RULE_REQUIRED = "required";
+    const RULE_EMAIL = "email";
+    const RULE_MIN = "min";
+    const RULE_MAX = "max";
+    const RULE_MATCH = "match";
+    const RULE_UNIQUE = "unique";
 
 
     function loadData($data)
@@ -63,6 +64,20 @@ abstract class Model
                     // used method add errors 
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 }
+                if ($ruleName === self::RULE_UNIQUE) {
+
+                    // GET CLASS NAME 
+                    $className = $rule['class']; // from parameter on instance model
+                    $uniqueAttribute = $rule['attribute'] ?? $attribute; // jika taidak ada paraemter dari model akan menggunkan parameter default 
+                    $tableName = $className::tableName(); // Get table name from class instance 
+                    $statement = Application::$app->database->prepare("SELECT * FROM $tableName WHERE $uniqueAttribute  = :attr "); // Make Query 
+                    $statement->bindValue(":attr", $value);
+                    $statement->execute();
+                    $record = $statement->fetchObject();
+                    if ($record) {
+                        $this->addError($attribute, self::RULE_UNIQUE, ['field' => $attribute]);
+                    }
+                }
             }
         }
         return empty($this->errors); // jika tidak ada value error berarti validate lolos
@@ -85,6 +100,7 @@ abstract class Model
             self::RULE_MATCH => "Kolom ini harus sama dengan kolom = match",
             self::RULE_MAX => "Maksimal value yang ada di kolom ini ialah = max",
             self::RULE_MIN => "Minimal value yang ada di kolom ini ialah = min",
+            self::RULE_UNIQUE => "field ini sudah ada yang menggunakan!, coba dengan field lain",
         ];
     }
 

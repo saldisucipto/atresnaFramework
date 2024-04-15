@@ -70,6 +70,11 @@ class Database
         $statement->execute();
     }
 
+    // prapte method 
+    function prepare($SQL){
+        return $this->pdo->prepare($SQL);
+    }
+
     protected function log($message)
     {
         echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;

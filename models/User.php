@@ -6,40 +6,46 @@ use Atresna\Atresnaframework\core\DBModel;
 
 class User extends DBModel
 {
+    // const for status users
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_DELETED = 2;
     // make all properties for the data 
     public string $firstanme = '';
     public string $lastname = '';
     public string $email = '';
     public string $password = '';
+    public int $status = self::STATUS_INACTIVE;
     public string $passwordConfirm = '';
 
     // Implementasi Dari Class Abtsract DBModel
-    public function tableName(): string {
+    public function tableName(): string
+    {
         return 'users';
     }
 
     // Implementasi Dari Class Abstract  
-    public function attributes(): array {
-        return ['firstanme', 'lastname', 'email', 'password'];
+    public function attributes(): array
+    {
+        return ['firstanme', 'lastname', 'email', 'status', 'password'];
     }
 
-    public function register()
+    // ovveride save method on parent
+    public function save(): bool
     {
-        return $this->save();
+        $this->status = self::STATUS_INACTIVE;
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        return parent::save();
     }
 
     function rules(): array
     {
         return [
-            'firstanme' => [parent::RULE_REQUIRED],
-            'lastname' => [parent::RULE_REQUIRED],
-            'email' => [parent::RULE_REQUIRED, parent::RULE_EMAIL],
-            'password' => [parent::RULE_REQUIRED, [parent::RULE_MIN, 'min' => 8],],
-            'passwordConfirm' => [parent::RULE_REQUIRED, [parent::RULE_MATCH, 'match' => 'password']],
+            'firstanme' => [self::RULE_REQUIRED],
+            'lastname' => [self::RULE_REQUIRED],
+            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [self::RULE_UNIQUE, 'class' => self::class]],
+            'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8],],
+            'passwordConfirm' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
         ];
     }
-
-
-
-
 }
