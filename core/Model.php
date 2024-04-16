@@ -20,10 +20,8 @@ abstract class Model
             # check 
             if (property_exists($this, $key)) {
                 $this->{$key} = $value;
-
             }
         }
-
     }
 
     // abstract function rules 
@@ -33,6 +31,17 @@ abstract class Model
     // errors array 
     public array $errors = [];
 
+    // Labels Array 
+    public function labels(): array
+    {
+        return [];
+    }
+
+    // get lables 
+    public function getLabels($attribute): string
+    {
+        return $this->labels()[$attribute] ?? $attribute;
+    }
 
     function validate(): bool
     {
@@ -62,6 +71,7 @@ abstract class Model
                 }
                 if ($ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']}) {
                     // used method add errors 
+                    $rule['match'] = $this->getLabels($rule['match']);
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 }
                 if ($ruleName === self::RULE_UNIQUE) {
@@ -75,7 +85,7 @@ abstract class Model
                     $statement->execute();
                     $record = $statement->fetchObject();
                     if ($record) {
-                        $this->addError($attribute, self::RULE_UNIQUE, ['field' => $attribute]);
+                        $this->addError($attribute, self::RULE_UNIQUE, ['field' => $this->getLabels($attribute)]);
                     }
                 }
             }

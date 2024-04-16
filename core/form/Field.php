@@ -27,7 +27,8 @@ class Field
     // to string function 
     public function __toString()
     {
-        return sprintf(' <div class="flex flex-row gap-10">
+        return sprintf(
+            ' <div class="flex flex-row gap-10">
         <label class="form-column-label" for="">%s</label>
         <input class="form-column %s"
             type="%s" value="%s" placeholder="%s" name="%s">
@@ -35,11 +36,11 @@ class Field
             %s
         </div>
     </div>',
-            $this->atrribute,
+            $this->model->getLabels($this->atrribute),
             $this->model->hasError($this->atrribute) ? ' invalid-form-column' : '',
             $this->type,
             $this->model->{$this->atrribute},
-            $this->atrribute,
+            $this->model->getLabels($this->atrribute),
             $this->atrribute,
             $this->model->getFirstError($this->atrribute),
         );
@@ -51,7 +52,4 @@ class Field
         $this->type = self::TYPE_PASSWORD;
         return $this;
     }
-
-
-
 }

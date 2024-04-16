@@ -1,4 +1,5 @@
 <?php
+
 namespace Atresna\Atresnaframework\models;
 
 use Atresna\Atresnaframework\core\DBModel;
@@ -46,6 +47,17 @@ class User extends DBModel
             'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [self::RULE_UNIQUE, 'class' => self::class]],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8],],
             'passwordConfirm' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
+        ];
+    }
+
+    function labels(): array
+    {
+        return [
+            'firstanme' => 'Your First Name',
+            'lastname' => "Last Name",
+            'email' => "Email",
+            'password' => 'Password',
+            'passwordConfirm' => 'Password Confirmation'
         ];
     }
 }
