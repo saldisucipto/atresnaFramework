@@ -4,6 +4,7 @@ namespace Atresna\Atresnaframework\core;
 
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Database;
+use Atresna\Atresnaframework\core\Session;
 
 
 class Application
@@ -12,6 +13,7 @@ class Application
     public Request $request;
     public static string $ROOT_DIR;
     public Response $response;
+    public Session $session;
     public static Application $app;
     public Controllers $controllers;
     public Database $database;
@@ -24,6 +26,7 @@ class Application
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
         $this->database = new Database($config['database']);
+        $this->session = new Session();
     }
 
     public function run()

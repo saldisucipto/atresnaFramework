@@ -8,4 +8,10 @@ class Response
     {
         http_response_code($code);
     }
+
+    function redirect(string $url)
+    {
+        // to another route
+        header('Location: ' . $url);
+    }
 }

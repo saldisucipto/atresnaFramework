@@ -18,7 +18,9 @@
         <div class="container">
             <div class="navbar">
                 <div>
-                    <h1>Atresna Framework</h1>
+                    <a href="/">
+                        <h1>Atresna Framework</h1>
+                    </a>
                 </div>
                 <div class="navbar-item">
                     <div>
