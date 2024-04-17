@@ -5,8 +5,11 @@ namespace Atresna\Atresnaframework\controllers;
 use Atresna\Atresnaframework\core\Application;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Controllers;
+use Atresna\Atresnaframework\core\Response;
 use Atresna\Atresnaframework\core\utils\Debug;
 use Atresna\Atresnaframework\models\User;
+use Atresna\Atresnaframework\models\LoginForm;
+
 
 /**
  * Class AuthController
@@ -14,10 +17,29 @@ use Atresna\Atresnaframework\models\User;
  */
 class AuthController extends Controllers
 {
-    function login()
+    function login(Request $request, Response $response)
     {
+        $loginForm = new LoginForm();
+        if ($request->isPost()) {
+            // LOAD DATA 
+            $loginForm->loadData($request->getBody());
+            // Debug::debugInfo($request->getBody());
+            if ($loginForm->validate() && $loginForm->login()) {
+                $response->redirect("/");
+                return;
+            }
+        }
         $this->setLayout("auth");
-        return $this->render('login');
+        return $this->render('login', [
+            'model' => $loginForm,
+        ]);
+    }
+
+    // logout function 
+    function logout(Request $request, Response $response): void
+    {
+        Application::$app->logout();
+        $response->redirect('/');
     }
 
     function register(Request $request)

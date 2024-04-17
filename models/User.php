@@ -3,9 +3,10 @@
 namespace Atresna\Atresnaframework\models;
 
 use Atresna\Atresnaframework\core\DBModel;
+use Atresna\Atresnaframework\core\UserModel;
 
 
-class User extends DBModel
+class User extends UserModel
 {
     // const for status users
     const STATUS_INACTIVE = 0;
@@ -25,10 +26,20 @@ class User extends DBModel
         return 'users';
     }
 
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
+
     // Implementasi Dari Class Abstract  
     public function attributes(): array
     {
         return ['firstanme', 'lastname', 'email', 'status', 'password'];
+    }
+
+    function getDisplayName(): string
+    {
+        return $this->firstanme . ' ' . $this->lastname;
     }
 
     // ovveride save method on parent

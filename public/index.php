@@ -1,4 +1,5 @@
 <?php
+use Atresna\Atresnaframework\models\User;
 
 // autoload 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -10,6 +11,7 @@ use Atresna\Atresnaframework\core\Application;
 use Atresna\Atresnaframework\controllers\SiteController;
 
 $config = [
+    'userClass' => User::class,
     'database' => [
         'dsn' => $_ENV['DB_DSN'],
         'username' => $_ENV['DB_USER'],
@@ -28,6 +30,7 @@ $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->post('/register', [AuthController::class, 'register']);
+$app->router->get('/logout', [AuthController::class, 'logout']);
 
 
 
