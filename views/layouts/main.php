@@ -1,6 +1,13 @@
 <?php
 
 use Atresna\Atresnaframework\core\Application;
+use Atresna\Atresnaframework\core\View;
+
+// /**
+//  * @var Atresna\Atresnaframework\core\View;
+//  */
+
+
 
 ?>
 
@@ -10,7 +17,7 @@ use Atresna\Atresnaframework\core\Application;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atresna Framework</title>
+    <title> <?php echo $this->title  ?> </title>
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 
@@ -27,12 +34,18 @@ use Atresna\Atresnaframework\core\Application;
                 <?php if (Application::isGuest()) : ?>
                     <div class="navbar-item">
                         <div>
+                            <a href="/contact">Contact</a>
+                        </div>
+                    </div>
+                    <div class="navbar-item">
+                        <div>
                             <a href="/login">Login</a>
                         </div>
                         <div>
                             <a href="/register">Register</a>
                         </div>
                     </div>
+
 
                 <?php else : ?>
                     <div class="navbar-item">

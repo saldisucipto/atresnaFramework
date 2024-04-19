@@ -5,6 +5,7 @@ namespace Atresna\Atresnaframework\core;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Database;
 use Atresna\Atresnaframework\core\Session;
+use Atresna\Atresnaframework\core\View;
 
 
 class Application
@@ -21,6 +22,7 @@ class Application
     public ?Controllers $controllers = null;
     public Database $database;
     public ?DBModel $user;
+    public View $view;
 
     public function __construct($rootPath, array $config)
     {
@@ -33,6 +35,7 @@ class Application
         $this->database = new Database($config['database']);
         $this->session = new Session();
         $this->userClass = $config['userClass'];
+        $this->view = new View();
 
         $primaryValue = $this->session->get('user');
         if ($primaryValue) {
@@ -51,7 +54,7 @@ class Application
             echo $this->router->resolve();
         } catch (\Throwable $e) {
             $this->response->setStatusCode($e->getCode());
-            echo $this->router->renderView('_errors', [
+            echo $this->view->renderView('_errors', [
                 'exceptions' => $e,
             ]);
         }

@@ -24,7 +24,7 @@ class SiteController extends Controllers
         $params = [
             'name' => "SALDI",
         ];
-        return Application::$app->router->renderView('contact', $params);
+        return Application::$app->view->renderView('contact', $params);
     }
     public function Handlecontact(Request $request)
     {
