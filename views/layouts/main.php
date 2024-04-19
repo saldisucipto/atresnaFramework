@@ -1,4 +1,5 @@
 <?php
+
 use Atresna\Atresnaframework\core\Application;
 
 ?>
@@ -23,27 +24,32 @@ use Atresna\Atresnaframework\core\Application;
                         <h1>Atresna Framework</h1>
                     </a>
                 </div>
-                <?php if (Application::isGuest()): ?>
-                <div class="navbar-item">
-                    <div>
-                        <a href="/login">Login</a>
+                <?php if (Application::isGuest()) : ?>
+                    <div class="navbar-item">
+                        <div>
+                            <a href="/login">Login</a>
+                        </div>
+                        <div>
+                            <a href="/register">Register</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="/register">Register</a>
-                    </div>
-                </div>
 
-                <?php else: ?>
-                <div class="navbar-item">
-                    <div>
-                        <span>
-                            Hallo <?php echo Application::$app->user->getDisplayName() ?>
-                        </span>
+                <?php else : ?>
+                    <div class="navbar-item">
+                        <div>
+                            <a href="/profile">Profile</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="/logout">Logout</a>
+                    <div class="navbar-item">
+                        <div>
+                            <span>
+                                Hallo <?php echo Application::$app->user->getDisplayName() ?>
+                            </span>
+                        </div>
+                        <div>
+                            <a href="/logout">Logout</a>
+                        </div>
                     </div>
-                </div>
 
                 <?php endif; ?>
 

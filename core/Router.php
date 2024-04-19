@@ -2,6 +2,7 @@
 
 namespace Atresna\Atresnaframework\core;
 
+use Atresna\Atresnaframework\core\exceptions\NotFoundException;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\utils\Debug;
 
@@ -36,19 +37,23 @@ class Router
         // Debug::debugInfo($callback);
         if (!$callback) {
             Application::$app->response->setStatusCode(404);
-            return $this->renderView('_404');
+            return throw new NotFoundException();
         }
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
         if (is_array($callback)) {
-            // $callback[0] = new $callback[0];
-            Application::$app->controllers = new $callback[0]();
-            $callback[0] = Application::$app->controllers;
 
+            $controller = new $callback[0]();
+            Application::$app->controllers = $controller;
+            $controller->actions = $callback[1];
+            $callback[0] = $controller;
+            // var_dump($controller->getMiddleWare());
+            foreach ($controller->getMiddleWare() as  $middleware) {
+                $middleware->execute();
+            }
         }
         return call_user_func($callback, $this->request, $this->response);
-
     }
 
     public function renderView($view, $params = [])
@@ -66,7 +71,10 @@ class Router
 
     public function layoutContent()
     {
-        $layout = Application::$app->controllers->getLayout();
+        $layout = Application::$app->layout; // get value default from application class
+        if (Application::$app->controllers) {
+            $layout = Application::$app->controllers->getLayout();
+        }
         ob_start();
         include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
         return ob_get_clean();

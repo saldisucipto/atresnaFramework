@@ -9,6 +9,7 @@ use Atresna\Atresnaframework\core\Response;
 use Atresna\Atresnaframework\core\utils\Debug;
 use Atresna\Atresnaframework\models\User;
 use Atresna\Atresnaframework\models\LoginForm;
+use Atresna\Atresnaframework\core\middleware\AuthMiddleWare;
 
 
 /**
@@ -17,6 +18,13 @@ use Atresna\Atresnaframework\models\LoginForm;
  */
 class AuthController extends Controllers
 {
+
+    // constructor function 
+    public function __construct()
+    {
+        $this->registerMiddleware(new AuthMiddleware(['profile']));
+    }
+
     function login(Request $request, Response $response)
     {
         $loginForm = new LoginForm();
@@ -64,5 +72,10 @@ class AuthController extends Controllers
         return $this->render("register", [
             'model' => $registerModel
         ]);
+    }
+
+    function profile()
+    {
+        return $this->render('profile');
     }
 }

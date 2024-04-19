@@ -10,6 +10,7 @@ use Atresna\Atresnaframework\core\Session;
 class Application
 {
     public string $userClass;
+    public string $layout = 'main';
 
     public Router $router;
     public Request $request;
@@ -17,12 +18,13 @@ class Application
     public Response $response;
     public Session $session;
     public static Application $app;
-    public Controllers $controllers;
+    public ?Controllers $controllers = null;
     public Database $database;
     public ?DBModel $user;
 
     public function __construct($rootPath, array $config)
     {
+
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
         $this->request = new Request();
@@ -41,12 +43,18 @@ class Application
         } else {
             $this->user = null;
         }
-
     }
 
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (\Throwable $e) {
+            $this->response->setStatusCode($e->getCode());
+            echo $this->router->renderView('_errors', [
+                'exceptions' => $e,
+            ]);
+        }
     }
 
     // isGuest Function 
