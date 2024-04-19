@@ -1,6 +1,6 @@
 <?php
 
-namespace Atresna\Atresnaframework\core;
+namespace Atresna\Atresnaframework\core\db;
 
 
 class Database
@@ -14,7 +14,6 @@ class Database
 
         $this->pdo = new \PDO($dsn, $username, $password);
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-
     }
 
     function applyMigrations()
@@ -65,13 +64,14 @@ class Database
 
     function saveMigrations(array $migrations)
     {
-        $str = implode(",", array_map(fn($m) => "('$m')", $migrations));
+        $str = implode(",", array_map(fn ($m) => "('$m')", $migrations));
         $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES  $str");
         $statement->execute();
     }
 
     // prapte method 
-    function prepare($SQL){
+    function prepare($SQL)
+    {
         return $this->pdo->prepare($SQL);
     }
 

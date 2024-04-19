@@ -3,7 +3,8 @@
 namespace Atresna\Atresnaframework\core;
 
 use Atresna\Atresnaframework\core\Request;
-use Atresna\Atresnaframework\core\Database;
+use Atresna\Atresnaframework\core\db\Database;
+use Atresna\Atresnaframework\core\db\DBModel;
 use Atresna\Atresnaframework\core\Session;
 use Atresna\Atresnaframework\core\View;
 

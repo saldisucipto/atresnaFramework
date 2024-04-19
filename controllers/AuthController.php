@@ -6,7 +6,6 @@ use Atresna\Atresnaframework\core\Application;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Controllers;
 use Atresna\Atresnaframework\core\Response;
-use Atresna\Atresnaframework\core\utils\Debug;
 use Atresna\Atresnaframework\models\User;
 use Atresna\Atresnaframework\models\LoginForm;
 use Atresna\Atresnaframework\core\middleware\AuthMiddleWare;
@@ -32,6 +31,7 @@ class AuthController extends Controllers
             // LOAD DATA 
             $loginForm->loadData($request->getBody());
             // Debug::debugInfo($request->getBody());
+
             if ($loginForm->validate() && $loginForm->login()) {
                 $response->redirect("/");
                 return;
