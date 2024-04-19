@@ -1,21 +1,24 @@
 <?php
-echo $name;
+
+use Atresna\Atresnaframework\core\Application;
+use Atresna\Atresnaframework\core\form\TextAreaField;
+use Atresna\Atresnaframework\core\form\Form;
+
 ?>
-<section>
-    <h1>Contact</h1>
-    <form action="/contact" method="post">
-        <div>
-            <label for="">Name</label>
-            <input type="text" name="name" id="">
-        </div>
-        <div>
-            <label for="">Password</label>
-            <input type="password" name="password" id="">
-        </div>
-        <div>
-            <label for="">Body</label>
-            <textarea name="body" id="" cols="30" rows="10"></textarea>
-        </div>
-        <button type="submit">send form</button>
-    </form>
+<?php if (Application::$app->session->getFlash('success')) : ?>
+    <div>
+        <?php echo Application::$app->session->getFlash('success'); ?>
+    </div>
+<?php endif; ?>
+
+
+<section class="my-10">
+    <?php $form = Form::begin('', 'POST', 'Contact Form') ?>
+    <?php echo $form->field($model, 'subject') ?>
+    <?php echo $form->field($model, 'email') ?>
+    <?php echo $form->textField($model, 'body') ?>
+
+    <button class="btn-simpan" type="submit">Send</button>
+
+    <?php echo Form::end() ?>
 </section>
