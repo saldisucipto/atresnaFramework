@@ -1,5 +1,6 @@
 <?php
 use Atresna\Atresnaframework\core\Application;
+use Atresna\Atresnaframework\models\DBModel;
 
 ?>
 
@@ -24,26 +25,26 @@ use Atresna\Atresnaframework\core\Application;
                     </a>
                 </div>
                 <?php if (Application::isGuest()): ?>
-                <div class="navbar-item">
-                    <div>
-                        <a href="/login">Login</a>
+                    <div class="navbar-item">
+                        <div>
+                            <a href="/login">Login</a>
+                        </div>
+                        <div>
+                            <a href="/register">Register</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="/register">Register</a>
-                    </div>
-                </div>
 
                 <?php else: ?>
-                <div class="navbar-item">
-                    <div>
-                        <span>
-                            Hallo <?php echo Application::$app->user->getDisplayName() ?>
-                        </span>
+                    <div class="navbar-item">
+                        <div>
+                            <span>
+                                Hallo <?php echo Application::$app->user->getDisplayName() ?>
+                            </span>
+                        </div>
+                        <div>
+                            <a href="/logout">Logout</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="/logout">Logout</a>
-                    </div>
-                </div>
 
                 <?php endif; ?>
 

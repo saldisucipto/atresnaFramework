@@ -5,6 +5,8 @@ namespace Atresna\Atresnaframework\core;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Database;
 use Atresna\Atresnaframework\core\Session;
+use Atresna\Atresnaframework\models\User;
+
 
 
 class Application
@@ -19,7 +21,7 @@ class Application
     public static Application $app;
     public Controllers $controllers;
     public Database $database;
-    public ?DBModel $user;
+    public ?User $user;
 
     public function __construct($rootPath, array $config)
     {
@@ -66,7 +68,7 @@ class Application
         $this->controllers = $controllers;
     }
 
-    public function login(DBModel $user)
+    public function login(User $user)
     {
         $this->user = $user;
         $primaryKey = $user->primaryKey();

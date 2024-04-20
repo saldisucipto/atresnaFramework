@@ -37,7 +37,7 @@ class User extends UserModel
         return ['firstanme', 'lastname', 'email', 'status', 'password'];
     }
 
-    function getDisplayName(): string
+    public function getDisplayName(): string
     {
         return $this->firstanme . ' ' . $this->lastname;
     }
