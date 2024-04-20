@@ -3,15 +3,16 @@
 namespace Atresna\Atresnaframework\core;
 
 use Atresna\Atresnaframework\core\Request;
-use Atresna\Atresnaframework\core\Database;
+use Atresna\Atresnaframework\core\db\Database;
+use Atresna\Atresnaframework\core\db\DBModel;
 use Atresna\Atresnaframework\core\Session;
-use Atresna\Atresnaframework\models\User;
-
+use Atresna\Atresnaframework\core\View;
 
 
 class Application
 {
     public string $userClass;
+    public string $layout = 'main';
 
     public Router $router;
     public Request $request;
@@ -19,12 +20,14 @@ class Application
     public Response $response;
     public Session $session;
     public static Application $app;
-    public Controllers $controllers;
+    public ?Controllers $controllers = null;
     public Database $database;
-    public ?User $user;
+    public ?DBModel $user;
+    public View $view;
 
     public function __construct($rootPath, array $config)
     {
+
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
         $this->request = new Request();
@@ -33,6 +36,7 @@ class Application
         $this->database = new Database($config['database']);
         $this->session = new Session();
         $this->userClass = $config['userClass'];
+        $this->view = new View();
 
         $primaryValue = $this->session->get('user');
         if ($primaryValue) {
@@ -43,12 +47,18 @@ class Application
         } else {
             $this->user = null;
         }
-
     }
 
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (\Throwable $e) {
+            $this->response->setStatusCode($e->getCode());
+            echo $this->view->renderView('_errors', [
+                'exceptions' => $e,
+            ]);
+        }
     }
 
     // isGuest Function 

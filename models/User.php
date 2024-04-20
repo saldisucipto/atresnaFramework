@@ -2,7 +2,6 @@
 
 namespace Atresna\Atresnaframework\models;
 
-use Atresna\Atresnaframework\core\DBModel;
 use Atresna\Atresnaframework\core\UserModel;
 
 

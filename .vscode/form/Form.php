@@ -3,7 +3,7 @@
 namespace Atresna\Atresnaframework\core\form;
 
 use Atresna\Atresnaframework\core\Model;
-use Atresna\Atresnaframework\core\form\InputField;
+use Atresna\Atresnaframework\core\form\Field;
 
 class Form
 {
@@ -22,11 +22,7 @@ class Form
 
     public function field(Model $model, $atrribute)
     {
-        return new InputField($model, $atrribute);
+        return new Field($model, $atrribute);
     }
 
-    function textField(Model $model, $atrribute)
-    {
-        return new TextAreaField($model, $atrribute);
-    }
 }

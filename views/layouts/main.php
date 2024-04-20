@@ -1,6 +1,13 @@
 <?php
+
 use Atresna\Atresnaframework\core\Application;
-use Atresna\Atresnaframework\models\DBModel;
+use Atresna\Atresnaframework\core\View;
+
+// /**
+//  * @var Atresna\Atresnaframework\core\View;
+//  */
+
+
 
 ?>
 
@@ -10,7 +17,7 @@ use Atresna\Atresnaframework\models\DBModel;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atresna Framework</title>
+    <title> <?php echo $this->title  ?> </title>
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 
@@ -25,26 +32,57 @@ use Atresna\Atresnaframework\models\DBModel;
                     </a>
                 </div>
                 <?php if (Application::isGuest()): ?>
-                    <div class="navbar-item">
-                        <div>
-                            <a href="/login">Login</a>
-                        </div>
-                        <div>
-                            <a href="/register">Register</a>
-                        </div>
+                <div class="navbar-item">
+                    <div>
+                        <a href="/login">Login</a>
                     </div>
+                    <div>
+                        <a href="/register">Register</a>
+                    </div>
+                </div>
+                <?php if (Application::isGuest()) : ?>
+                <div class="navbar-item">
+                    <div>
+                        <a href="/contact">Contact</a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <div>
+                        <a href="/login">Login</a>
+                    </div>
+                    <div>
+                        <a href="/register">Register</a>
+                    </div>
+                </div>
 
                 <?php else: ?>
-                    <div class="navbar-item">
-                        <div>
-                            <span>
-                                Hallo <?php echo Application::$app->user->getDisplayName() ?>
-                            </span>
-                        </div>
-                        <div>
-                            <a href="/logout">Logout</a>
-                        </div>
+                <div class="navbar-item">
+                    <div>
+                        <span>
+                            Hallo <?php echo Application::$app->user->getDisplayName() ?>
+                        </span>
                     </div>
+                    <div>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+
+                <?php else : ?>
+                <div class="navbar-item">
+                    <div>
+                        <a href="/profile">Profile</a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <div>
+                        <span>
+                            Hallo <?php echo Application::$app->user->getDisplayName() ?>
+                        </span>
+                    </div>
+                    <div>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
 
                 <?php endif; ?>
 

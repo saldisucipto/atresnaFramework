@@ -6,9 +6,9 @@ use Atresna\Atresnaframework\core\Application;
 use Atresna\Atresnaframework\core\Request;
 use Atresna\Atresnaframework\core\Controllers;
 use Atresna\Atresnaframework\core\Response;
-use Atresna\Atresnaframework\core\utils\Debug;
 use Atresna\Atresnaframework\models\User;
 use Atresna\Atresnaframework\models\LoginForm;
+use Atresna\Atresnaframework\core\middleware\AuthMiddleWare;
 
 
 /**
@@ -17,6 +17,13 @@ use Atresna\Atresnaframework\models\LoginForm;
  */
 class AuthController extends Controllers
 {
+
+    // constructor function 
+    public function __construct()
+    {
+        $this->registerMiddleware(new AuthMiddleware(['profile']));
+    }
+
     function login(Request $request, Response $response)
     {
         $loginForm = new LoginForm();
@@ -24,6 +31,7 @@ class AuthController extends Controllers
             // LOAD DATA 
             $loginForm->loadData($request->getBody());
             // Debug::debugInfo($request->getBody());
+
             if ($loginForm->validate() && $loginForm->login()) {
                 $response->redirect("/");
                 return;
@@ -64,5 +72,10 @@ class AuthController extends Controllers
         return $this->render("register", [
             'model' => $registerModel
         ]);
+    }
+
+    function profile()
+    {
+        return $this->render('profile');
     }
 }
