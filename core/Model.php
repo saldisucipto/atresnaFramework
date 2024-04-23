@@ -30,12 +30,16 @@ abstract class Model
     // abstract function rules 
     abstract function rules(): array;
 
-    function corsValidate(): bool
+    function corsValidate()
     {
-        if ($this->csrf_token === $_SESSION['csrf_token']) {
-            return true;
+        try {
+            if ($this->csrf_token === $_SESSION['csrf_token']) {
+                return true;
+            }
+        } catch (\Throwable $e) {
+            throw new \CorsException();
         }
-        return false;
+
     }
 
 
