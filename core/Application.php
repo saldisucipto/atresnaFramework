@@ -7,6 +7,7 @@ use Atresna\Atresnaframework\core\db\Database;
 use Atresna\Atresnaframework\core\db\DBModel;
 use Atresna\Atresnaframework\core\Session;
 use Atresna\Atresnaframework\core\View;
+use Atresna\Atresnaframework\models\User;
 
 
 class Application
@@ -37,7 +38,6 @@ class Application
         $this->session = new Session();
         $this->userClass = $config['userClass'];
         $this->view = new View();
-
         $primaryValue = $this->session->get('user');
         if ($primaryValue) {
 

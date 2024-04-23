@@ -14,4 +14,6 @@ class Response
         // to another route
         header('Location: ' . $url);
     }
+
+
 }

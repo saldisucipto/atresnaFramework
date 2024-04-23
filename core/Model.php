@@ -12,6 +12,8 @@ abstract class Model
     const RULE_MATCH = "match";
     const RULE_UNIQUE = "unique";
 
+    private string $csrf_token;
+
 
     function loadData($data)
     {
@@ -22,10 +24,19 @@ abstract class Model
                 $this->{$key} = $value;
             }
         }
+        $this->csrf_token = $data['csrf_token'];
     }
 
     // abstract function rules 
     abstract function rules(): array;
+
+    function corsValidate(): bool
+    {
+        if ($this->csrf_token === $_SESSION['csrf_token']) {
+            return true;
+        }
+        return false;
+    }
 
 
     // errors array 
@@ -90,7 +101,14 @@ abstract class Model
                 }
             }
         }
-        return empty($this->errors); // jika tidak ada value error berarti validate lolos
+        if (empty($this->errors) && $this->corsValidate()) {
+            // Hapus token CSRF setelah formulir sebelumnya berhasil diproses
+            unset($_SESSION['csrf_token']);
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     private function addErrorForRule(string $attribute, string $rule, $params = []): void

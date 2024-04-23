@@ -24,7 +24,6 @@ class ContactForm extends Model
     }
 
 
-
     function labels(): array
     {
         return [

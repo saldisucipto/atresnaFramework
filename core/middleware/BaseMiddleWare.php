@@ -3,7 +3,9 @@
 
 namespace Atresna\Atresnaframework\core\middleware;
 
-abstract class BaseMiddleWare
+use Atresna\Atresnaframework\core\Response;
+
+abstract class BaseMiddleWare extends Response
 {
     abstract function execute();
 }

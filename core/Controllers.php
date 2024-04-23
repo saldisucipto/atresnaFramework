@@ -39,7 +39,7 @@ class Controllers
 
     // getter middleware 
     /**
-     * @var Atresna\Atresnaframework\core\middleware\BaseMiddleware[]
+     * @var \Atresna\Atresnaframework\core\middleware\BaseMiddleware[]
      */
     public function getMiddleWare(): array
     {

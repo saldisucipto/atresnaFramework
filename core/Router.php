@@ -37,7 +37,7 @@ class Router
         // Debug::debugInfo($callback);
         if (!$callback) {
             Application::$app->response->setStatusCode(404);
-            return throw new NotFoundException();
+            throw new NotFoundException();
         }
         if (is_string($callback)) {
             return Application::$app->view->renderView($callback);
@@ -49,7 +49,7 @@ class Router
             $controller->actions = $callback[1];
             $callback[0] = $controller;
             // var_dump($controller->getMiddleWare());
-            foreach ($controller->getMiddleWare() as  $middleware) {
+            foreach ($controller->getMiddleWare() as $middleware) {
                 $middleware->execute();
             }
         }

@@ -25,8 +25,6 @@ class LoginForm extends Model
     {
         $user = new User();
         $data = $user->findOne(['email' => $this->email]);
-        // Debug::debugInfo($data);
-        echo "tes";
         if (!$data) {
             $this->addError('email', 'User does not exists');
             return false;

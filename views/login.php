@@ -1,4 +1,17 @@
+<?php
+
+use Atresna\Atresnaframework\core\Application;
+
+?>
+
+
 <section class="my-10">
+
+    <?php if (Application::$app->session->getFlash('error')): ?>
+        <div>
+            <?php echo Application::$app->session->getFlash('error'); ?>
+        </div>
+    <?php endif; ?>
 
     <?php $form = Atresna\Atresnaframework\core\form\Form::begin('/login', 'POST', 'Login') ?>
 

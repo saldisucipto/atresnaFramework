@@ -4,6 +4,7 @@ namespace Atresna\Atresnaframework\core\middleware;
 
 use Atresna\Atresnaframework\core\Application;
 use Atresna\Atresnaframework\core\exceptions\ForbiddenException;
+use Atresna\Atresnaframework\core\Response;
 
 class AuthMiddleWare extends BaseMiddleWare
 {

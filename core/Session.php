@@ -14,6 +14,8 @@ class Session
     {
         // Mulai Session 
         session_start();
+        // Generate Session ID
+        // session_regenerate_id(true);
         // Flash Message 
         $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
         // iterate flash message 
